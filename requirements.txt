@@ -1,0 +1,6 @@
+streamlit>=1.28
+openai>=1.2
+duckduckgo-search
+trubrics>=1.4.3
+streamlit-feedback
+PyGithub==1.55
