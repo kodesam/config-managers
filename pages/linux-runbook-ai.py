@@ -45,7 +45,7 @@ if prompt := st.chat_input():
 # Assuming you have a GitHub personal access token
 github_token = "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"
 repo_owner = "kodesam"
-repo_name = "openshift_cli_in_juypter"
+repo_name = "collection-i-runbooks"
 base_filename = prompt
 
 # Create a connection to the GitHub repository
