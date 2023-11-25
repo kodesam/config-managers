@@ -55,7 +55,7 @@ try:
     # Your existing code here
     
     # Specify the folder path in the repository
-    folder_path = "Shell"
+    folder_path = "Python"
     filename = f"{folder_path}/{base_filename}.yaml"
 
     # Create a connection to the GitHub repository
