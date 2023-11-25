@@ -16,10 +16,10 @@ with st.sidebar:
     
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
-st.title("💬 iRunBook-AI")
+    st.title("💬 iRunBook-AI")
 
-st.caption("🚀 X-runBook for Linux code generation powered by OpenAI LLM")
-if "messages" not in st.session_state:
+    st.caption("🚀 X-runBook for Linux code generation powered by OpenAI LLM")
+    if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on linux scripting ?"}]
 
 for msg in st.session_state.messages:
@@ -50,10 +50,10 @@ if prompt := st.chat_input():
     st.chat_message("assistant").write(msg)
 
 # Assuming you have a GitHub personal access token
-github_token = "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"
-repo_owner = "kodesam"
-repo_name = "collection-i-runbooks"
-base_filename = prompt
+    github_token = "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"
+    repo_owner = "kodesam"
+    repo_name = "collection-i-runbooks"
+    base_filename = prompt
 
 try:
     # Your existing code here
