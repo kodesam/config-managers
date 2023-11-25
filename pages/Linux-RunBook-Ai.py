@@ -86,6 +86,7 @@ except AssertionError as e:
     st.error("Input data to get output to github repository.")
 
 except GithubException:
+    st.error("File alredy exist in github, Search in Github repositiory to get that code.")
 except NameError:
     # Handle the GitHub exception
     st.error("File alredy exist in github, Search in Github repositiory to get that code.")
