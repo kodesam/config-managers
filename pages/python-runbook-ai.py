@@ -20,9 +20,9 @@ with st.sidebar:
 
 st.title("💬 iRunBook-AI")
 
-st.caption("🚀 X-runBook for ansible code generation powered by OpenAI LLM")
+st.caption("🚀 X-runBook for Python code generation powered by OpenAI LLM")
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on ansible code ?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on python code ?"}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
