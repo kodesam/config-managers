@@ -24,7 +24,7 @@ messages = st.session_state.messages
 for msg in messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
-if prompt := st.chat_input(placeholder="Tell me a joke about sharks"):
+if prompt := st.chat_input(placeholder="Tell me historic code"):
     messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
 
