@@ -10,7 +10,7 @@ with st.sidebar:
 
 
     
-     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     instruction = "code in shell scripting"
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     
@@ -19,7 +19,7 @@ with st.sidebar:
     st.title("💬 iRunBook-AI")
 
     st.caption("🚀 X-runBook for Linux code generation powered by OpenAI LLM")
-    if "messages" not in st.session_state:
+if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on linux scripting ?"}]
 
 for msg in st.session_state.messages:
