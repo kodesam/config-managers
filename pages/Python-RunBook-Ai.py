@@ -50,45 +50,47 @@ github_token = "github_pat_11ATKQHNY0qLPXkNXAmXmh_FGNoY9lFKWkZrEFLTyHARb0SbNkYMM
 repo_owner = "kodesam"
 repo_name = "collection-i-runbooks"
 base_filename = prompt
-
-# Create a connection to the GitHub repository
-g = Github(github_token)
-repo = g.get_repo(f"{repo_owner}/{repo_name}")
-# Get the list of all existing files
-existing_files = [file.name for file in repo.get_contents("")]
-
-# Generate a new file name based on the number of existing files
-# file_number = len(existing_files)
-filename = f"{base_filename}.yaml"
-
-# Create the file in the repository
-content = "   "
-content = msg
-commit_message = f"Create {filename}"
-
-# Create or update the file in the repository
-#content = msg
-#commit_message = "Update output file"
-
 try:
+    # Your existing code here
     
-    repo.create_file(filename, commit_message, content)
+    # Specify the folder path in the repository
+    folder_path = "Shell"
+    filename = f"{folder_path}/{base_filename}.yaml"
 
-    print(f"File '{filename}' created successfully in the GitHub repository.")
+    # Create a connection to the GitHub repository
+    g = Github(github_token)
+    repo = g.get_repo(f"{repo_owner}/{repo_name}")
+    
+    # Check if the file already exists in the folder
+    file_path = f"{repo_owner}/{repo_name}/{filename}"
+    file_exists = True
+    
+    try:
+        repo.get_contents(file_path)
+    except GithubException as e:
+        if e.status == 404:
+            file_exists = False
+        else:
+            raise
 
+    if not file_exists:
+        # Create or update the file in the repository
+        content = msg
+        commit_message = f"Create {filename}"
+        repo.create_file(filename, commit_message, content)
+        print(f"File '{filename}' created successfully in the GitHub repository.")
+    else:
+        print(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
+        
 except AssertionError as e:
     # Handle the AssertionError
-    st.error("Input data to get output to github repository.")
-#try:
-    # Check if the file already exists
-  #  existing_file = repo.get_contents(filename)
-   # repo.update_file(existing_file.path, commit_message, content, existing_file.sha)
-
-  #  print(f"File '{filename}' updated successfully in the GitHub repository.")
-#except Exception as e:
-    # If the file doesn't exist, create a new one
-#    repo.create_file(filename, commit_message, content)
-
- #   print(f"File '{filename}' created successfully in the GitHub repository.")
-    
-    
+    st.error("An error occurred while creating the file. Please try again later.")
+except GithubException as e:
+    # Handle the GitHub exception
+    st.error("An error occurred while interacting with GitHub. Please check your GitHub credentials or try again later.")
+except NameError as e:
+    # Handle the NameError
+    st.error("An error occurred with a variable name. Please check your code and try again.")
+except Exception as e:
+    # Handle other exceptions
+    st.error("An unexpected error occurred. Please try again later.")
