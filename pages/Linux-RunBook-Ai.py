@@ -78,14 +78,15 @@ try:
 
     print(f"File '{filename}' created successfully in the GitHub repository.")
 
-except NameError:
-    st.error("An error occurred with a variable name. Please check your code and try again.")
+
+  
     
 except AssertionError as e:
     # Handle the AssertionError
     st.error("Input data to get output to github repository.")
 
 except GithubException:
+except NameError:
     # Handle the GitHub exception
     st.error("File alredy exist in github, Search in Github repositiory to get that code.")
 
