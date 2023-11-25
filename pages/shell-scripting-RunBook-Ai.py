@@ -27,7 +27,7 @@ with st.sidebar:
     
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
-st.title("💬 iRunBook-AI")
+
 
 st.caption("🚀 X-runBook for ansible code generation powered by OpenAI LLM")
 if "messages" not in st.session_state:
