@@ -11,6 +11,10 @@ with st.sidebar:
 
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     instruction = "code in linux command"
+
+    st.title("💬 iRunBook-AI")
+
+    
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
