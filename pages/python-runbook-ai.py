@@ -70,10 +70,15 @@ commit_message = f"Create {filename}"
 #content = msg
 #commit_message = "Update output file"
 
-repo.create_file(filename, commit_message, content)
+try:
+    
+    repo.create_file(filename, commit_message, content)
 
-print(f"File '{filename}' created successfully in the GitHub repository.")
+    print(f"File '{filename}' created successfully in the GitHub repository.")
 
+except AssertionError as e:
+    # Handle the AssertionError
+    st.error("i-Runbook-AI is Running.")
 #try:
     # Check if the file already exists
   #  existing_file = repo.get_contents(filename)
