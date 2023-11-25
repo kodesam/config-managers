@@ -20,14 +20,14 @@ st.markdown(f"<h1 style='{title_style}'>💬 iRunBook-AI</h1>", unsafe_allow_htm
 with st.sidebar:
 
    
-   openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
-   models = st.multiselect("Select Models", available_models, default=available_models)
-   instruction = "code in ansible Playbook"
+    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+    models = st.multiselect("Select Models", available_models, default=available_models)
+    instruction = "code in ansible Playbook"
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
-st.title("💬 iRunBook-AI")
+
 
 st.caption("🚀 X-runBook for ansible code generation powered by OpenAI LLM")
 
