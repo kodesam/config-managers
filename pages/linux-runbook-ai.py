@@ -3,10 +3,7 @@ from openai import OpenAI
 import streamlit as st
 
 with st.sidebar:
-    st.cache = null
-    st.cache_data = null
-    st.cache_resource = null
-    
+
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     "[View the source code](https://github.com/kodesam/i-Runbook-AI/blob/main/pages/linux-runbook-ai.py)"
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
