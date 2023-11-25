@@ -80,6 +80,10 @@ except AssertionError as e:
     # Handle the AssertionError
     st.error("Input data to get output to github repository.")
 
+except GithubException:
+    # Handle the GitHub exception
+    st.error("File alredy exist in github, Search in Github repositiory to get that code.")
+
 #try:
     # Check if the file already exists
   #  existing_file = repo.get_contents(filename)
