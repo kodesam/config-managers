@@ -45,17 +45,17 @@ if prompt := st.chat_input():
     st.session_state.messages.append({"role": "assistant", "content": msg})
     st.chat_message("assistant").write(msg)
 
-# Assuming you have a GitHub personal access token
-   github_token = "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"
-   repo_owner = "kodesam"
-   repo_name = "collection-i-runbooks"
-   base_filename = prompt
+   # Assuming you have a GitHub personal access token
+    github_token = "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"
+    repo_owner = "kodesam"
+    repo_name = "collection-i-runbooks"
+    base_filename = prompt
 
 try:
     # Your existing code here
     
     # Specify the folder path in the repository
-    folder_path = "Python"
+    folder_path = "python"
     filename = f"{folder_path}/{base_filename}.yaml"
 
     # Create a connection to the GitHub repository
