@@ -19,7 +19,7 @@ with st.sidebar:
 
 st.title("💬 iRunBook-AI")
 
-st.caption("🚀 X-runBook for ansible code generation powered by OpenAI LLM")
+st.caption("🚀 X-runBook for Linux code generation powered by OpenAI LLM")
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on linux scripting ?"}]
 
