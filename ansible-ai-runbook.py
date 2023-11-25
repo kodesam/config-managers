@@ -76,7 +76,7 @@ try:
 
 except AssertionError as e:
     # Handle the AssertionError
-    st.error("An error occurred while creating the file. Please try again later.")
+    st.error("i-Runbook-AI is Running.")
 
 #try:
     # Check if the file already exists
