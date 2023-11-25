@@ -92,7 +92,7 @@ except AssertionError as e:
     st.error("An error occurred while creating the file. Please try again later.")
 except GithubException as e:
     # Handle the GitHub exception
-    st.error("An error occurred while interacting with GitHub. Please check your GitHub credentials or try again later.")
+    st.error("File alredy exist in Github Repository folder.")
 except NameError as e:
     # Handle the NameError
     st.error("An error occurred with a variable name. Please check your code and try again.")
