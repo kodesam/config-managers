@@ -74,9 +74,11 @@ try:
     
     repo.create_file(filename, commit_message, content)
 
-except NameError:
+
 
     print(f"File '{filename}' created successfully in the GitHub repository.")
+
+except NameError:
     st.error("An error occurred with a variable name. Please check your code and try again.")
     
 except AssertionError as e:
