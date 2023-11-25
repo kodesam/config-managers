@@ -6,6 +6,9 @@ from github import Github, GithubException
 from openai import OpenAI
 import streamlit as st
 
+# Get available models
+available_models = ['gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0']
+
 title_style = (
     "color: blue;"
     "font-weight: bold;"
@@ -18,6 +21,7 @@ with st.sidebar:
 
 
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+    models = st.multiselect("Select Models", available_models, default=available_models)
     instruction = "code in linux command"
 
     st.title("💬 iRunBook-AI")
@@ -55,6 +59,9 @@ if prompt := st.chat_input():
         model="gpt-3.5-turbo",
         messages=st.session_state.messages,
     )
+
+    
+
     
     msg = response.choices[0].message.content
     st.session_state.messages.append({"role": "assistant", "content": msg})
