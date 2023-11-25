@@ -6,10 +6,24 @@ from github import Github, GithubException
 from openai import OpenAI
 import streamlit as st
 
+
+# Get available models
+available_models = ['gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0']
+
+title_style = (
+    "color: blue;"
+    "font-weight: bold;"
+)
+
+# Display the title with the defined style
+st.markdown(f"<h1 style='{title_style}'>💬 iRunBook-AI</h1>", unsafe_allow_html=True)
+
+
 with st.sidebar:
 
 
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+    models = st.multiselect("Select Models", available_models, default=available_models)
     instruction = "code in python juypter notebook"
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     
