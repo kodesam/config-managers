@@ -67,9 +67,14 @@ commit_message = f"Create {filename}"
 #content = msg
 #commit_message = "Update output file"
 
+
+try:
 repo.create_file(filename, commit_message, content)
 
 print(f"File '{filename}' created successfully in the GitHub repository.")
+
+except AssertionError as e:
+    st.error("An error occurred. Please try again later.")
 
 #try:
     # Check if the file already exists
