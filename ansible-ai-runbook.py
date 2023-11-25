@@ -76,7 +76,7 @@ try:
 
 except AssertionError as e:
     # Handle the AssertionError
-    st.error("i-Runbook-AI is Running.")
+    st.error("Input data to get output to github repository.")
 
 #try:
     # Check if the file already exists
