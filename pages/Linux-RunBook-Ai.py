@@ -6,6 +6,14 @@ from github import Github, GithubException
 from openai import OpenAI
 import streamlit as st
 
+title_style = (
+    "color: blue;"
+    "font-weight: bold;"
+)
+
+# Display the title with the defined style
+st.markdown(f"<h1 style='{title_style}'>💬 iRunBook-AI</h1>", unsafe_allow_html=True)
+
 with st.sidebar:
 
 
@@ -19,7 +27,7 @@ with st.sidebar:
     
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
-st.title("💬 iRunBook-AI")
+ # st.title("💬 iRunBook-AI")
 
 st.caption("🚀 X-runBook for ansible code generation powered by OpenAI LLM")
 if "messages" not in st.session_state:
