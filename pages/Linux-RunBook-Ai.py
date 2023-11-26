@@ -6,6 +6,22 @@ from github import Github, GithubException
 from openai import OpenAI
 import streamlit as st
 
+# Set the CSS style for the sidebar background color
+sidebar_styles = """
+    <style>
+    .sidebar .sidebar-content {
+        background-color: blue;
+        position: relative;
+    }
+    .developer-name {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 12px;
+        color: white;
+    }
+    </style>
+"""
 
 # Get available models
 available_models = ['gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0']
