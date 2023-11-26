@@ -9,7 +9,7 @@ with st.sidebar:
 
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
-st.title("📝 Chat with feedback (Trubrics)")
+st.title("📝 Chat with Blue-runbook and give feedback ")
 
 
 
