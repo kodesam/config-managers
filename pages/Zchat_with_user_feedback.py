@@ -5,12 +5,13 @@ import trubrics
 
 with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", key="feedback_api_key", type="password")
+    st.title("💬 BlueRunBook-AI")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
 
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
 st.title("📝 Chat with Blue-runbook and give feedback ")
-     st.title("💬 BlueRunBook-AI")
+     
 
 
 
