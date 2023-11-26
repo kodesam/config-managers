@@ -9,7 +9,7 @@ import streamlit as st
 sidebar_styles = """
     <style>
     .sidebar .sidebar-content {
-        background-color: blue;
+        background-color: red;
     }
     </style>
 """
