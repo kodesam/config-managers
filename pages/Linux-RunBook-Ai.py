@@ -14,7 +14,7 @@ sidebar_styles = """
         position: relative;
     }
     .developer-name {
-        position: absolute;
+        position: bottom;
         bottom: 10px;
         right: 10px;
         font-size: 12px;
