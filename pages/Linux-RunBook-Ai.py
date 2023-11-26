@@ -6,6 +6,15 @@ from github import Github, GithubException
 from openai import OpenAI
 import streamlit as st
 
+sidebar_styles = """
+    <style>
+    .sidebar .sidebar-content {
+        background-color: blue;
+    }
+    </style>
+"""
+st.sidebar.markdown(sidebar_styles, unsafe_allow_html=True)
+
 # Get available models
 available_models = ['gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0']
 
@@ -15,14 +24,7 @@ title_style = (
 )
 
 # Display the title with the defined style
-sidebar_styles = """
-    <style>
-    .sidebar .sidebar-content {
-        background-color: blue;
-    }
-    </style>
-"""
-st.sidebar.markdown(sidebar_styles, unsafe_allow_html=True)
+
 st.markdown(f"<h1 style='{title_style}'>💬 BlueRunBook-AI</h1>", unsafe_allow_html=True)
 
 with st.sidebar:
