@@ -6,11 +6,22 @@ from github import Github, GithubException
 from openai import OpenAI
 import streamlit as st
 
-sidebar_styles = (
-        "background-color: red;"
-)
-   
-st.sidebar.markdown(sidebar_styles, unsafe_allow_html=True)
+
+
+# Set the CSS style for the sidebar background color
+sidebar_styles = """
+    <style>
+    .sidebar .sidebar-content {
+        background-color: blue;
+    }
+    </style>
+"""
+
+# Apply the sidebar CSS styles using st.markdown()
+st.markdown(sidebar_styles, unsafe_allow_html=True)
+
+
+# Rest of your code here
 
 # Get available models
 available_models = ['gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0']
