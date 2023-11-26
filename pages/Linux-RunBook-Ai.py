@@ -18,6 +18,9 @@ title_style = (
 # Display the title with the defined style
 
 st.markdown(f"<h1 style='{title_style}'>💬 BlueRunBook-AI</h1>", unsafe_allow_html=True)
+# Add the developer name in the sidebar
+st.sidebar.markdown("<p class='developer-name'>Developer: Syed Aamir</p>", unsafe_allow_html=True)
+
 
 with st.sidebar:
 
