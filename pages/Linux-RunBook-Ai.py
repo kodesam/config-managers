@@ -6,13 +6,10 @@ from github import Github, GithubException
 from openai import OpenAI
 import streamlit as st
 
-sidebar_styles = """
-    <style>
-    .sidebar .sidebar-content {
-        background-color: red;
-    }
-    </style>
-"""
+sidebar_styles = (
+        "background-color: red;"
+)
+   
 st.sidebar.markdown(sidebar_styles, unsafe_allow_html=True)
 
 # Get available models
