@@ -22,6 +22,7 @@ sidebar_styles = """
     }
     </style>
 """
+st.sidebar.markdown(sidebar_styles, unsafe_allow_html=True)
 st.markdown(f"<h1 style='{title_style}'>💬 BlueRunBook-AI</h1>", unsafe_allow_html=True)
 
 with st.sidebar:
