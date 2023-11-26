@@ -16,7 +16,7 @@ title_style = (
 )
 
 # Display the title with the defined style
-st.markdown(f"<h1 style='{title_style}'>💬 iRunBook-AI</h1>", unsafe_allow_html=True)
+st.markdown(f"<h1 style='{title_style}'>💬 BlueRunBook-AI</h1>", unsafe_allow_html=True)
 
 
 with st.sidebar:
@@ -31,7 +31,7 @@ with st.sidebar:
 
 
 
-st.caption("🚀 X-runBook for ansible code generation powered by OpenAI LLM")
+st.caption("🚀 Blue-runBook for ansible code generation powered by OpenAI LLM")
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on python juypter notebook?"}]
 
