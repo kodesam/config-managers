@@ -15,7 +15,7 @@ title_style = (
 )
 
 # Display the title with the defined style
-st.markdown(f"<h1 style='{title_style}'>💬 iRunBook-AI</h1>", unsafe_allow_html=True)
+st.markdown(f"<h1 style='{title_style}'>💬 BlueRunBook-AI</h1>", unsafe_allow_html=True)
 
 with st.sidebar:
 
@@ -24,7 +24,7 @@ with st.sidebar:
     models = st.multiselect("Select Models", available_models, default=available_models)
     instruction = "code in linux command"
 
-    st.title("💬 iRunBook-AI")
+    st.title("💬 BlueRunBook-AI")
 
     
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
