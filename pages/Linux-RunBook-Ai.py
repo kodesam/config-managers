@@ -35,7 +35,7 @@ title_style = (
 
 st.markdown(f"<h1 style='{title_style}'>💬 BlueRunBook-AI</h1>", unsafe_allow_html=True)
 # Add the developer name in the sidebar
-st.sidebar.markdown("<p class='developer-name'>Developer: Syed Aamir</p>", unsafe_allow_html=True)
+
 
 
 with st.sidebar:
@@ -46,6 +46,7 @@ with st.sidebar:
     instruction = "code in linux command"
 
     st.title("💬 BlueRunBook-AI")
+    st.sidebar.markdown("<p class='developer-name'>Developer: Syed Aamir</p>", unsafe_allow_html=True)
 
     
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
@@ -53,6 +54,7 @@ with st.sidebar:
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
  # st.title("💬 iRunBook-AI")
+
 
 st.caption("🚀 Blue-runBook for ansible code generation powered by OpenAI LLM")
 if "messages" not in st.session_state:
