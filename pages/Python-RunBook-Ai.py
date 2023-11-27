@@ -24,7 +24,7 @@ with st.sidebar:
 
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     models = st.multiselect("Select Models", available_models, default=available_models)
-    instruction = "code in python juypter notebook"
+    instruction = "code in python"
     st.title("💬 BlueRunBook-AI")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     
