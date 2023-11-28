@@ -22,7 +22,7 @@ with st.sidebar:
 
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     models = st.multiselect("Select Models", available_models, default=available_models)
-    instruction = "code in linux shell scripting"
+    instruction = "write script to create jinja template"
     st.title("💬 BlueRunBook-AI")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     
