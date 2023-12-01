@@ -14,10 +14,10 @@ ssh_client.connect(hostname=ansible_host, username=ansible_username, password=an
 # Execute the command on the Ansible server
 msg = "ls"
 command = f"echo '{msg}' >> output.txt"  # Replace with the appropriate command to run on the server
-stdin, stdout, stderr = ssh_client.exec_command(command)
+ #stdin, stdout, stderr = ssh_client.exec_command(command)
 
 # Print the results (optional)
-print(stdout.read().decode())
+# print(stdout.read().decode())
 
 # Close the SSH connection
-ssh_client.close()
+#ssh_client.close()
