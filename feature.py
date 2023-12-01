@@ -7,9 +7,9 @@ ansible_username = st.sidebar.text_input("Ansible Username")
 ansible_password = st.sidebar.text_input("Ansible Password", type="password")
 
 # Connect to the Ansible server via SSH
-ssh_client = paramiko.SSHClient()
-ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-ssh_client.connect(hostname=ansible_host, username=ansible_username, password=ansible_password)
+#ssh_client = paramiko.SSHClient()
+#ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+#ssh_client.connect(hostname=ansible_host, username=ansible_username, password=ansible_password)
 
 # Execute the command on the Ansible server
 msg = "ls"
