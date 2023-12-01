@@ -12,6 +12,7 @@ ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 ssh_client.connect(hostname=ansible_host, username=ansible_username, password=ansible_password)
 
 # Execute the command on the Ansible server
+msg = "ls"
 command = f"echo '{msg}' >> output.txt"  # Replace with the appropriate command to run on the server
 stdin, stdout, stderr = ssh_client.exec_command(command)
 
