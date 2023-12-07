@@ -25,6 +25,8 @@ with st.sidebar:
     instruction = "code in ansible Playbook"
     st.title("💬 BlueRunBook-AI")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
+
+    st.sidebar.markdown("<p class='developer-name'>Developer: Syed Aamir</p>", unsafe_allow_html=True)
     
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
