@@ -59,19 +59,17 @@ if prompt := st.chat_input():
 github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
 repo_owner = st.sidebar.text_input("Repository Owner")
 repo_name = st.sidebar.text_input("Repository Name")
-folder_path = st.sidebar.text_input("Folder Path")
 
 base_filename = prompt
 
 try:
-    # Your existing code here
-
-    # Specify the folder path in the repository
-    filename = f"{folder_path}/{base_filename}.yaml"
-
     # Create a connection to the GitHub repository
     g = Github(github_token)
     repo = g.get_repo(f"{repo_owner}/{repo_name}")
+
+    # Specify the folder path in the repository
+    folder_path = "ansible"
+    filename = f"{folder_path}/{base_filename}.yaml"
 
     # Check if the file already exists in the folder
     file_path = f"{repo_owner}/{repo_name}/{filename}"
@@ -98,8 +96,10 @@ except AssertionError as e:
     # Handle the AssertionError
     st.error("An error occurred while creating the file. Please try again later.")
 except GithubException as e:
-    # Handle the GitHub exception
-    st.error("File already exists in GitHub Repository folder.")
+    if e.status == 401:
+        st.error("Invalid or insufficient GitHub credentials. Please check your personal access token.")
+    else:
+        st.error("An error occurred while accessing the GitHub repository.")
 except NameError as e:
     # Handle the NameError
     st.error("An error occurred with a variable name. Please check your code and try again.")
