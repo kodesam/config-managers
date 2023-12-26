@@ -24,16 +24,34 @@ if (
     st.sidebar.error("Please provide all the necessary inputs.")
     st.stop()
 
+# Function to recursively fetch subfolders in a directory
+def get_folders(repo, path):
+    contents = repo.get_contents(path)
+    folders = []
+    for content in contents:
+        if content.type == "dir":
+            folders.append(content.path)
+            folders.extend(get_folders(repo, content.path))
+    return folders
+
 # Fetch the list of folders in the source repository
 try:
     source_repo = Github(source_token).get_repo(f"{source_owner}/{source_repo_name}")
-    source_dirs = [content.name for content in source_repo.get_contents("") if content.type == "dir"]
+    source_folders = get_folders(source_repo, "")
 
-    # Select the folder from the source repository
-    selected_folder = st.selectbox("Select Folder", source_dirs)
+    # Select the top-level folder from the source repository
+    selected_folder = st.selectbox("Select Folder", source_folders)
 
-    # Get the list of files in the selected folder
-    source_files = [content.name for content in source_repo.get_contents(selected_folder)]
+    # Fetch and display subfolders in a recursive manner
+    all_folders = get_folders(source_repo, selected_folder)
+    selected_folder = st.selectbox("Select Subfolder", all_folders)
+
+    # Get the list of files in the selected subfolder
+    source_files = [
+        content.name
+        for content in source_repo.get_contents(selected_folder)
+        if content.type == "file"
+    ]
 
     st.subheader(f"Files in the '{selected_folder}' folder:")
     st.write(source_files)
