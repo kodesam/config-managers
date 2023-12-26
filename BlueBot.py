@@ -16,22 +16,27 @@ title_style = (
 st.markdown(f"<h1 style='{title_style}'>💬 BlueRunBook-AI</h1>", unsafe_allow_html=True)
 
 with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
-    models = st.multiselect("Select Models", available_models, default=available_models)
-    instructions = ["ansible Playbook code ", "openshift file", "Create python script", "Create shell script","Yaml file for kubernetes"]
-    instruction_1 = st.selectbox("Select Instruction", instructions)
-    instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
     st.title("💬 BlueRunBook-AI")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
-
-    st.sidebar.markdown("<p class='developer-name'>Developer: Syed Aamir</p>", unsafe_allow_html=True)
-
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
+    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+    models = st.multiselect("Select Models", available_models, default=available_models)
+    instructions = ["ansible Playbook code ", "yaml script", "Create python script", "Create shell script","kubernetes yaml file"]
+    instruction_1 = st.selectbox("Select Instruction", instructions)
+    instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
+    #st.title("💬 BlueRunBook-AI")
+    
+
+    # st.sidebar.markdown("<p class='developer-name'>Developer: Syed Aamir</p>", unsafe_allow_html=True)
+
+    # "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
+ 
+    
 
 st.caption("🚀 Blue-runBook for ansible code generation powered by OpenAI LLM")
 
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on ansible code ?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on generating code ?"}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
@@ -46,7 +51,6 @@ if prompt := st.chat_input():
     st.chat_message("user").write(prompt)
 
     # Include the instruction in the conversation
-    #st.session_state.messages.append({"role": "assistant", "content": instruction})
     st.session_state.messages.append({"role": "assistant", "content": instruction_1})
     st.session_state.messages.append({"role": "assistant", "content": instruction_2})
 
@@ -60,8 +64,8 @@ if prompt := st.chat_input():
     st.session_state.messages.append({"role": "assistant", "content": msg})
     st.chat_message("assistant").write(msg)
 
-# Generate a random number to add to the base_filename
-random_number = random.randint(1, 1000)    
+# Generate a random number
+random_number = random.randint(1, 1000)
 
 # Prompt the user for GitHub credentials
 github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
@@ -69,22 +73,24 @@ repo_owner = st.sidebar.text_input("Repository Owner")
 repo_name = st.sidebar.text_input("Repository Name")
 folder_path = st.sidebar.text_input("Folder Path")
 
-#base_filename = prompt
+#st.sidebar.title("💬 BlueRunBook-AI")
+#"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
+ 
+st.sidebar.markdown("<p class='developer-name'>Developer: Syed Aamir</p>", unsafe_allow_html=True)
 
-base_filename = st.text_input("Base Filename", value=f"{prompt}_{random_number}", key="base_filename_input")
+# Update the base_filename and filename
+base_filename = "code"
+filename = f"{base_filename}_{random_number}.yaml"
 
 try:
     # Your existing code here
-
-    # Specify the folder path in the repository
-    filename = f"{folder_path}/{base_filename}.yaml"
 
     # Create a connection to the GitHub repository
     g = Github(github_token)
     repo = g.get_repo(f"{repo_owner}/{repo_name}")
 
     # Check if the file already exists in the folder
-    file_path = f"{repo_owner}/{repo_name}/{filename}"
+    file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
     file_exists = True
 
     try:
@@ -98,8 +104,8 @@ try:
     if not file_exists:
         # Create or update the file in the repository
         content = msg
-        commit_message = f"Create {filename}"
-        repo.create_file(filename, commit_message, content)
+        commit_message = f"Create {prompt}"
+        repo.create_file(file_path, commit_message, content)
         print(f"File '{filename}' created successfully in the GitHub repository.")
     else:
         print(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
@@ -109,9 +115,3 @@ except AssertionError as e:
 except GithubException as e:
     # Handle the GitHub exception
     st.error("File already exists in GitHub Repository folder.")
-except NameError as e:
-    # Handle the NameError
-    st.error("An error occurred with a variable name. Please check your code and try again.")
-except Exception as e:
-    # Handle other exceptions
-    st.error("An unexpected error occurred. Please try again later.")
