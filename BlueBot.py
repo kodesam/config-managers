@@ -16,7 +16,7 @@ title_style = (
 st.markdown(f"<h1 style='{title_style}'>💬 BlueRunBook-AI</h1>", unsafe_allow_html=True)
 
 with st.sidebar:
-    st.title("💬 BlueRunBook-AI")
+    st.title("💬 BlueRunBook-AI 🚀🚀")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
@@ -33,7 +33,7 @@ with st.sidebar:
  
     
 
-st.caption("🚀 Blue-runBook for ansible code generation powered by OpenAI LLM")
+st.caption("🚀 🚀 🚀 Blue-runBook for code generation powered by OpenAI LLM")
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on generating code ?"}]
