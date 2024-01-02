@@ -68,15 +68,16 @@ if prompt := st.chat_input():
 random_number = random.randint(1, 1000)
 
 # Prompt the user for GitHub credentials
-github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
-repo_owner = st.sidebar.text_input("Repository Owner")
-repo_name = st.sidebar.text_input("Repository Name")
-folder_path = st.sidebar.text_input("Folder Path")
+#github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
+#repo_owner = st.sidebar.text_input("Repository Owner")
+#repo_name = st.sidebar.text_input("Repository Name")
+#folder_path = st.sidebar.text_input("Folder Path")
 
 # Assuming you have a GitHub personal access token
 github_token = "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"
 repo_owner = "kodesam"
 repo_name = "collection-i-runbooks"
+folder_path= "code"
 
 
 #st.sidebar.title("💬 BlueRunBook-AI")
