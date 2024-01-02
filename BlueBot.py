@@ -73,6 +73,12 @@ repo_owner = st.sidebar.text_input("Repository Owner")
 repo_name = st.sidebar.text_input("Repository Name")
 folder_path = st.sidebar.text_input("Folder Path")
 
+# Assuming you have a GitHub personal access token
+github_token = "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"
+repo_owner = "kodesam"
+repo_name = "collection-i-runbooks"
+
+
 #st.sidebar.title("💬 BlueRunBook-AI")
 #"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
  
