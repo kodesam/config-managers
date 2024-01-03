@@ -21,8 +21,8 @@ with st.sidebar:
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     models = st.multiselect("Select Models", available_models, default=available_models)
-    instructions = ["ansible Playbook yaml file", "yaml script", "python script", "shell script", "docker file", "kubernetes yaml file"]
-    instruction_1 = st.selectbox("Select Instruction", instructions)
+    module = ["ansible Playbook yaml file", "yaml script", "python script", "shell script", "docker file", "kubernetes yaml file"]
+    instruction_1 = st.selectbox("Select Instruction", module)
     instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
     #st.title("💬 BlueRunBook-AI")
     
@@ -68,11 +68,11 @@ if prompt := st.chat_input():
 random_number = random.randint(1, 1000)
 
 # Prompt the user for GitHub credentials
-#github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
-#repo_owner = st.sidebar.text_input("Repository Owner")
-#repo_name = st.sidebar.text_input("Repository Name")
-#folder_path = st.sidebar.text_input("Folder Path")
-#branch_name = st.sidebar.text_input("Branch Name", value="main")
+github_token_1 = st.sidebar.text_input("GitHub Personal Access Token", type="password")
+repo_owner_1 = st.sidebar.text_input("Repository Owner")
+repo_name_1 = st.sidebar.text_input("Repository Name")
+folder_path_1 = st.sidebar.text_input("Folder Path")
+branch_name_1 = st.sidebar.text_input("Branch Name", value="main")
 
 # Assuming you have a GitHub personal access token
 github_token = "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"
