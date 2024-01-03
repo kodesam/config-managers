@@ -22,7 +22,7 @@ with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     models = st.multiselect("Select Models", available_models, default=available_models)
     module = ["ansible Playbook yaml file", "yaml script", "python script", "shell script", "docker file", "kubernetes yaml file"]
-    instruction_1 = st.selectbox("Select Instruction", module)
+    instruction_1 = st.selectbox("Select Module", module)
     instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
     #st.title("💬 BlueRunBook-AI")
     
