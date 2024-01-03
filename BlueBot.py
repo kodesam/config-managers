@@ -98,7 +98,7 @@ try:
 
     # Check if the file already exists in the folder
      #file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
-     file_path = f"{{folder_path}/{filename}"
+     file_path = f"{{folder_path}/{filename}}"
     file_exists = True
 
     try:
