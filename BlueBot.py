@@ -78,6 +78,7 @@ github_token = "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"
 repo_owner = "kodesam"
 repo_name = "collection-i-runbooks"
 folder_path= "code"
+branch_name = st.sidebar.text_input("Branch Name", value="main")
 
 
 #st.sidebar.title("💬 BlueRunBook-AI")
@@ -102,7 +103,7 @@ try:
     file_exists = True
 
     try:
-        repo.get_contents(file_path)
+        repo.get_contents(file_path, ref=branch_name)
     except GithubException as e:
         if e.status == 404:
             file_exists = False
@@ -113,7 +114,7 @@ try:
         # Create or update the file in the repository
         content = msg
         commit_message = f"Create {prompt}"
-        repo.create_file(file_path, commit_message, content)
+        repo.create_file(file_path, commit_message, content, sha=file_sha, branch=branch_name)
         print(f"File '{filename}' created successfully in the GitHub repository.")
     else:
         print(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
