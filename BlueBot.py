@@ -72,13 +72,15 @@ random_number = random.randint(1, 1000)
 #repo_owner = st.sidebar.text_input("Repository Owner")
 #repo_name = st.sidebar.text_input("Repository Name")
 #folder_path = st.sidebar.text_input("Folder Path")
+#branch_name = st.sidebar.text_input("Branch Name", value="main")
 
 # Assuming you have a GitHub personal access token
 github_token = "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"
 repo_owner = "kodesam"
 repo_name = "collection-i-runbooks"
-folder_path= "code"
-branch_name = st.sidebar.text_input("Branch Name", value="main")
+folder_path = "code"
+branch_name = "dev"
+
 
 
 #st.sidebar.title("💬 BlueRunBook-AI")
