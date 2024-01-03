@@ -116,7 +116,7 @@ try:
         # Create or update the file in the repository
         content = msg
         commit_message = f"Create {prompt}"
-        repo.create_file(file_path, commit_message, content, sha=file_sha, branch=branch_name)
+        repo.create_file(file_path, commit_message, content, branch=branch_name)
         print(f"File '{filename}' created successfully in the GitHub repository.")
     else:
         print(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
