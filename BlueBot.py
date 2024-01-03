@@ -21,7 +21,7 @@ with st.sidebar:
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     models = st.multiselect("Select Models", available_models, default=available_models)
-    instructions = ["ansible Playbook yaml file ", "yaml script", "python script", "shell script","kubernetes yaml file"]
+    instructions = ["ansible Playbook yaml file ", "yaml script", "python script", "shell script","kubernetes yaml file","Docker file"]
     instruction_1 = st.selectbox("Select Instruction", instructions)
     instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
     #st.title("💬 BlueRunBook-AI")
@@ -97,7 +97,8 @@ try:
     repo = g.get_repo(f"{repo_owner}/{repo_name}")
 
     # Check if the file already exists in the folder
-    file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
+     #file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
+     file_path = f"{{folder_path}/{filename}"
     file_exists = True
 
     try:
