@@ -77,7 +77,7 @@ random_number = random.randint(1, 1000)
 # Assuming you have a GitHub personal access token
 github_token = "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"
 repo_owner = "kodesam"
-repo_name = "collection-i-runbooks"
+repo_name = "pipeline"
 folder_path = "code"
 branch_name = "dev"
 
