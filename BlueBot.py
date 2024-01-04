@@ -21,14 +21,8 @@ with st.sidebar:
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     models = st.multiselect("Select Models", available_models, default=available_models)
-    module = ["ansible Playbook yaml file", "yaml script", "python script", "shell script", "docker file", "kubernetes yaml file"]
-    #module = ["ansible", "yaml", "python", "shell", "docker, "kubernetes"]
-    #ansible = "ansible Playbook yaml file"
-    #yaml = "yaml file"
-    #python = "python script"
-    #shell = "shell script"
-    #docker = "docker file"
-    #kubernetes = "kubernetes yaml file"
+    module = ["ansible Playbook yaml file", "yaml script", "python script", "shell script", "docker file", "kubernetes yaml file", "juypter notebook"]
+ 
     
     instruction_1 = st.selectbox("Select Module", module)
     instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
