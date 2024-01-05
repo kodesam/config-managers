@@ -1,4 +1,4 @@
-Build the Docker image: Open a terminal in the directory where your Dockerfile and requirements.txt files are located. Run the following command to build the Docker image:
+# Build the Docker image: Open a terminal in the directory where your Dockerfile and requirements.txt files are located. Run the following command to build the Docker image:
 
 ```docker build -t blue_runbook_ai:latest . ```
 
