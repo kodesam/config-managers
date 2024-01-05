@@ -10,4 +10,4 @@ Run the Docker container: Once the image is built, you can run a Docker containe
 
 This command maps port 8501 (used by Streamlit) from the container to port 8501 on the host machine.
 
-Access the Streamlit app: Open a web browser and visit http://localhost:8501 to access the Streamlit app running inside the Docker container.
+Access the Streamlit app: Open a web browser and visit ```http://localhost:8501``` to access the Streamlit app running inside the Docker container.
