@@ -5,4 +5,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["streamlit", "run", "your_code_filename.py"]
+CMD ["streamlit", "run", "BlueBot.py"]
