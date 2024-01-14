@@ -53,7 +53,7 @@ with st.sidebar:
         "docker file", 
         "kubernetes yaml file", 
         "juypter notebook",
-        "Windows PowerShell"
+        "Windows PowerShell",
         "terraform script"
     ]
     
