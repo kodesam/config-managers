@@ -51,18 +51,22 @@ with st.sidebar:
         "shell script", 
         "docker file", 
         "kubernetes yaml file", 
-        "juypter notebook"
+        "juypter notebook",
+        "Windows PowerShell",
+        "terraform"
     ]
     
     instruction_1 = st.selectbox("Select Module", module)
-   
+    temperature = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.5, step=0.1)
+    #max_tokens = st.number_input("Max Tokens", min_value=1, max_value=2048, value=50)
+    top_p = st.slider("Top-p", min_value=0.1, max_value=1.0, value=0.9, step=0.1)
     #instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
     #st.title("💬 BlueRunBook-AI")
 
-st.caption("🚀 🚀 🚀 Blue-RunBook powered by OpenAI LLM")
+st.caption("🚀 🚀 🚀 Blue-runBook  Powered by OpenAI LLM")
 
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on Script Generation ?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on generating Script ?"}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
@@ -91,6 +95,9 @@ if prompt := st.chat_input():
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=st.session_state.messages,
+        temperature=temperature,
+        #max_tokens=max_tokens,
+        top_p=top_p
     )
 
     msg = response.choices[0].message.content
