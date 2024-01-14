@@ -45,6 +45,7 @@ with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     models = st.multiselect("Select Models", available_models, default=available_models)
     module = [
+        "ansible Playbook jinja2 template",
         "ansible Playbook yaml file", 
         "yaml script", 
         "python script", 
@@ -53,7 +54,7 @@ with st.sidebar:
         "kubernetes yaml file", 
         "juypter notebook",
         "Windows PowerShell",
-        "terraform"
+        "terraform script"
     ]
     
     instruction_1 = st.selectbox("Select Module", module)
