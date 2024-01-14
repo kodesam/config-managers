@@ -4,6 +4,23 @@ from openai import OpenAI
 import streamlit as st
 import random
 
+# Function to filter sensitive content in the prompt
+def filter_sensitive_content(prompt):
+    # Perform the necessary filtering operations or checks here
+    # You can use regex, NLP techniques, or other methods to identify and remove sensitive content
+    
+    # Simplified example: Check if prompt contains any of the sensitive keywords
+    sensitive_keywords = ["password", "secret", "IP address","IP_ADDRESS= x.x.x.x"]
+    
+    prompt_lower = prompt.lower()  # Convert prompt to lowercase
+    
+    for keyword in sensitive_keywords:
+        keyword_lower = keyword.lower()  # Convert keyword to lowercase
+        if keyword_lower in prompt_lower:
+            return None  # Return None if the prompt contains sensitive content
+    
+    return prompt  # Return the filtered prompt if it doesn't contain sensitive content
+
 # Get available models
 available_models = ['gpt-3.5-turbo-16k-0613','gpt-3.5-turbo-16k-1106','gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0']
 
@@ -48,9 +65,16 @@ if prompt := st.chat_input():
         st.info("Please add your OpenAI API key to continue.")
         st.stop()
 
+    # Filter sensitive content in the prompt
+    filtered_prompt = filter_sensitive_content(prompt)
+
+    if not filtered_prompt:
+        st.warning("The prompt contains sensitive content. Please remove any sensitive information and try again.")
+        st.stop()
+
     client = OpenAI(api_key=openai_api_key)
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    st.chat_message("user").write(prompt)
+    st.session_state.messages.append({"role": "user", "content": filtered_prompt})
+    st.chat_message("user").write(filtered_prompt)
 
     # Include the instruction in the conversation
     st.session_state.messages.append({"role": "assistant", "content": instruction_1})
@@ -70,20 +94,11 @@ if prompt := st.chat_input():
 random_number = random.randint(1, 1000)
 
 # Prompt the user for GitHub credentials
-#github_token_1 = st.sidebar.text_input("GitHub Personal Access Token", type="password")
-#repo_owner_1 = st.sidebar.text_input("Repository Owner")
-#repo_name_1 = st.sidebar.text_input("Repository Name")
-#folder_path_1 = st.sidebar.text_input("Folder Path")
-#branch_name_1 = st.sidebar.text_input("Branch Name", value="main")
-
-# Assuming you have a GitHub personal access token
-github_token = "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"
-repo_owner = "kodesam"
-repo_name = "pipeline"
-folder_path = "code"
-branch_name = "dev"
-
-
+github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
+repo_owner = st.sidebar.text_input("Repository Owner")
+repo_name = st.sidebar.text_input("Repository Name")
+folder_path = st.sidebar.text_input("Folder Path")
+branch_name = st.sidebar.text_input("Branch Name", value="main")
 
 #st.sidebar.title("💬 BlueRunBook-AI")
 #"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
@@ -117,7 +132,7 @@ try:
     if not file_exists:
         # Create or update the file in the repository
         content = msg
-        commit_message = f"Create {prompt}"
+        commit_message = f"Create {filtered_prompt}"
         repo.create_file(file_path, commit_message, content, branch=branch_name)
         print(f"File '{filename}' created successfully in the GitHub repository.")
     else:

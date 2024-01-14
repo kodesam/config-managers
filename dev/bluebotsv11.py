@@ -5,27 +5,44 @@ import streamlit as st
 import random
 import re
 
-def filter_sensitive_content(prompt):
+def filter_sensitive_content(prompt, additional_instruction, msg):
     # Perform the necessary filtering operations or checks here
     # You can use regex, NLP techniques, or other methods to identify and mask sensitive content
-    
-    # Example: Check if prompt contains IP address and mask it
+
     ip_address_pattern = r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b"  # Regex pattern for IP address
+
     masked_prompt = re.sub(ip_address_pattern, 'IP ADDRESS="XXX.XXX.XXX.XXX"', prompt)
-    
+
     if masked_prompt != prompt:
         return masked_prompt  # Return the masked prompt if it contains sensitive content
     
+    # Check if prompt contains any of the sensitive keywords
+    sensitive_keywords = ["password", "secret", "token", "nokia"]
+    
+    prompt_lower = prompt.lower()  # Convert prompt to lowercase
+    
+    for keyword in sensitive_keywords:
+        keyword_lower = keyword.lower()  # Convert keyword to lowercase
+        if keyword_lower in prompt_lower:
+            return None, None, None  # Return None if the prompt contains sensitive content
+    
     # Check if additional instruction contains any of the sensitive keywords
-    sensitive_keywords = ["password", "secret", "ip address", "nokia"]
-    additional_instruction_lower = prompt.lower()  # Convert additional instruction to lowercase
+    additional_instruction_lower = additional_instruction.lower()  # Convert additional instruction to lowercase
     
     for keyword in sensitive_keywords:
         keyword_lower = keyword.lower()  # Convert keyword to lowercase
         if keyword_lower in additional_instruction_lower:
-            return None  # Return None if the additional instruction contains sensitive content
+            return None, None, None  # Return None if the additional instruction contains sensitive content
     
-    return prompt  # Return the filtered prompt if it doesn't contain sensitive content
+    # Check if msg contains any of the sensitive keywords
+    # msg_lower = msg.lower()  # Convert msg to lowercase
+    
+    # for keyword in sensitive_keywords :
+    #    keyword_lower = keyword.lower()  # Convert keyword to lowercase
+    #    if keyword_lower in msg_lower:
+    #        return None, None, None   # Return None if the message contains sensitive content
+    
+    return prompt, additional_instruction, msg  # Return the original content if they don't contain sensitive content
 
 # Get available models
 available_models = ['gpt-3.5-turbo-16k-0613', 'gpt-3.5-turbo-16k-1106', 'gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0']
@@ -55,9 +72,6 @@ with st.sidebar:
     ]
     
     instruction_1 = st.selectbox("Select Module", module)
-    temperature = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.5, step=0.1)
-    max_tokens = st.number_input("Max Tokens", min_value=1, max_value=2048, value=50)
-    top_p = st.slider("Top-p", min_value=0.1, max_value=1.0, value=0.9, step=0.1)
     instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
     #st.title("💬 BlueRunBook-AI")
 
@@ -74,11 +88,11 @@ if prompt := st.chat_input():
         st.info("Please add your OpenAI API key to continue.")
         st.stop()
 
-    # Filter sensitive content in the prompt
-    filtered_prompt = filter_sensitive_content(prompt)
+    # Filter sensitive content in the prompt, additional instruction, and message
+    filtered_prompt, filtered_instruction, filtered_msg = filter_sensitive_content(prompt, instruction_2, msg)
 
-    if not filtered_prompt:
-        st.warning("The prompt contains sensitive content. Please remove any sensitive information and try again.")
+    if filtered_prompt is None or filtered_instruction is None or filtered_msg is None:
+        st.warning("The prompt, additional instruction, or message contains sensitive content. Please remove any sensitive information and try again.")
         st.stop()
 
     client = OpenAI(api_key=openai_api_key)
@@ -87,20 +101,17 @@ if prompt := st.chat_input():
 
     # Include the instruction in the conversation
     st.session_state.messages.append({"role": "assistant", "content": instruction_1})
-    st.session_state.messages.append({"role": "assistant", "content": instruction_2})
+    st.session_state.messages.append({"role": "assistant", "content": filtered_instruction})
 
-    # Include the instruction, temperature, max_tokens, and top_p in the API call
-    response = client.completions.create(
+    # Include the instruction in the API call
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=st.session_state.messages,
-        temperature=temperature,
-        max_tokens=max_tokens,
-        top_p=top_p
     )
 
-    msg = response.choices[0].message.content
-    st.session_state.messages.append({"role": "assistant", "content": msg})
-    st.chat_message("assistant").write(msg)
+    filtered_msg = response.choices[0].message.content
+    st.session_state.messages.append({"role": "assistant", "content": filtered_msg})
+    st.chat_message("assistant").write(filtered_msg)
 
 # Generate a random number
 random_number = random.randint(1, 1000)
@@ -112,9 +123,6 @@ repo_name = st.sidebar.text_input("Repository Name")
 folder_path = st.sidebar.text_input("Folder Path")
 branch_name = st.sidebar.text_input("Branch Name", value="main")
 
-#st.sidebar.title("💬 BlueRunBook-AI")
-#"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
- 
 st.sidebar.markdown("<p class='developer-name'>Developer</p>", unsafe_allow_html=True)
 
 # Update the base_filename and filename
@@ -130,7 +138,6 @@ try:
 
     # Check if the file already exists in the folder
     file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
-      #file_path = f"{folder_path}/{filename}"
     file_exists = True
 
     try:
@@ -143,7 +150,7 @@ try:
 
     if not file_exists:
         # Create or update the file in the repository
-        content = msg
+        content = filtered_msg
         commit_message = f"Create {filtered_prompt}"
         repo.create_file(file_path, commit_message, content, branch=branch_name)
         print(f"File '{filename}' created successfully in the GitHub repository.")

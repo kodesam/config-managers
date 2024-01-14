@@ -22,25 +22,20 @@ with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     models = st.multiselect("Select Models", available_models, default=available_models)
     module = ["ansible Playbook yaml file", "yaml script", "python script", "shell script", "docker file", "kubernetes yaml file", "juypter notebook"]
- 
-    
+
     instruction_1 = st.selectbox("Select Module", module)
     instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
-    #st.title("💬 BlueRunBook-AI")
-    
-
-    # st.sidebar.markdown("<p class='developer-name'>Developer: Syed Aamir</p>", unsafe_allow_html=True)
-
-    # "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
- 
-    
 
 st.caption("🚀 🚀 🚀 Blue-runBook for code generation powered by OpenAI LLM")
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on generating code ?"}]
 
+filtered_messages = []
 for msg in st.session_state.messages:
+    if "IP address" in msg["content"]:
+        continue  # Skip this message
+    filtered_messages.append(msg)
     st.chat_message(msg["role"]).write(msg["content"])
 
 if prompt := st.chat_input():
@@ -49,32 +44,30 @@ if prompt := st.chat_input():
         st.stop()
 
     client = OpenAI(api_key=openai_api_key)
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    filtered_messages.append({"role": "user", "content": "*** User Input ***"})
     st.chat_message("user").write(prompt)
 
-    # Include the instruction in the conversation
-    st.session_state.messages.append({"role": "assistant", "content": instruction_1})
-    st.session_state.messages.append({"role": "assistant", "content": instruction_2})
+    filtered_messages.append({"role": "assistant", "content": instruction_1})
+    filtered_messages.append({"role": "assistant", "content": instruction_2})
 
-    # Include the instruction in the API call
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=st.session_state.messages,
-    )
+    if "IP address" in prompt:  # Check for sensitive content in user input
+        st.info("You have entered sensitive content. We will not process it with OpenAI.")
+    else:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=filtered_messages,
+        )
+        msg = response.choices[0].message.content
+        filtered_messages.append({"role": "assistant", "content": msg})
+        st.chat_message("assistant").write(msg)
 
-    msg = response.choices[0].message.content
-    st.session_state.messages.append({"role": "assistant", "content": msg})
-    st.chat_message("assistant").write(msg)
-
-# Generate a random number
 random_number = random.randint(1, 1000)
 
-# Prompt the user for GitHub credentials
-#github_token_1 = st.sidebar.text_input("GitHub Personal Access Token", type="password")
-#repo_owner_1 = st.sidebar.text_input("Repository Owner")
-#repo_name_1 = st.sidebar.text_input("Repository Name")
-#folder_path_1 = st.sidebar.text_input("Folder Path")
-#branch_name_1 = st.sidebar.text_input("Branch Name", value="main")
+#github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
+#repo_owner = st.sidebar.text_input("Repository Owner")
+#repo_name = st.sidebar.text_input("Repository Name")
+#folder_path = st.sidebar.text_input("Folder Path")
+#branch_name = st.sidebar.text_input("Branch Name", value="main")
 
 # Assuming you have a GitHub personal access token
 github_token = "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"
@@ -83,27 +76,16 @@ repo_name = "pipeline"
 folder_path = "code"
 branch_name = "dev"
 
-
-
-#st.sidebar.title("💬 BlueRunBook-AI")
-#"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
- 
 st.sidebar.markdown("<p class='developer-name'>Developer</p>", unsafe_allow_html=True)
 
-# Update the base_filename and filename
 base_filename = "code"
 filename = f"{base_filename}_{random_number}.yaml"
 
 try:
-    # Your existing code here
-
-    # Create a connection to the GitHub repository
     g = Github(github_token)
     repo = g.get_repo(f"{repo_owner}/{repo_name}")
 
-    # Check if the file already exists in the folder
     file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
-      #file_path = f"{folder_path}/{filename}"
     file_exists = True
 
     try:
@@ -115,7 +97,6 @@ try:
             raise
 
     if not file_exists:
-        # Create or update the file in the repository
         content = msg
         commit_message = f"Create {prompt}"
         repo.create_file(file_path, commit_message, content, branch=branch_name)
@@ -123,8 +104,6 @@ try:
     else:
         print(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
 except AssertionError as e:
-    # Handle the AssertionError
     st.error("An error occurred while creating the file. Please try again later.")
 except GithubException as e:
-    # Handle the GitHub exception
     st.error("File already exists in GitHub Repository folder.")

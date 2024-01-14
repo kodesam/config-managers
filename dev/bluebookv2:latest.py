@@ -55,7 +55,7 @@ if prompt := st.chat_input():
 
     # Include the instruction in the API call with configuration options
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model=models,
         messages=messages,
         temperature=temperature,   # User-defined temperature
         max_tokens=max_tokens,     # User-defined max_tokens
