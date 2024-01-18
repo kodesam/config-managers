@@ -147,7 +147,7 @@ if response_text and github_token and repo_owner and repo_name and folder_path a
 
         if not file_exists:
             # Create or update the file in the repository
-            commit_message = f"Create {msg}"
+            commit_message = f"Create {filtered_prompt}"
             repo.create_file(file_path, commit_message, response_text, branch=branch_name)
             st.sidebar.text(f"File '{filename}' created successfully in the GitHub repository.")
             st.success('Success message')
