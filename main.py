@@ -109,7 +109,7 @@ if prompt := st.chat_input():
     st.chat_message("assistant").write(msg)
 
     # Generate a random number
-    random_number = random.randint(1, 1000)
+random_number = random.randint(1, 1000)
 
     
 
