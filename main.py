@@ -1,4 +1,3 @@
-
 import streamlit as st
 from github import Github, GithubException
 from openai import ChatCompletion
@@ -64,14 +63,12 @@ with st.sidebar:
     ]
     
     instruction_1 = st.selectbox("Select Module", module)
-    #temperature = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.5, step=0.1)
-    ##max_tokens = st.number_input("Max Tokens", min_value=1, max_value=2048, value=50)
-    #top_p = st.slider("Top-p", min_value=0.1, max_value=1.0, value=0.9, step=0.1)
-   
-    #instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
-    #st.title("💬 BlueRunBook-AI")
 
-st.caption("🚀 🚀 🚀 Blue-RunBook powered by OpenAI LLM")
+    st.sidebar.markdown("<p class='developer-name'>Developer</p>", unsafe_allow_html=True)
+
+
+st.sidebar.caption("🚀 🚀 🚀 Blue-RunBook powered by OpenAI LLM")
+
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on Script Generation ?"}]
@@ -90,23 +87,20 @@ if prompt := st.chat_input():
     if not filtered_prompt:
         st.warning("The prompt contains sensitive content. Please remove any sensitive information and try again.")
         st.stop()
-    commit_message = f"Create {filtered_prompt}"
-    
+
     client = openai.ChatCompletion(api_key=openai_api_key)
-    # client = OpenAI(api_key=openai_api_key)
+    
     st.session_state.messages.append({"role": "user", "content": filtered_prompt})
     st.chat_message("user").write(filtered_prompt)
 
     # Include the instruction in the conversation
     st.session_state.messages.append({"role": "assistant", "content": instruction_1})
-    #st.session_state.messages.append({"role": "assistant", "content": instruction_2})
+
     openai.api_key = openai_api_key
-    # Include the instruction in the API call
+
     response = client.create(
-    model="gpt-3.5-turbo",
-    messages=st.session_state.messages,
-    #temperature=temperature,
-    #top_p=top_p
+        model="gpt-3.5-turbo",
+        messages=st.session_state.messages,
     )
 
     msg = response.choices[0].message.content
@@ -123,31 +117,20 @@ repo_name = st.sidebar.text_input("Repository Name")
 folder_path = st.sidebar.text_input("Folder Path")
 branch_name = st.sidebar.text_input("Branch Name", value="main")
 
-#github_token = "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"
-#repo_owner = "kodesam"
-#repo_name = "pipeline"
-#folder_path = "codex"
-#branch_name = "intergation"
 
-#st.sidebar.title("💬 BlueRunBook-AI")
-#"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
- 
-st.sidebar.markdown("<p class='developer-name'>Developer</p>", unsafe_allow_html=True)
+st.sidebar.caption("🚀 🚀 🚀 Blue-RunBook powered by OpenAI LLM")
 
 # Update the base_filename and filename
 base_filename = "code"
 filename = f"{base_filename}_{random_number}.yaml"
 
 try:
-    # Your existing code here
-
     # Create a connection to the GitHub repository
     g = Github(github_token)
     repo = g.get_repo(f"{repo_owner}/{repo_name}")
 
     # Check if the file already exists in the folder
     file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
-      #file_path = f"{folder_path}/{filename}"
     file_exists = True
 
     try:
@@ -163,9 +146,9 @@ try:
         content = msg
         commit_message = f"Create {filtered_prompt}"
         repo.create_file(file_path, commit_message, content, branch=branch_name)
-        print(f"File '{filename}' created successfully in the GitHub repository.")
+        st.success(f"File '{filename}' created successfully in the GitHub repository.")
     else:
-        print(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
+        st.warning(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
 except AssertionError as e:
     # Handle the AssertionError
     st.error("An error occurred while creating the file. Please try again later.")
