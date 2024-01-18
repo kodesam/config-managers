@@ -87,6 +87,9 @@ if prompt := st.chat_input():
     # Filter sensitive content in the prompt
     filtered_prompt = filter_sensitive_content(prompt)
 
+    # Assign filtered_prompt to filtered_prompt_file
+    filtered_prompt_file = filtered_prompt
+
     if not filtered_prompt:
         st.warning("The prompt contains sensitive content. Please remove any sensitive information and try again.")
         st.stop()
@@ -153,7 +156,7 @@ try:
     if not file_exists:
         # Create or update the file in the repository
         content = msg
-        commit_message = f"Create {filtered_prompt}"
+        commit_message = f"Create {filtered_prompt_file}"
         repo.create_file(file_path, commit_message, content, branch=branch_name)
         print(f"File '{filename}' created successfully in the GitHub repository.")
     else:
