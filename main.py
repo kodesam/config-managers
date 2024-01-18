@@ -3,6 +3,7 @@ import streamlit as st
 from github import Github, GithubException
 from openai import ChatCompletion
 import streamlit as st
+import openai
 import random
 import re
 
