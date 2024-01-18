@@ -9,4 +9,4 @@ PyGithub==1.55
 paramiko
 regex
 pandas
-yaml
+pyyaml
