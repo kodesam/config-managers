@@ -95,7 +95,7 @@ if prompt := st.chat_input():
     # Include the instruction in the conversation
     st.session_state.messages.append({"role": "assistant", "content": instruction_1})
     #st.session_state.messages.append({"role": "assistant", "content": instruction_2})
-
+    openai.api_key = openai_api_key
     # Include the instruction in the API call
     response = client.create(
     model="gpt-3.5-turbo",
