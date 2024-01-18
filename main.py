@@ -10,27 +10,31 @@ import re
 def filter_sensitive_content(prompt):
     # Perform the necessary filtering operations or checks here
     # You can use regex, NLP techniques, or other methods to identify and mask sensitive content
-    
+
     # Example: Check if prompt contains IP address and mask it
     ip_address_pattern = r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b"  # Regex pattern for IP address
     masked_prompt = re.sub(ip_address_pattern, 'IP ADDRESS="XXX.XXX.XXX.XXX"', prompt)
-    
+
     if masked_prompt != prompt:
         return masked_prompt  # Return the masked prompt if it contains sensitive content
-    
+
     # Check if additional instruction contains any of the sensitive keywords
     sensitive_keywords = ["password", "secret", "token", "nokia"]
     additional_instruction_lower = prompt.lower()  # Convert additional instruction to lowercase
-    
+
     for keyword in sensitive_keywords:
         keyword_lower = keyword.lower()  # Convert keyword to lowercase
         if keyword_lower in additional_instruction_lower:
             return None  # Return None if the additional instruction contains sensitive content
-    
+
     return prompt  # Return the filtered prompt if it doesn't contain sensitive content
 
+
 # Get available models
-available_models = ['gpt-4','gpt-4-1106-preview', 'gpt-3.5-turbo-16k-0613', 'gpt-3.5-turbo-16k-1106', 'gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0']
+available_models = [
+    'gpt-4', 'gpt-4-1106-preview', 'gpt-3.5-turbo-16k-0613', 'gpt-3.5-turbo-16k-1106',
+    'gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0'
+]
 
 title_style = (
     "color: blue;"
@@ -40,8 +44,6 @@ title_style = (
 # Display the title with the defined style
 st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀BlueRunBook-AI🚀🚀 </h1>", unsafe_allow_html=True)
 
-
-
 with st.sidebar:
     st.title("💬 BlueRunBook-AI 🚀🚀")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
@@ -50,25 +52,24 @@ with st.sidebar:
     models = st.multiselect("Select Models", available_models, default=available_models)
     module = [
         "ansible Playbook jinja2 template",
-        "ansible Playbook yaml file",  
-        "yaml script", 
-        "python script", 
-        "shell script", 
-        "docker file", 
-        "kubernetes yaml file", 
+        "ansible Playbook yaml file",
+        "yaml script",
+        "python script",
+        "shell script",
+        "docker file",
+        "kubernetes yaml file",
         "juypter notebook",
         "Windows PowerShell",
         "terraform script",
         "convert YAML to Ansible script using k8s ansible module"
     ]
-    
+
     instruction_1 = st.selectbox("Select Module", module)
 
     st.sidebar.markdown("<p class='developer-name'>Developer</p>", unsafe_allow_html=True)
 
 
 st.sidebar.caption("🚀 🚀 🚀 Blue-RunBook powered by OpenAI LLM")
-
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on Script Generation ?"}]
@@ -89,7 +90,7 @@ if prompt := st.chat_input():
         st.stop()
 
     client = openai.ChatCompletion(api_key=openai_api_key)
-    
+
     st.session_state.messages.append({"role": "user", "content": filtered_prompt})
     st.chat_message("user").write(filtered_prompt)
 
@@ -117,7 +118,6 @@ repo_name = st.sidebar.text_input("Repository Name")
 folder_path = st.sidebar.text_input("Folder Path")
 branch_name = st.sidebar.text_input("Branch Name", value="main")
 
-
 st.sidebar.caption("🚀 🚀 🚀 Blue-RunBook powered by OpenAI LLM")
 
 # Update the base_filename and filename
@@ -143,8 +143,8 @@ try:
 
     if not file_exists:
         # Create or update the file in the repository
-        content = msg
-        commit_message = f"Create {filtered_prompt}"
+        content = msg if msg else ""  # Use an empty string if msg is not available
+        commit_message = f"Create {filtered_prompt}" if filtered_prompt else ""  # Use an empty string if filtered_prompt is None
         repo.create_file(file_path, commit_message, content, branch=branch_name)
         st.success(f"File '{filename}' created successfully in the GitHub repository.")
     else:
