@@ -1,3 +1,4 @@
+from openai import OpenAI
 import streamlit as st
 from github import Github, GithubException
 from openai import OpenAI
