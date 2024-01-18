@@ -64,6 +64,9 @@ with st.sidebar:
     ]
     
     instruction_1 = st.selectbox("Select Module", module)
+    temperature = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.5, step=0.1)
+    #max_tokens = st.number_input("Max Tokens", min_value=1, max_value=2048, value=50)
+    top_p = st.slider("Top-p", min_value=0.1, max_value=1.0, value=0.9, step=0.1)
    
     #instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
     #st.title("💬 BlueRunBook-AI")
