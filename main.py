@@ -6,6 +6,7 @@ import streamlit as st
 import random
 import re
 
+openai.api_key = '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'
 def filter_sensitive_content(prompt):
     # Perform the necessary filtering operations or checks here
     # You can use regex, NLP techniques, or other methods to identify and mask sensitive content
