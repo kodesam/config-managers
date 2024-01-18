@@ -144,7 +144,8 @@ try:
     if not file_exists:
         # Create or update the file in the repository
         content = msg if msg else ""  # Use an empty string if msg is not available
-        commit_message = f"Create {filtered_prompt}" if filtered_prompt else ""  # Use an empty string if filtered_prompt is None
+        commit_message = f"Create {filtered_prompt}" if filtered_prompt is not None else "" 
+        # commit_message = f"Create {filtered_prompt}" if filtered_prompt else ""  # Use an empty string if filtered_prompt is None
         repo.create_file(file_path, commit_message, content, branch=branch_name)
         st.success(f"File '{filename}' created successfully in the GitHub repository.")
     else:
