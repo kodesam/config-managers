@@ -93,12 +93,12 @@ if prompt := st.chat_input():
     #st.session_state.messages.append({"role": "assistant", "content": instruction_2})
     openai.api_key = openai_api_key
     # Include the instruction in the API call
-response = openai.ChatCompletion.create(
+    response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=st.session_state.messages,
     temperature=temperature,
     top_p=top_p
-)
+    )
 
     msg = response.choices[0].message.content
     st.session_state.messages.append({"role": "assistant", "content": msg})
