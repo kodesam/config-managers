@@ -135,37 +135,37 @@ st.sidebar.markdown("<p class='developer-name'>Developer</p>", unsafe_allow_html
 base_filename = "code"
 filename = f"{base_filename}_{random_number}.yaml"
 
-try:
-    # Your existing code here
 
-    # Create a connection to the GitHub repository
-    g = Github(github_token)
-    repo = g.get_repo(f"{repo_owner}/{repo_name}")
-
-    # Check if the file already exists in the folder
-    file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
-      #file_path = f"{folder_path}/{filename}"
-    file_exists = True
-
+if response_text and github_token and repo_owner and repo_name and folder_path and branch_name:
     try:
-        repo.get_contents(file_path, ref=branch_name)
-    except GithubException as e:
-        if e.status == 404:
-            file_exists = False
-        else:
-            raise
+        # Create a connection to the GitHub repository
+        g = Github(github_token)
+        repo = g.get_repo(f"{repo_owner}/{repo_name}")
 
-    if not file_exists:
-        # Create or update the file in the repository
-        content = msg
-        commit_message = f"Create {filtered_prompt}"
-        repo.create_file(file_path, commit_message, content, branch=branch_name)
-        print(f"File '{filename}' created successfully in the GitHub repository.")
-    else:
-        print(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
-except AssertionError as e:
-    # Handle the AssertionError
-    st.error("An error occurred while creating the file. Please try again later.")
-except GithubException as e:
-    # Handle the GitHub exception
-    st.error("File already exists in GitHub Repository folder.")
+        # Check if the file already exists in the folder
+        file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
+        file_exists = True
+
+        try:
+            repo.get_contents(file_path, ref=branch_name)
+        except GithubException as e:
+            if e.status == 404:
+                file_exists = False
+            else:
+                raise
+
+        if not file_exists:
+            # Create or update the file in the repository
+            content = msg
+            commit_message = f"Create {filtered_prompt}"
+            repo.create_file(file_path, commit_message, response_text, branch=branch_name)
+            st.sidebar.text(f"File '{filename}' created successfully in the GitHub repository.")
+            st.success('Success message')
+        else:
+            st.sidebar.text(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
+    except AssertionError as e:
+        # Handle the AssertionError
+        st.error("An error occurred while creating the file. Please try again later.")
+    except GithubException as e:
+        # Handle the GitHub exception
+        st.error("File already exists in GitHub Repository folder.")
