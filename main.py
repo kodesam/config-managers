@@ -97,7 +97,7 @@ if prompt := st.chat_input():
     #st.session_state.messages.append({"role": "assistant", "content": instruction_2})
 
     # Include the instruction in the API call
-    response = client.ChatCompletion.create(
+    response = client.create(
     model="gpt-3.5-turbo",
     messages=st.session_state.messages,
     )
