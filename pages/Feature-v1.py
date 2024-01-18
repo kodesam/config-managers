@@ -98,7 +98,7 @@ if prompt := st.chat_input():
     messages=st.session_state.messages,
     temperature=temperature,
     top_p=top_p
-)
+    )
 
     msg = response.choices[0].message.content
     st.session_state.messages.append({"role": "assistant", "content": msg})
