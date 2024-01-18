@@ -1,4 +1,4 @@
-from openai import OpenAI
+from openai import ChatCompletion
 import openai
 import yaml
 import streamlit as st
