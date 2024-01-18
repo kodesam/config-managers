@@ -159,7 +159,7 @@ if  github_token and repo_owner and repo_name and folder_path and branch_name:
             # Create or update the file in the repository
             content = msg
             commit_message = f"Create {filtered_prompt}"
-            repo.create_file(file_path, commit_message, response_text, branch=branch_name)
+            repo.create_file(file_path, commit_message, branch=branch_name)
             st.sidebar.text(f"File '{filename}' created successfully in the GitHub repository.")
             st.success('Success message')
         else:
