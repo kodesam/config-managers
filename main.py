@@ -40,7 +40,7 @@ title_style = (
 # Display the title with the defined style
 st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀BlueRunBook-AI🚀🚀 </h1>", unsafe_allow_html=True)
 
-openai.api_key = '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'
+
 
 with st.sidebar:
     st.title("💬 BlueRunBook-AI 🚀🚀")
