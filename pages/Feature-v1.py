@@ -1,9 +1,12 @@
+
 import streamlit as st
 from github import Github, GithubException
 from openai import ChatCompletion
 import streamlit as st
+import openai
 import random
 import re
+
 
 def filter_sensitive_content(prompt):
     # Perform the necessary filtering operations or checks here
@@ -17,7 +20,7 @@ def filter_sensitive_content(prompt):
         return masked_prompt  # Return the masked prompt if it contains sensitive content
     
     # Check if additional instruction contains any of the sensitive keywords
-    sensitive_keywords = ["password", "secret", "token", "nokia", "vodafoneziggo", "kpn", "odidoo", "certificate"]
+    sensitive_keywords = ["password", "secret", "token", "nokia"]
     additional_instruction_lower = prompt.lower()  # Convert additional instruction to lowercase
     
     for keyword in sensitive_keywords:
@@ -28,7 +31,7 @@ def filter_sensitive_content(prompt):
     return prompt  # Return the filtered prompt if it doesn't contain sensitive content
 
 # Get available models
-available_models = ['gpt-4', 'gpt-4-1106-preview', 'gpt-3.5-turbo-16k-0613', 'gpt-3.5-turbo-16k-1106', 'gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0']
+available_models = ['gpt-4','gpt-4-1106-preview', 'gpt-3.5-turbo-16k-0613', 'gpt-3.5-turbo-16k-1106', 'gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0']
 
 title_style = (
     "color: blue;"
@@ -38,6 +41,8 @@ title_style = (
 # Display the title with the defined style
 st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀BlueRunBook-AI🚀🚀 </h1>", unsafe_allow_html=True)
 
+
+
 with st.sidebar:
     st.title("💬 BlueRunBook-AI 🚀🚀")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
@@ -46,7 +51,7 @@ with st.sidebar:
     models = st.multiselect("Select Models", available_models, default=available_models)
     module = [
         "ansible Playbook jinja2 template",
-        "ansible Playbook yaml file", 
+        "ansible Playbook yaml file",  
         "yaml script", 
         "python script", 
         "shell script", 
@@ -54,20 +59,22 @@ with st.sidebar:
         "kubernetes yaml file", 
         "juypter notebook",
         "Windows PowerShell",
-        "terraform script"
+        "terraform script",
+        "convert YAML to Ansible script using k8s ansible module"
     ]
     
     instruction_1 = st.selectbox("Select Module", module)
     temperature = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.5, step=0.1)
     #max_tokens = st.number_input("Max Tokens", min_value=1, max_value=2048, value=50)
     top_p = st.slider("Top-p", min_value=0.1, max_value=1.0, value=0.9, step=0.1)
+   
     #instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
     #st.title("💬 BlueRunBook-AI")
 
-st.caption("🚀 🚀 🚀 Blue-runBook  Powered by OpenAI LLM")
+st.caption("🚀 🚀 🚀 Blue-RunBook powered by OpenAI LLM")
 
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on generating Script ?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on Script Generation ?"}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
@@ -83,7 +90,7 @@ if prompt := st.chat_input():
     if not filtered_prompt:
         st.warning("The prompt contains sensitive content. Please remove any sensitive information and try again.")
         st.stop()
-    client = openai.ChatCompletion.create(api_key=openai_api_key)
+    client = openai.ChatCompletion(api_key=openai_api_key)
     # client = OpenAI(api_key=openai_api_key)
     st.session_state.messages.append({"role": "user", "content": filtered_prompt})
     st.chat_message("user").write(filtered_prompt)
@@ -93,7 +100,7 @@ if prompt := st.chat_input():
     #st.session_state.messages.append({"role": "assistant", "content": instruction_2})
     openai.api_key = openai_api_key
     # Include the instruction in the API call
-    response = openai.ChatCompletion.create(
+    response = client.create(
     model="gpt-3.5-turbo",
     messages=st.session_state.messages,
     temperature=temperature,
