@@ -34,7 +34,7 @@ with open("pages/ansible_modules.txt") as f:
 
 def generate_ansible_script(module, tasks):
     response = openai.ChatCompletion.create(
-        model="gpt-4"
+        model="gpt-4",
         # model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
