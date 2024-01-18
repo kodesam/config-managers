@@ -1,3 +1,4 @@
+from openai import OpenAI
 import openai
 import yaml
 import streamlit as st
