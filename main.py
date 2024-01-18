@@ -125,7 +125,7 @@ github_token = "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"
 repo_owner = "kodesam"
 repo_name = "pipeline"
 folder_path = "codex"
-branch_name = "intergration"
+branch_name = "intergation"
 
 #st.sidebar.title("💬 BlueRunBook-AI")
 #"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
