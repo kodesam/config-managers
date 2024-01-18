@@ -7,3 +7,6 @@ trubrics>=1.4.3
 streamlit-feedback
 PyGithub==1.55
 paramiko
+regex
+pandas
+yaml
