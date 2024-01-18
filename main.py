@@ -85,7 +85,7 @@ if prompt := st.chat_input():
     # Filter sensitive content in the prompt
     filtered_prompt = filter_sensitive_content(prompt)
 
-    if not filtered_prompt:
+    if filtered_prompt is None:
         st.warning("The prompt contains sensitive content. Please remove any sensitive information and try again.")
         st.stop()
 
@@ -108,51 +108,50 @@ if prompt := st.chat_input():
     st.session_state.messages.append({"role": "assistant", "content": msg})
     st.chat_message("assistant").write(msg)
 
-# Generate a random number
-random_number = random.randint(1, 1000)
+    # Generate a random number
+    random_number = random.randint(1, 1000)
 
-# Prompt the user for GitHub credentials
-github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
-repo_owner = st.sidebar.text_input("Repository Owner")
-repo_name = st.sidebar.text_input("Repository Name")
-folder_path = st.sidebar.text_input("Folder Path")
-branch_name = st.sidebar.text_input("Branch Name", value="main")
+    # Prompt the user for GitHub credentials
+    github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
+    repo_owner = st.sidebar.text_input("Repository Owner")
+    repo_name = st.sidebar.text_input("Repository Name")
+    folder_path = st.sidebar.text_input("Folder Path")
+    branch_name = st.sidebar.text_input("Branch Name", value="main")
 
-st.sidebar.caption("🚀 🚀 🚀 Blue-RunBook powered by OpenAI LLM")
+    st.sidebar.caption("🚀 🚀 🚀 Blue-RunBook powered by OpenAI LLM")
 
-# Update the base_filename and filename
-base_filename = "code"
-filename = f"{base_filename}_{random_number}.yaml"
-
-try:
-    # Create a connection to the GitHub repository
-    g = Github(github_token)
-    repo = g.get_repo(f"{repo_owner}/{repo_name}")
-
-    # Check if the file already exists in the folder
-    file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
-    file_exists = True
+    # Update the base_filename and filename
+    base_filename = "code"
+    filename = f"{base_filename}_{random_number}.yaml"
 
     try:
-        repo.get_contents(file_path, ref=branch_name)
-    except GithubException as e:
-        if e.status == 404:
-            file_exists = False
-        else:
-            raise
+        # Create a connection to the GitHub repository
+        g = Github(github_token)
+        repo = g.get_repo(f"{repo_owner}/{repo_name}")
 
-    if not file_exists:
-        # Create or update the file in the repository
-        content = msg if msg else ""  # Use an empty string if msg is not available
-        commit_message = f"Create {filtered_prompt}" if filtered_prompt is not None else "" 
-        # commit_message = f"Create {filtered_prompt}" if filtered_prompt else ""  # Use an empty string if filtered_prompt is None
-        repo.create_file(file_path, commit_message, content, branch=branch_name)
-        st.success(f"File '{filename}' created successfully in the GitHub repository.")
-    else:
-        st.warning(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
-except AssertionError as e:
-    # Handle the AssertionError
-    st.error("An error occurred while creating the file. Please try again later.")
-except GithubException as e:
-    # Handle the GitHub exception
-    st.error("File already exists in GitHub Repository folder.")
+        # Check if the file already exists in the folder
+        file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
+        file_exists = True
+
+        try:
+            repo.get_contents(file_path, ref=branch_name)
+        except GithubException as e:
+            if e.status == 404:
+                file_exists = False
+            else:
+                raise
+
+        if not file_exists:
+            # Create or update the file in the repository
+            content = msg if msg else ""  # Use an empty string if msg is not available
+            commit_message = f"Create {filtered_prompt}" if filtered_prompt else ""  # Use an empty string if filtered_prompt is None
+            repo.create_file(file_path, commit_message, content, branch=branch_name)
+            st.success(f"File '{filename}' created successfully in the GitHub repository.")
+        else:
+            st.warning(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
+    except AssertionError as e:
+        # Handle the AssertionError
+        st.error("An error occurred while creating the file. Please try again later.")
+    except GithubException as e:
+        # Handle the GitHub exception
+        st.error("File already exists in GitHub Repository folder.")
