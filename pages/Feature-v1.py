@@ -83,7 +83,7 @@ if prompt := st.chat_input():
     if not filtered_prompt:
         st.warning("The prompt contains sensitive content. Please remove any sensitive information and try again.")
         st.stop()
-
+    
     client = OpenAI(api_key=openai_api_key)
     st.session_state.messages.append({"role": "user", "content": filtered_prompt})
     st.chat_message("user").write(filtered_prompt)
@@ -91,7 +91,7 @@ if prompt := st.chat_input():
     # Include the instruction in the conversation
     st.session_state.messages.append({"role": "assistant", "content": instruction_1})
     #st.session_state.messages.append({"role": "assistant", "content": instruction_2})
-
+    openai.api_key = openai_api_key
     # Include the instruction in the API call
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
