@@ -136,9 +136,8 @@ st.sidebar.markdown("<p class='developer-name'>Developer</p>", unsafe_allow_html
 base_filename = "code"
 filename = f"{base_filename}_{random_number}.yaml"
 
-response_text = ''
 
-if response_text and github_token and repo_owner and repo_name and folder_path and branch_name:
+if  github_token and repo_owner and repo_name and folder_path and branch_name:
     try:
         # Create a connection to the GitHub repository
         g = Github(github_token)
