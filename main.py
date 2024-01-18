@@ -88,7 +88,7 @@ if prompt := st.chat_input():
     filtered_prompt = filter_sensitive_content(prompt)
 
      # Assign filtered_prompt to filtered_prompt_file
-    filtered_prompt_file = filtered_prompt if filtered_prompt else ""
+    #filtered_prompt_file = filtered_prompt if filtered_prompt else ""
     
     if not filtered_prompt:
         st.warning("The prompt contains sensitive content. Please remove any sensitive information and try again.")
