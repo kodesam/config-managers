@@ -137,7 +137,7 @@ base_filename = "code"
 filename = f"{base_filename}_{random_number}.yaml"
 
 
-if response_text and github_token and repo_owner and repo_name and folder_path and branch_name:
+if messages and github_token and repo_owner and repo_name and folder_path and branch_name:
     try:
         # Create a connection to the GitHub repository
         g = Github(github_token)
