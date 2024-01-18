@@ -26,7 +26,7 @@ with st.sidebar:
     openai.api_key = st.text_input("OpenAI API Key", type="password")
 
 # Read Ansible modules from file
-with open("/i-Runbook-AI/pages/ansible_modules.txt") as f:
+with open("/mnt/data/i-Runbook-AI/pages/ansible_modules.txt") as f:
     ansible_modules = [line.strip() for line in f]
 
 
