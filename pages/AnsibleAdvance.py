@@ -1,3 +1,4 @@
+from openai import ChatCompletion
 import openai
 from openai import ChatCompletion
 import yaml
@@ -27,7 +28,7 @@ with st.sidebar:
     openai.api_key = st.text_input("OpenAI API Key", type="password")
 
 # Read Ansible modules from file
-with open("/workspaces/i-Runbook-AI/pages/ansible_modules.txt") as f:
+with open("pages/ansible_modules.txt") as f:
     ansible_modules = [line.strip() for line in f]
 
 
@@ -35,7 +36,8 @@ with open("/workspaces/i-Runbook-AI/pages/ansible_modules.txt") as f:
 
 def generate_ansible_script(module, tasks):
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4",
+        # model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": f"Write an ansible script using the {module} module to {tasks}"},
