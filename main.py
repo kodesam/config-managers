@@ -87,8 +87,8 @@ if prompt := st.chat_input():
     if not filtered_prompt:
         st.warning("The prompt contains sensitive content. Please remove any sensitive information and try again.")
         st.stop()
-
-    client = OpenAI(api_key=openai_api_key)
+    client = openai.ChatCompletion(api_key=openai_api_key)
+    # client = OpenAI(api_key=openai_api_key)
     st.session_state.messages.append({"role": "user", "content": filtered_prompt})
     st.chat_message("user").write(filtered_prompt)
 
