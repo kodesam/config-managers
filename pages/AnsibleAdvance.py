@@ -1,4 +1,5 @@
 import openai
+from openai import ChatCompletion
 import yaml
 import streamlit as st
 import pandas as pd 

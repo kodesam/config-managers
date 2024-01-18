@@ -1,6 +1,6 @@
 import streamlit as st
 from github import Github, GithubException
-from openai import OpenAI
+from openai import ChatCompletion
 import streamlit as st
 import random
 import re
