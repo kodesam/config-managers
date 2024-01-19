@@ -120,6 +120,8 @@ if prompt := st.chat_input():
 # Generate a random number
 random_number = random.randint(1, 1000)
 
+response_text = msg  # Assign the value of `msg` to `response_text`
+
 # Prompt the user for GitHub credentials
 github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
 repo_owner = st.sidebar.text_input("Repository Owner")
@@ -159,7 +161,7 @@ if response_text and github_token and repo_owner and repo_name and folder_path a
 
         if not file_exists:
         # Create or update the file in the repository
-            content = msg
+            content = response_text
             commit_message = f"Create {filtered_prompt_file}" if filtered_prompt else ""
             repo.create_file(file_path, commit_message, content, branch=branch_name)
             print(f"File '{filename}' created successfully in the GitHub repository.")
