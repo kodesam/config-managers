@@ -61,7 +61,6 @@ with st.sidebar:
         "juypter notebook",
         "Windows PowerShell",
         "terraform script",
-        "convert YAML to Ansible script using k8s ansible module"
     ]
     
     instruction_1 = st.selectbox("Select Module", module)
@@ -116,11 +115,17 @@ if prompt := st.chat_input():
 random_number = random.randint(1, 1000)
 
 # Prompt the user for GitHub credentials
-github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
-repo_owner = st.sidebar.text_input("Repository Owner")
-repo_name = st.sidebar.text_input("Repository Name")
-folder_path = st.sidebar.text_input("Folder Path")
-branch_name = st.sidebar.text_input("Branch Name", value="main")
+github_token_1 = st.sidebar.text_input("GitHub Personal Access Token", type="password")
+repo_owner_1 = st.sidebar.text_input("Repository Owner")
+repo_name_1 = st.sidebar.text_input("Repository Name")
+folder_path_1 = st.sidebar.text_input("Folder Path")
+branch_name_1 = st.sidebar.text_input("Branch Name", value="main")
+
+github_token = "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"
+repo_owner = "kodesam"
+repo_name = "pipeline"
+folder_path = "codex"
+branch_name = "integration"
 
 #st.sidebar.title("💬 BlueRunBook-AI")
 #"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
