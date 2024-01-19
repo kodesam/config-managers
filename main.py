@@ -7,8 +7,11 @@ import openai
 import random
 import re
 
+filtered_prompt = None
 
 def filter_sensitive_content(prompt):
+
+    
     # Perform the necessary filtering operations or checks here
     # You can use regex, NLP techniques, or other methods to identify and mask sensitive content
     
