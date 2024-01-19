@@ -94,7 +94,7 @@ if prompt := st.chat_input():
         st.warning("The prompt contains sensitive content. Please remove any sensitive information and try again.")
         st.stop()
 
-    commit_message = f"Create {filtered_prompt_file}" if filtered_prompt else ""
+    
     
     client = openai.ChatCompletion(api_key=openai_api_key)
     # client = OpenAI(api_key=openai_api_key)
@@ -136,25 +136,26 @@ st.sidebar.markdown("<p class='developer-name'>Developer</p>", unsafe_allow_html
 base_filename = "code"
 filename = f"{base_filename}_{random_number}.yaml"
 
-try:
+if response_text and github_token and repo_owner and repo_name and folder_path and branch_name:
+    try:
     # Your existing code here
 
     # Create a connection to the GitHub repository
-    g = Github(github_token)
-    repo = g.get_repo(f"{repo_owner}/{repo_name}")
+        g = Github(github_token)
+        repo = g.get_repo(f"{repo_owner}/{repo_name}")
 
     # Check if the file already exists in the folder
-    file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
+        file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
       #file_path = f"{folder_path}/{filename}"
-    file_exists = True
+        file_exists = True
 
-    try:
-        repo.get_contents(file_path, ref=branch_name)
-    except GithubException as e:
-        if e.status == 404:
-            file_exists = False
-        else:
-            raise
+        try:
+            repo.get_contents(file_path, ref=branch_name)
+        except GithubException as e:
+            if e.status == 404:
+                file_exists = False
+            else:
+                raise
 
     if not file_exists:
         # Create or update the file in the repository
