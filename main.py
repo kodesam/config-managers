@@ -10,8 +10,6 @@ import re
 filtered_prompt = None
 
 def filter_sensitive_content(prompt):
-
-    
     # Perform the necessary filtering operations or checks here
     # You can use regex, NLP techniques, or other methods to identify and mask sensitive content
     
@@ -63,7 +61,6 @@ with st.sidebar:
         "juypter notebook",
         "Windows PowerShell",
         "terraform script",
-        "convert YAML to Ansible script using k8s ansible module"
     ]
     
     instruction_1 = st.selectbox("Select Module", module)
@@ -90,15 +87,9 @@ if prompt := st.chat_input():
     # Filter sensitive content in the prompt
     filtered_prompt = filter_sensitive_content(prompt)
 
-     # Assign filtered_prompt to filtered_prompt_file
-    #filtered_prompt_file = filtered_prompt if filtered_prompt else ""
-    
     if not filtered_prompt:
         st.warning("The prompt contains sensitive content. Please remove any sensitive information and try again.")
         st.stop()
-
-    
-    
     client = openai.ChatCompletion(api_key=openai_api_key)
     # client = OpenAI(api_key=openai_api_key)
     st.session_state.messages.append({"role": "user", "content": filtered_prompt})
@@ -112,8 +103,8 @@ if prompt := st.chat_input():
     response = client.create(
     model="gpt-3.5-turbo",
     messages=st.session_state.messages,
-    #temperature=temperature,
-    #top_p=top_p
+    # temperature=temperature,
+    # top_p=top_p
     )
 
     msg = response.choices[0].message.content
@@ -122,8 +113,6 @@ if prompt := st.chat_input():
 
 # Generate a random number
 random_number = random.randint(1, 1000)
-
-response_text = msg  # Assign the value of `msg` to `response_text`
 
 # Prompt the user for GitHub credentials
 github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
@@ -141,38 +130,37 @@ st.sidebar.markdown("<p class='developer-name'>Developer</p>", unsafe_allow_html
 base_filename = "code"
 filename = f"{base_filename}_{random_number}.yaml"
 
-if response_text and github_token and repo_owner and repo_name and folder_path and branch_name:
-    try:
+try:
     # Your existing code here
 
     # Create a connection to the GitHub repository
-        g = Github(github_token)
-        repo = g.get_repo(f"{repo_owner}/{repo_name}")
+    g = Github(github_token)
+    repo = g.get_repo(f"{repo_owner}/{repo_name}")
 
     # Check if the file already exists in the folder
-        file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
+    file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
       #file_path = f"{folder_path}/{filename}"
-        file_exists = True
+    file_exists = True
 
-        try:
-            repo.get_contents(file_path, ref=branch_name)
-        except GithubException as e:
-            if e.status == 404:
-                file_exists = False
-            else:
-                raise
-
-        if not file_exists:
-        # Create or update the file in the repository
-            content = response_text
-            commit_message = f"Create {filename}" if filtered_prompt else ""
-            repo.create_file(file_path, commit_message, content, branch=branch_name)
-            print(f"File '{filename}' created successfully in the GitHub repository.")
-        else:
-            print(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
-    except AssertionError as e:
-    # Handle the AssertionError
-        st.error("An error occurred while creating the file. Please try again later.")
+    try:
+        repo.get_contents(file_path, ref=branch_name)
     except GithubException as e:
+        if e.status == 404:
+            file_exists = False
+        else:
+            raise
+
+    if not file_exists:
+        # Create or update the file in the repository
+        content = msg
+        commit_message = f"Create {filtered_prompt}"
+        repo.create_file(file_path, commit_message, content, branch=branch_name)
+        print(f"File '{filename}' created successfully in the GitHub repository.")
+    else:
+        print(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
+except AssertionError as e:
+    # Handle the AssertionError
+    st.error("An error occurred while creating the file. Please try again later.")
+except GithubException as e:
     # Handle the GitHub exception
-        st.error("File already exists in GitHub Repository folder.")
+    st.error("File already exists in GitHub Repository folder.")
