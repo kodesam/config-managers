@@ -157,14 +157,14 @@ if response_text and github_token and repo_owner and repo_name and folder_path a
             else:
                 raise
 
-    if not file_exists:
+        if not file_exists:
         # Create or update the file in the repository
-        content = msg
-        commit_message = f"Create {filtered_prompt_file}" if filtered_prompt else ""
-        repo.create_file(file_path, commit_message, content, branch=branch_name)
-        print(f"File '{filename}' created successfully in the GitHub repository.")
-    else:
-        print(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
+            content = msg
+            commit_message = f"Create {filtered_prompt_file}" if filtered_prompt else ""
+            repo.create_file(file_path, commit_message, content, branch=branch_name)
+            print(f"File '{filename}' created successfully in the GitHub repository.")
+        else:
+            print(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
 except AssertionError as e:
     # Handle the AssertionError
     st.error("An error occurred while creating the file. Please try again later.")
