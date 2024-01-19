@@ -121,11 +121,11 @@ repo_name_1 = st.sidebar.text_input("Repository Name")
 folder_path_1 = st.sidebar.text_input("Folder Path")
 branch_name_1 = st.sidebar.text_input("Branch Name", value="main")
 
-github_token = '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'
-repo_owner = 'kodesam'
-repo_name = 'pipeline'
-folder_path = 'codex'
-branch_name = 'integration'
+github_token = "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"
+repo_owner = "kodesam"
+repo_name = "pipeline"
+folder_path = "codex"
+branch_name = "integration"
 
 #st.sidebar.title("💬 BlueRunBook-AI")
 #"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
