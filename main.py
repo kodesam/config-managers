@@ -165,9 +165,9 @@ if response_text and github_token and repo_owner and repo_name and folder_path a
             print(f"File '{filename}' created successfully in the GitHub repository.")
         else:
             print(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
-except AssertionError as e:
+    except AssertionError as e:
     # Handle the AssertionError
-    st.error("An error occurred while creating the file. Please try again later.")
-except GithubException as e:
+        st.error("An error occurred while creating the file. Please try again later.")
+    except GithubException as e:
     # Handle the GitHub exception
-    st.error("File already exists in GitHub Repository folder.")
+        st.error("File already exists in GitHub Repository folder.")
