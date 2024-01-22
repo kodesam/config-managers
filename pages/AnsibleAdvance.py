@@ -1,14 +1,10 @@
-from openai import ChatCompletion
 import openai
-from openai import ChatCompletion
 import yaml
 import streamlit as st
-import pandas as pd 
+import pandas as pd
 from github import Github, GithubException
 import random
 import re
-
-
 
 title_style = (
     "color: blue;"
@@ -19,24 +15,33 @@ st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀BlueRunBook-AI🚀🚀 </h1
 st.caption("🚀 🚀 🚀 Blue-Ansible-PlayBook Powered by OpenAI LLM")
 
 # Place your actual OpenAI API key here
-#openai.api_key = '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'
+# openai.api_key = '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'
 
 with st.sidebar:
     st.title("💬 Blue-Ansible-PlayBook 🚀🚀")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
-    openai.api_key = st.text_input("OpenAI API Key", type="password")
+    
+    openai_api_key = st.text_input("OpenAI API Key", type="password")
+
+if openai_api_key:
+    openai.api_key = openai_api_key
+else:
+    st.warning("Please add your OpenAI API key to continue.")
 
 # Read Ansible modules from file
-with open("pages/ansible_modules.txt") as f:
+with open("/workspaces/i-Runbook-AI/dev2/ansible_modules.txt") as f:
     ansible_modules = [line.strip() for line in f]
 
 
 
-
 def generate_ansible_script(module, tasks):
+    # Mask IP addresses
+    tasks = re.sub(r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b', '***.***.***.***', tasks)
+
+    # return tasks  # Return the filtered prompt if it doesn't contain sensitive content
+
     response = openai.ChatCompletion.create(
-        #model="gpt-4",
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a helpful assistant."},
@@ -51,15 +56,34 @@ def generate_ansible_script(module, tasks):
     return ansible_script
 
 
+
+
 module = st.selectbox('Select module', ansible_modules)
 tasks = st.text_area('Enter tasks here', '')
 response_text = ''
 
 if st.button('Generate Ansible Script'):
     if module and tasks:
-        response_text = generate_ansible_script(module, tasks)
-        if response_text:
-            st.text_area("Response:", value=response_text, height=400)
+        # List of sensitive keywords
+        sensitive_keywords = ['password', 'secret', 'sensitive', 'Nokia', 'vodafoneziggo', 'oddido','kpn','confidential', 'copyright']
+
+        # Function to check for sensitive keywords in the task input
+        def check_sensitive_content(tasks):
+            for keyword in sensitive_keywords:
+                if re.search(fr'\b{keyword}\b', tasks, flags=re.IGNORECASE):
+                    return True
+            return False
+
+        # Check for sensitive content in the task input
+        sensitive_content = check_sensitive_content(tasks)
+
+        # Display warning if sensitive content is detected
+        if sensitive_content:
+            st.warning("The task contains sensitive content. Please remove any sensitive information and try again.")
+        else:
+            response_text = generate_ansible_script(module, tasks)
+            if response_text:
+                st.text_area("Response:", value=response_text, height=400)
     else:
         st.markdown('Please enter module and tasks')
 
@@ -67,21 +91,20 @@ if st.button('Generate Ansible Script'):
 # Generate a random number
 random_number = random.randint(1, 1000)
 
-
-
 # Prompt the user for GitHub credentials
-github_token_1 = st.sidebar.text_input("GitHub Personal Access Token", type="password")
-repo_owner_1 = st.sidebar.text_input("Repository Owner")
-repo_name_1 = st.sidebar.text_input("Repository Name")
-folder_path_1 = st.sidebar.text_input("Folder Path")
-branch_name_1 = st.sidebar.text_input("Branch Name", value="main")
+github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
+repo_owner = st.sidebar.text_input("Repository Owner")
+repo_name = st.sidebar.text_input("Repository Name")
+folder_path = st.sidebar.text_input("Folder Path")
+branch_name = st.sidebar.text_input("Branch Name", value="main")
 
-github_token = "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"
-repo_owner = "kodesam"
-repo_name = "pipeline"
-folder_path = "codex"
-branch_name = "integration"
 
+# Assuming you have a GitHub personal access token
+#github_token = "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"
+#repo_owner = "kodesam"
+#repo_name = "pipeline"
+#folder_path = "code"
+#branch_name = "dev"
 
 st.sidebar.markdown("<p class='developer-name'>Developer : Aamir </p>", unsafe_allow_html=True)
 

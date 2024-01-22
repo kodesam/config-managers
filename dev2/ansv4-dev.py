@@ -21,11 +21,18 @@ with st.sidebar:
     st.title("💬 Blue-Ansible-PlayBook 🚀🚀")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
-    openai.api_key = st.text_input("OpenAI API Key", type="password")
+    
+    openai_api_key = st.text_input("OpenAI API Key", type="password")
+
+if openai_api_key:
+    openai.api_key = openai_api_key
+else:
+    st.warning("Please add your OpenAI API key to continue.")
 
 # Read Ansible modules from file
 with open("/workspaces/i-Runbook-AI/dev2/ansible_modules.txt") as f:
     ansible_modules = [line.strip() for line in f]
+
 
 
 def generate_ansible_script(module, tasks):
@@ -47,6 +54,8 @@ def generate_ansible_script(module, tasks):
     ansible_script = ansible_script.replace('```', '')
 
     return ansible_script
+
+
 
 
 module = st.selectbox('Select module', ansible_modules)
