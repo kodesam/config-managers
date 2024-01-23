@@ -11,14 +11,14 @@ title_style = (
     "font-weight: bold;"
 )
 # Display the title with the defined style
-st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀BlueRunBook-AI🚀🚀 </h1>", unsafe_allow_html=True)
-st.caption("🚀 🚀 🚀 Blue-Ansible-PlayBook Powered by OpenAI LLM")
+st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀 Script-AI 🚀🚀 </h1>", unsafe_allow_html=True)
+st.caption("🚀 🚀 🚀 Script-AI Powered by OpenAI LLM")
 
 # Place your actual OpenAI API key here
 # openai.api_key = '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'
 
 with st.sidebar:
-    st.title("💬 Blue-Ansible-PlayBook 🚀🚀")
+    st.title("💬 Script-AI 🚀🚀")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
     
