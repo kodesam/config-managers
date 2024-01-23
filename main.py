@@ -40,12 +40,12 @@ title_style = (
 )
 
 # Display the title with the defined style
-st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀BlueRunBook-AI🚀🚀 </h1>", unsafe_allow_html=True)
+st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀 Script-AI 🚀🚀 </h1>", unsafe_allow_html=True)
 
 
 
 with st.sidebar:
-    st.title("💬 BlueRunBook-AI 🚀🚀")
+    st.title("💬 Script-AI 🚀🚀")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
@@ -69,9 +69,9 @@ with st.sidebar:
     #top_p = st.slider("Top-p", min_value=0.1, max_value=1.0, value=0.9, step=0.1)
    
     #instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
-    #st.title("💬 BlueRunBook-AI")
+    #st.title("💬 Script-AI")
 
-st.caption("🚀 🚀 🚀 Blue-RunBook powered by OpenAI LLM")
+st.caption("🚀 🚀 🚀 Script-AI powered by OpenAI LLM")
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on Script Generation ?"}]
@@ -127,7 +127,7 @@ repo_name = "pipeline"
 folder_path = "codex"
 branch_name = "integration"
 
-#st.sidebar.title("💬 BlueRunBook-AI")
+#st.sidebar.title("💬 Script-AI")
 #"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
  
 st.sidebar.markdown("<p class='developer-name'>Developer</p>", unsafe_allow_html=True)
