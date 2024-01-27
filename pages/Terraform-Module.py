@@ -66,7 +66,7 @@ with st.sidebar:
     gcp_modules = read_modules(gcp_modules_path)
     azure_modules = read_modules(azure_modules_path)
     
-    module_type = st.selectbox("Select Module Type", ["AWS-Provider", "GCP-Provider", "Azure-Provider"])
+    module_type = st.selectbox("Select Module Type", ["AWS-Provider", "GCP-Provider", "Azure-Provider", "k8s-Provider"])
 
     if module_type == "AWS-Provider":
         modules = aws_modules
