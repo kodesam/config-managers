@@ -77,7 +77,7 @@ with st.sidebar:
     
     module_type = st.selectbox("Select Module Type", ["AWS-Provider", "GCP-Provider"])
 
-    if module_type == "Ansible-Provider":
+    if module_type == "AWS-Provider":
         modules = aws_modules
     elif module_type == "GCP-Provider":
         modules = gcp_modules
