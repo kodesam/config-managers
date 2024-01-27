@@ -128,7 +128,7 @@ def generate_ansible_script(module, tasks):
     #ansible_script = response['choices'][0]['message']['content']
     #ansible_script = ansible_script.replace('```yaml', '')
     #ansible_script = ansible_script.replace('```', '')
-    ansible_script = f"```yaml\n{response_text}\n```"
+    ansible_script = f"```yaml\n{content}\n```"
 
     components.html(ansible_script, scrolling=True, height=400)
 
