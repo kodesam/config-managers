@@ -59,14 +59,14 @@ with st.sidebar:
     aws_modules_path = "pages/tf_module/aws-provider.txt"
     gcp_modules_path = "pages/tf_module/gcp-provider.txt"
     azure_modules_path = "pages/tf_module/azure-provider.txt"
-    k8s_modules_path = "pages/Module/k8s_core_module.txt"
     
-    k8s_modules = read_modules(k8s_modules_path)
+    
+
     aws_modules = read_modules(aws_modules_path)
     gcp_modules = read_modules(gcp_modules_path)
     azure_modules = read_modules(azure_modules_path)
     
-    module_type = st.selectbox("Select Module Type", ["AWS-Provider", "GCP-Provider", "Azure-Provider", "k8s-Provider"])
+    module_type = st.selectbox("Select Module Type", ["AWS-Provider", "GCP-Provider", "Azure-Provider"])
 
     if module_type == "AWS-Provider":
         modules = aws_modules
@@ -74,8 +74,7 @@ with st.sidebar:
         modules = gcp_modules
     elif module_type == "Azure-Provider":
         modules = azure_modules 
-    elif module_type == "k8s-Provider":
-        modules = k8s_modules
+  
        
     #module = st.selectbox("Select Module", modules)
     instruction_1 = st.selectbox("Select Module", modules)
