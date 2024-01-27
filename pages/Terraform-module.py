@@ -58,7 +58,7 @@ vmware_rest_module_path = "pages/Module/vmware_rest_module.txt"
 zabbix_module_path = "pages/Module/zabbix_module.txt"
 
 
-aws_modules = read_modules(ansible_modules_path)
+aws_modules = read_modules(aws_modules_path)
 azure_modules = read_modules(azure_modules_path)
 #aws__modules = read_modules(aws_modules__path)
 ansible_window_modules = read_modules(win_ans_modules_path)
