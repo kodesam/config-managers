@@ -5,6 +5,7 @@ import pandas as pd
 from github import Github, GithubException
 import random
 import re
+import streamlit.components.v1 as components
 
 title_style = (
     "color: blue;"
@@ -124,14 +125,16 @@ def generate_ansible_script(module, tasks):
         ]
     )
 
-    ansible_script = response['choices'][0]['message']['content']
-    ansible_script = ansible_script.replace('```yaml', '')
-    ansible_script = ansible_script.replace('```', '')
-    ansible_script = f"```yaml\n{ansible_script}\n```"
+    #ansible_script = response['choices'][0]['message']['content']
+    #ansible_script = ansible_script.replace('```yaml', '')
+    #ansible_script = ansible_script.replace('```', '')
+    ansible_script = f"```yaml\n{response_text}\n```"
+
+    
 
     return ansible_script
 
-
+components.html(ansible_script, scrolling=True, height=400)
 
 
 #module = st.selectbox('Select module', ansible_modules)
