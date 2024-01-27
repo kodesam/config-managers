@@ -74,7 +74,7 @@ aws_modules = read_modules(aws_modules_path)
 #vmware_rest_module    = read_modules(vmware_rest_module_path)
 #zabbix_module         = read_modules(zabbix_module_path)
 
-module_type = st.selectbox("Select Module Type", ["AWS Provide", "Azure", "AWS", "window:ansible", "Docker", "GCP", "Graphana", "Junyper", "Kubernetes_Core", "Microsoft-AD", "OpenStack", "Openvswitch", "VMware", "VMware-Rest", "Zabbix"])
+module_type = st.selectbox("Select Module Type", ["AWS Provide"]) #, "Azure", "AWS", "window:ansible", "Docker", "GCP", "Graphana", "Junyper", "Kubernetes_Core", "Microsoft-AD", "OpenStack", "Openvswitch", "VMware", "VMware-Rest", "Zabbix"])
 
 if module_type == "AWS Provider":
     modules = aws_modules
