@@ -5,7 +5,7 @@ import pandas as pd
 from github import Github, GithubException
 import random
 import re
-import streamlit.components.v1 as components
+
 
 title_style = (
     "color: blue;"
@@ -130,7 +130,7 @@ def generate_ansible_script(module, tasks):
     ansible_script = ansible_script.replace('```', '')
    
 
-    components.html(ansible_script, scrolling=True, height=400)
+    
 
     return ansible_script
 
