@@ -42,37 +42,37 @@ def read_modules(file_path):
 
 
 aws_modules_path = "pages/tf_module/aws-provider.txt"
-azure_modules_path = "pages/Module/azure_module.txt"
+#azure_modules_path = "pages/Module/azure_module.txt"
 #aws_modules__path = "pages/Module/aws_module.txt"
-win_ans_modules_path = "pages/Module/window_ansible_module.txt"
-docker_modules_path = "pages/Module/docker_module.txt"
-gcp_modules_path = "pages/Module/gcp_module.txt"
-graphana_modules_path = "pages/Module/graphana_module.txt"
-junyper_modules_path = "pages/Module/junyper_module.txt"
-k8s_modules_path = "pages/Module/k8s_core_module.txt"
-microsoft_ad_modules_path = "pages/Module/microsoft_ad_module.txt"
-openstack_modules_path = "pages/Module/openstack_module.txt"
-openvswitch_module_path = "pages/Module/openvswitch_module.txt"
-vmware_module_path = "pages/Module/vmware_module.txt"
-vmware_rest_module_path = "pages/Module/vmware_rest_module.txt"
-zabbix_module_path = "pages/Module/zabbix_module.txt"
+#win_ans_modules_path = "pages/Module/window_ansible_module.txt"
+#docker_modules_path = "pages/Module/docker_module.txt"
+#gcp_modules_path = "pages/Module/gcp_module.txt"
+#graphana_modules_path = "pages/Module/graphana_module.txt"
+#junyper_modules_path = "pages/Module/junyper_module.txt"
+#k8s_modules_path = "pages/Module/k8s_core_module.txt"
+#microsoft_ad_modules_path = "pages/Module/microsoft_ad_module.txt"
+#openstack_modules_path = "pages/Module/openstack_module.txt"
+#openvswitch_module_path = "pages/Module/openvswitch_module.txt"
+#vmware_module_path = "pages/Module/vmware_module.txt"
+#vmware_rest_module_path = "pages/Module/vmware_rest_module.txt"
+#zabbix_module_path = "pages/Module/zabbix_module.txt"
 
 
 aws_modules = read_modules(aws_modules_path)
-azure_modules = read_modules(azure_modules_path)
+#azure_modules = read_modules(azure_modules_path)
 #aws__modules = read_modules(aws_modules__path)
-ansible_window_modules = read_modules(win_ans_modules_path)
-docker_modules        = read_modules(docker_modules_path)      
-gcp_modules           = read_modules(gcp_modules_path)       
-graphana_modules      = read_modules(graphana_modules_path)    
-junyper_modules       = read_modules(junyper_modules_path)    
-k8s_modules      = read_modules(k8s_modules_path)         
-microsoft_ad_modules  = read_modules(microsoft_ad_modules_path)
-openstack_modules     = read_modules(openstack_modules_path)  
-openvswitch_module    = read_modules(openvswitch_module_path) 
-vmware_module         = read_modules(vmware_module_path)      
-vmware_rest_module    = read_modules(vmware_rest_module_path)
-zabbix_module         = read_modules(zabbix_module_path)
+#ansible_window_modules = read_modules(win_ans_modules_path)
+#docker_modules        = read_modules(docker_modules_path)      
+#gcp_modules           = read_modules(gcp_modules_path)       
+#graphana_modules      = read_modules(graphana_modules_path)    
+#junyper_modules       = read_modules(junyper_modules_path)    
+#k8s_modules      = read_modules(k8s_modules_path)         
+#microsoft_ad_modules  = read_modules(microsoft_ad_modules_path)
+#openstack_modules     = read_modules(openstack_modules_path)  
+#openvswitch_module    = read_modules(openvswitch_module_path) 
+#vmware_module         = read_modules(vmware_module_path)      
+#vmware_rest_module    = read_modules(vmware_rest_module_path)
+#zabbix_module         = read_modules(zabbix_module_path)
 
 module_type = st.selectbox("Select Module Type", ["Ansible", "Azure", "AWS", "window:ansible", "Docker", "GCP", "Graphana", "Junyper", "Kubernetes_Core", "Microsoft-AD", "OpenStack", "Openvswitch", "VMware", "VMware-Rest", "Zabbix"])
 
