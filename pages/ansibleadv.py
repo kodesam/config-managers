@@ -130,11 +130,11 @@ def generate_ansible_script(module, tasks):
     #ansible_script = ansible_script.replace('```', '')
     ansible_script = f"```yaml\n{response_text}\n```"
 
-    
+    components.html(ansible_script, scrolling=True, height=400)
 
     return ansible_script
 
-components.html(ansible_script, scrolling=True, height=400)
+
 
 
 #module = st.selectbox('Select module', ansible_modules)
