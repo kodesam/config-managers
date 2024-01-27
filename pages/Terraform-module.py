@@ -41,9 +41,9 @@ def read_modules(file_path):
     return modules
 
 
-ansible_modules_path = "pages/Module/ansible_module.txt"
+aws_modules_path = "pages/tf_module/aws-provider.txt"
 azure_modules_path = "pages/Module/azure_module.txt"
-aws_modules_path = "pages/Module/aws_module.txt"
+aws_modules__path = "pages/Module/aws_module.txt"
 win_ans_modules_path = "pages/Module/window_ansible_module.txt"
 docker_modules_path = "pages/Module/docker_module.txt"
 gcp_modules_path = "pages/Module/gcp_module.txt"
@@ -58,9 +58,9 @@ vmware_rest_module_path = "pages/Module/vmware_rest_module.txt"
 zabbix_module_path = "pages/Module/zabbix_module.txt"
 
 
-ansible_modules = read_modules(ansible_modules_path)
+aws_modules = read_modules(ansible_modules_path)
 azure_modules = read_modules(azure_modules_path)
-aws_modules = read_modules(aws_modules_path)
+aws__modules = read_modules(aws_modules__path)
 ansible_window_modules = read_modules(win_ans_modules_path)
 docker_modules        = read_modules(docker_modules_path)      
 gcp_modules           = read_modules(gcp_modules_path)       
@@ -76,12 +76,12 @@ zabbix_module         = read_modules(zabbix_module_path)
 
 module_type = st.selectbox("Select Module Type", ["Ansible", "Azure", "AWS", "window:ansible", "Docker", "GCP", "Graphana", "Junyper", "Kubernetes_Core", "Microsoft-AD", "OpenStack", "Openvswitch", "VMware", "VMware-Rest", "Zabbix"])
 
-if module_type == "Ansible":
-    modules = ansible_modules
+if module_type == "AWS Provider":
+    modules = aws_modules
 elif module_type == "Azure":
     modules = azure_modules
 elif module_type == "AWS":
-    modules = aws_modules
+    modules = aws__modules
 elif module_type == "window:ansible":
     modules = ansible_window_modules
 elif module_type == "Docker":
