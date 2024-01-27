@@ -11,10 +11,15 @@ title_style = (
     "color: blue;"
     "font-weight: bold;"
 )
+
+title_style_1 = (
+    "color: Black;"
+    "font-weight: normal;"
+)
 # Display the title with the defined style
 st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀 Script-AI 🚀🚀 </h1>", unsafe_allow_html=True)
 st.caption("🚀 🚀 🚀 Script-AI Powered by OpenAI LLM")
-st.markdown(f"<h2 style='{title_style}'>💬  Ansible Task </h2>", unsafe_allow_html=True)
+st.markdown(f"<h2 style='{title_style_1}'>💬  Ansible Task </h2>", unsafe_allow_html=True)
 # Place your actual OpenAI API key here
 # openai.api_key = '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'
 
