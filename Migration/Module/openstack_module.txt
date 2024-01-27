@@ -1,0 +1,91 @@
+address_scope module – Create or delete address scopes from OpenStack
+auth module – Retrieve auth token from OpenStack cloud
+baremetal_deploy_template module – Create/Delete Bare Metal deploy template Resources from OpenStack
+baremetal_inspect module – Explicitly triggers baremetal node introspection in ironic.
+baremetal_node module – Create/Delete Bare Metal Resources from OpenStack
+baremetal_node_action module – Activate/Deactivate Bare Metal nodes from OpenStack
+baremetal_node_info module – Retrieve information about Bare Metal nodes from OpenStack
+baremetal_port module – Create/Delete Bare Metal port Resources from OpenStack
+baremetal_port_info module – Retrieve information about Bare Metal ports from OpenStack
+catalog_service module – Manage OpenStack services
+catalog_service_info module – Retrieve information about services from OpenStack
+coe_cluster module – Manage COE cluster in OpenStack Cloud
+coe_cluster_template module – Manage COE cluster template in OpenStack Cloud
+compute_flavor module – Manage OpenStack compute flavors
+compute_flavor_access module – Manage access to OpenStack compute flavors
+compute_flavor_info module – Fetch compute flavors from OpenStack cloud
+compute_service_info module – Fetch OpenStack Compute (Nova) services
+config module – Get OpenStack Client config
+dns_zone module – Manage a OpenStack DNS zone.
+dns_zone_info module – Getting information about dns zones
+endpoint module – Manage OpenStack Identity service endpoints
+federation_idp module – Manage an identity provider in a OpenStack cloud
+federation_idp_info module – Fetch OpenStack federation identity providers
+federation_mapping module – Manage a federation mapping
+federation_mapping_info module – Fetch Keystone federation mappings
+floating_ip module – Manage floating IP addresses for OpenStack servers
+floating_ip_info module – Get information about floating ips
+group_assignment module – Assign OpenStack identity users to groups
+host_aggregate module – Manage OpenStack host aggregates
+identity_domain module – Manage OpenStack identity (Keystone) domains
+identity_domain_info module – Fetch identity (Keystone) domains from OpenStack cloud
+identity_group module – Manage a OpenStack identity (Keystone) group
+identity_group_info module – Fetch OpenStack identity (Keystone) groups
+identity_role module – Manage a OpenStack identity (Keystone) role
+identity_role_info module – Fetch OpenStack identity (Keystone) roles
+identity_user module – Manage a OpenStack identity (Keystone) user
+identity_user_info module – Fetch OpenStack identity (Keystone) users
+image module – Manage images of OpenStack image (Glance) service.
+image_info module – Fetch images from OpenStack image (Glance) service.
+keypair module – Add/Delete a keypair from OpenStack
+keypair_info module – Get information about keypairs from OpenStack
+keystone_federation_protocol module – Manage a Keystone federation protocol
+keystone_federation_protocol_info module – Fetch Keystone federation protocols
+lb_health_monitor module – Manage health monitor in a OpenStack load-balancer pool
+lb_listener module – Manage load-balancer listener in a OpenStack cloud
+lb_member module – Manage members in a OpenStack load-balancer pool
+lb_pool module – Manage load-balancer pool in a OpenStack cloud.
+loadbalancer module – Manage Octavia load-balancer in an OpenStack cloud
+network module – Creates/removes networks from OpenStack
+networks_info module – Retrieve information about one or more OpenStack networks.
+neutron_rbac_policies_info module – Fetch Neutron RBAC policies.
+neutron_rbac_policy module – Create or delete a Neutron RBAC policy.
+object module – Create or delete Swift objects in OpenStack clouds
+object_container module – Manage a Swift container.
+port module – Add/Update/Delete ports from an OpenStack cloud.
+port_info module – Retrieve information about ports within OpenStack.
+project module – Manage OpenStack Identity (Keystone) projects
+project_info module – Retrieve information about one or more OpenStack projects
+quota module – Manage OpenStack Quotas
+recordset module – Manage OpenStack DNS recordsets
+resource module – Manage a OpenStack cloud resource
+resources module – List OpenStack cloud resources
+role_assignment module – Assign OpenStack identity groups and users to roles
+router module – Create or delete routers from OpenStack
+routers_info module – Retrieve information about one or more OpenStack routers.
+security_group module – Manage Neutron security groups of an OpenStack cloud.
+security_group_info module – Lists security groups
+security_group_rule module – Manage security group rules in OpenStack network (Neutron)
+security_group_rule_info module – Fetch OpenStack network (Neutron) security group rules
+server module – Create/Delete Compute Instances from OpenStack
+server_action module – Perform actions on OpenStack compute (Nova) instances
+server_group module – Manage OpenStack server groups
+server_info module – Retrieve information about one or more compute instances
+server_metadata module – Add/Update/Delete Metadata in Compute Instances from OpenStack
+server_volume module – Attach/Detach Volumes from OpenStack VM’s
+stack module – Add/Remove Heat Stack
+stack_info module – Retrieve information about Heat stacks
+subnet module – Add/Remove subnet to an OpenStack network
+subnet_pool module – Create, update or delete a subnet pool from OpenStack
+subnets_info module – Retrieve information about one or more OpenStack subnets.
+volume module – Create/Delete Cinder Volumes
+volume_backup module – Add/Delete Volume backup
+volume_backup_info module – Get Backups
+volume_info module – Retrieve information about volumes
+volume_snapshot module – Create/Delete Cinder Volume Snapshots
+volume_snapshot_info module – Get volume snapshots
+volume_type module – Manage OpenStack volume type
+volume_type_access module – Manage access to OpenStack block-storage volume type
+volume_type_encryption module – Manage OpenStack volume type encryption
+volume_type_info module – Get OpenStack volume type details
+openstack inventory – OpenStack inventory source

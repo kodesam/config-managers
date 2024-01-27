@@ -1,0 +1,15 @@
+computer module – Manage Active Directory computer objects
+debug_ldap_client module – Get host information for debugging LDAP connections
+domain module – Ensures the existence of a Windows domain
+domain_controller module – Manage domain controller/member server state for a Windows host
+group module – Manage Active Directory group objects
+membership module – Manage domain/workgroup membership for a Windows host
+object module – Manage Active Directory objects
+object_info module – Gather information an Active Directory object
+offline_join module – Get the Offline Domain Join BLOB
+ou module – Manage Active Directory organizational units
+user module – Manage Active Directory users
+as_datetime filter – Converts an LDAP value to a datetime string
+as_guid filter – Converts an LDAP value to a GUID string
+as_sid filter – Converts an LDAP value to a Security Identifier string
+ldap inventory – Inventory plugin for Active Directory

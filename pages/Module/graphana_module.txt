@@ -1,0 +1,19 @@
+alert_contact_point module – Manage Alerting Contact points in Grafana
+alert_notification_policy module – Manage Alerting Policies points in Grafana
+cloud_api_key module – Manage Grafana Cloud API keys
+cloud_plugin module – Manage Grafana Cloud Plugins
+cloud_stack module – Manage Grafana Cloud stack
+dashboard module – Manage Dashboards in Grafana
+datasource module – Manage Data sources in Grafana
+folder module – Manage Folders in Grafana
+grafana_dashboard module – Manage Grafana dashboards
+grafana_datasource module – Manage Grafana datasources
+grafana_folder module – Manage Grafana Folders
+grafana_notification_channel module – Manage Grafana Notification Channels
+grafana_organization module – Manage Grafana Organization
+grafana_organization_user module – Manage Grafana Organization Users.
+grafana_plugin module – Manage Grafana plugins via grafana-cli
+grafana_team module – Manage Grafana Teams
+grafana_user module – Manage Grafana User
+grafana_annotations callback – send ansible events as annotations on charts to grafana over http api.
+grafana_dashboard lookup – list or search grafana dashboards

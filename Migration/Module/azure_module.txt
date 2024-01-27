@@ -1,0 +1,285 @@
+azure_rm_account_info module – Get Azure Account facts (output of az account show)
+azure_rm_adapplication module – Manage Azure Active Directory application
+azure_rm_adapplication_info module – Get Azure Active Directory application info
+azure_rm_adgroup module – Manage Azure Active Directory group
+azure_rm_adgroup_info module – Get Azure Active Directory group info
+azure_rm_adpassword module – Manage application password
+azure_rm_adpassword_info module – Get application password info
+azure_rm_adserviceprincipal module – Manage Azure Active Directory service principal
+azure_rm_adserviceprincipal_info module – Get Azure Active Directory service principal info
+azure_rm_aduser module – Modify an Azure Active Directory user
+azure_rm_aduser_info module – Get Azure Active Directory user info
+azure_rm_aks module – Manage a managed Azure Container Service (AKS) instance
+azure_rm_aks_info module – Get Azure Kubernetes Service facts
+azure_rm_aksagentpool module – Manage node pools in Kubernetes kubernetes cluster
+azure_rm_aksagentpool_info module – Show the details for a node pool in the managed Kubernetes cluster
+azure_rm_aksagentpoolversion_info module – Gets a list of supported versions for the specified agent pool
+azure_rm_aksupgrade_info module – Get the upgrade versions available for a AKS instance
+azure_rm_aksversion_info module – Get available kubernetes versions supported by Azure Kubernetes Service
+azure_rm_apimanagement module – Manage Azure api instances
+azure_rm_apimanagement_info module – Get the infomation of the API Instance
+azure_rm_apimanagementservice module – Manage Azure ApiManagementService instance
+azure_rm_apimanagementservice_info module – Get ApiManagementService info
+azure_rm_appgateway module – Manage Application Gateway instance
+azure_rm_appgateway_info module – Retrieve Application Gateway instance facts
+azure_rm_applicationsecuritygroup module – Manage Azure Application Security Group
+azure_rm_applicationsecuritygroup_info module – Get Azure Application Security Group facts
+azure_rm_appserviceplan module – Manage App Service Plan
+azure_rm_appserviceplan_info module – Get azure app service plan facts
+azure_rm_automationaccount module – Manage Azure Automation account
+azure_rm_automationaccount_info module – Get Azure automation account facts
+azure_rm_automationrunbook module – Mange automation runbook
+azure_rm_automationrunbook_info module – Get Azure automation runbook facts
+azure_rm_autoscale module – Manage Azure autoscale setting
+azure_rm_autoscale_info module – Get Azure Auto Scale Setting facts
+azure_rm_availabilityset module – Manage Azure Availability Set
+azure_rm_availabilityset_info module – Get Azure Availability Set facts
+azure_rm_azurefirewall module – Manage Azure Firewall instance
+azure_rm_azurefirewall_info module – Get AzureFirewall info
+azure_rm_backupazurevm module – Back up an Azure Virtual Machine using Azure Backup
+azure_rm_backupazurevm_info module – Back up an Azure Virtual Machine using Azure Backup Information
+azure_rm_backuppolicy module – Manage Azure Backup Policy
+azure_rm_backuppolicy_info module – Get Info on Azure Backup Policy
+azure_rm_bastionhost module – Managed bastion host resource
+azure_rm_bastionhost_info module – Get Azure bastion host info
+azure_rm_batchaccount module – Manages a Batch Account on Azure
+azure_rm_batchaccount_info module – Get the Batch Account on Azure facts
+azure_rm_cdnendpoint module – Manage a Azure CDN endpoint
+azure_rm_cdnendpoint_info module – Get Azure CDN endpoint facts
+azure_rm_cdnprofile module – Manage a Azure CDN profile
+azure_rm_cdnprofile_info module – Get Azure CDN profile facts
+azure_rm_cognitivesearch module – Manage Azure Cognitive Search service
+azure_rm_cognitivesearch_info module – Get Azure Cognitive Search service info
+azure_rm_containerinstance module – Manage an Azure Container Instance
+azure_rm_containerinstance_info module – Get Azure Container Instance facts
+azure_rm_containerregistry module – Manage an Azure Container Registry
+azure_rm_containerregistry_info module – Get Azure Container Registry facts
+azure_rm_containerregistryreplication module – Manage Replication instance.
+azure_rm_containerregistryreplication_info module – Get Replication facts.
+azure_rm_containerregistrytag module – Import or delete tags in Azure Container Registry
+azure_rm_containerregistrytag_info module – Get Azure Container Registry tag facts
+azure_rm_containerregistrywebhook module – Manage Webhook instance.
+azure_rm_containerregistrywebhook_info module – Get Webhook facts.
+azure_rm_cosmosdbaccount module – Manage Azure Database Account instance
+azure_rm_cosmosdbaccount_info module – Get Azure Cosmos DB Account facts
+azure_rm_datafactory module – Managed data factory
+azure_rm_datafactory_info module – Get data factory facts
+azure_rm_datalakestore module – Manage Azure data lake store
+azure_rm_datalakestore_info module – Get Azure Data Lake Store info
+azure_rm_ddosprotectionplan module – Manage DDoS protection plan
+azure_rm_ddosprotectionplan_info module – Get Azure DDoS protection plan
+azure_rm_deployment module – Create or destroy Azure Resource Manager template deployments
+azure_rm_deployment_info module – Get Azure Deployment facts
+azure_rm_devtestlab module – Manage Azure DevTest Lab instance
+azure_rm_devtestlab_info module – Get Azure DevTest Lab facts
+azure_rm_devtestlabarmtemplate_info module – Get Azure DevTest Lab ARM Template facts
+azure_rm_devtestlabartifact_info module – Get Azure DevTest Lab Artifact facts
+azure_rm_devtestlabartifactsource module – Manage Azure DevTest Labs Artifacts Source instance
+azure_rm_devtestlabartifactsource_info module – Get Azure DevTest Lab Artifact Source facts
+azure_rm_devtestlabcustomimage module – Manage Azure DevTest Lab Custom Image instance
+azure_rm_devtestlabcustomimage_info module – Get Azure DevTest Lab Custom Image facts
+azure_rm_devtestlabenvironment module – Manage Azure DevTest Lab Environment instance
+azure_rm_devtestlabenvironment_info module – Get Azure Environment facts
+azure_rm_devtestlabpolicy module – Manage Azure Policy instance
+azure_rm_devtestlabpolicy_info module – Get Azure DTL Policy facts
+azure_rm_devtestlabschedule module – Manage Azure DevTest Lab Schedule instance
+azure_rm_devtestlabschedule_info module – Get Azure Schedule facts
+azure_rm_devtestlabvirtualmachine module – Manage Azure DevTest Lab Virtual Machine instance
+azure_rm_devtestlabvirtualmachine_info module – Get Azure DevTest Lab Virtual Machine facts
+azure_rm_devtestlabvirtualnetwork module – Manage Azure DevTest Lab Virtual Network instance
+azure_rm_devtestlabvirtualnetwork_info module – Get Azure DevTest Lab Virtual Network facts
+azure_rm_diskencryptionset module – Create, delete and update Disk encryption set
+azure_rm_diskencryptionset_info module – Get disk encryption set facts
+azure_rm_dnsrecordset module – Create, delete and update DNS record sets and records
+azure_rm_dnsrecordset_info module – Get DNS Record Set facts
+azure_rm_dnszone module – Manage Azure DNS zones
+azure_rm_dnszone_info module – Get DNS zone facts
+azure_rm_eventhub module – Manage Event Hub
+azure_rm_eventhub_info module – Get Azure Event Hub
+azure_rm_expressroute module – Manage Express Route Circuits
+azure_rm_expressroute_info module – Get Azure Express Route
+azure_rm_firewallpolicy module – Create, delete or update specified firewall policy.
+azure_rm_firewallpolicy_info module – Get firewall policy facts
+azure_rm_functionapp module – Manage Azure Function Apps
+azure_rm_functionapp_info module – Get Azure Function App facts
+azure_rm_gallery module – Manage Azure Shared Image Gallery instance
+azure_rm_gallery_info module – Get Azure Shared Image Gallery info
+azure_rm_galleryimage module – Manage Azure SIG Image instance
+azure_rm_galleryimage_info module – Get Azure SIG Image info
+azure_rm_galleryimageversion module – Manage Azure SIG Image Version instance
+azure_rm_galleryimageversion_info module – Get Azure SIG Image Version info
+azure_rm_hdinsightcluster module – Manage Azure HDInsight Cluster instance
+azure_rm_hdinsightcluster_info module – Get Azure HDInsight Cluster facts
+azure_rm_hostgroup module – Create, delete and update a dedicated host group
+azure_rm_hostgroup_info module – Get host group facts
+azure_rm_image module – Manage Azure image
+azure_rm_image_info module – Get facts about azure custom images
+azure_rm_iotdevice module – Manage Azure IoT hub device
+azure_rm_iotdevice_info module – Facts of Azure IoT hub device
+azure_rm_iotdevicemodule module – Manage Azure IoT hub device module
+azure_rm_iothub module – Manage Azure IoT hub
+azure_rm_iothub_info module – Get IoT Hub facts
+azure_rm_iothubconsumergroup module – Manage Azure IoT hub
+azure_rm_ipgroup module – Create, delete and update IP group
+azure_rm_ipgroup_info module – Get IP group facts
+azure_rm_keyvault module – Manage Key Vault instance
+azure_rm_keyvault_info module – Get Azure Key Vault facts
+azure_rm_keyvaultkey module – Use Azure KeyVault keys
+azure_rm_keyvaultkey_info module – Get Azure Key Vault key facts
+azure_rm_keyvaultsecret module – Use Azure KeyVault Secrets
+azure_rm_keyvaultsecret_info module – Get Azure Key Vault secret facts
+azure_rm_loadbalancer module – Manage Azure load balancers
+azure_rm_loadbalancer_info module – Get load balancer facts
+azure_rm_lock module – Manage Azure locks
+azure_rm_lock_info module – Manage Azure locks
+azure_rm_loganalyticsworkspace module – Manage Azure Log Analytics workspaces
+azure_rm_loganalyticsworkspace_info module – Get facts of Azure Log Analytics workspaces
+azure_rm_manageddisk module – Manage Azure Manage Disks
+azure_rm_manageddisk_info module – Get managed disk facts
+azure_rm_managementgroup module – Manage Azure ManagementGroup instance
+azure_rm_managementgroup_info module – Get Azure Management Group facts
+azure_rm_mariadbconfiguration module – Manage Configuration instance
+azure_rm_mariadbconfiguration_info module – Get Azure MariaDB Configuration facts
+azure_rm_mariadbdatabase module – Manage MariaDB Database instance
+azure_rm_mariadbdatabase_info module – Get Azure MariaDB Database facts
+azure_rm_mariadbfirewallrule module – Manage MariaDB firewall rule instance
+azure_rm_mariadbfirewallrule_info module – Get Azure MariaDB Firewall Rule facts
+azure_rm_mariadbserver module – Manage MariaDB Server instance
+azure_rm_mariadbserver_info module – Get Azure MariaDB Server facts
+azure_rm_monitordiagnosticsetting module – Create, update, or manage Azure Monitor diagnostic settings.
+azure_rm_monitordiagnosticsetting_info module – Get Azure Monitor diagnostic setting facts.
+azure_rm_monitorlogprofile module – Manage Azure Monitor log profile
+azure_rm_multiplemanageddisks module – Manage Multiple Azure Manage Disks
+azure_rm_mysqlconfiguration module – Manage Configuration instance
+azure_rm_mysqlconfiguration_info module – Get Azure MySQL Configuration facts
+azure_rm_mysqldatabase module – Manage MySQL Database instance
+azure_rm_mysqldatabase_info module – Get Azure MySQL Database facts
+azure_rm_mysqlfirewallrule module – Manage MySQL firewall rule instance
+azure_rm_mysqlfirewallrule_info module – Get Azure MySQL Firewall Rule facts
+azure_rm_mysqlserver module – Manage MySQL Server instance
+azure_rm_mysqlserver_info module – Get Azure MySQL Server facts
+azure_rm_natgateway module – Manage Azure NAT Gateway instance
+azure_rm_natgateway_info module – Retrieve NAT Gateway instance facts
+azure_rm_networkinterface module – Manage Azure network interfaces
+azure_rm_networkinterface_info module – Get network interface facts
+azure_rm_notificationhub module – Manage Notification Hub
+azure_rm_notificationhub_info module – Get Azure Notification Hub
+azure_rm_openshiftmanagedcluster module – Manage Azure Red Hat OpenShift Managed Cluster instance
+azure_rm_openshiftmanagedcluster_info module – Get Info onf Azure Red Hat OpenShift Managed Cluster
+azure_rm_postgresqlconfiguration module – Manage Azure PostgreSQL Configuration
+azure_rm_postgresqlconfiguration_info module – Get Azure PostgreSQL Configuration facts
+azure_rm_postgresqldatabase module – Manage PostgreSQL Database instance
+azure_rm_postgresqldatabase_info module – Get Azure PostgreSQL Database facts
+azure_rm_postgresqlfirewallrule module – Manage PostgreSQL firewall rule instance
+azure_rm_postgresqlfirewallrule_info module – Get Azure PostgreSQL Firewall Rule facts
+azure_rm_postgresqlserver module – Manage PostgreSQL Server instance
+azure_rm_postgresqlserver_info module – Get Azure PostgreSQL Server facts
+azure_rm_privatednsrecordset module – Create, delete and update Private DNS record sets and records
+azure_rm_privatednsrecordset_info module – Get Private DNS Record Set facts
+azure_rm_privatednszone module – Manage Azure private DNS zones
+azure_rm_privatednszone_info module – Get private DNS zone facts
+azure_rm_privatednszonelink module – Create, delete and update Virtual network link for Private DNS zone
+azure_rm_privatednszonelink_info module – Get Virtual Network link facts for private DNS zone
+azure_rm_privateendpoint module – Manage Azure private endpoint
+azure_rm_privateendpoint_info module – Get private endpoints info
+azure_rm_privateendpointconnection module – Managed private endpoint connection
+azure_rm_privateendpointconnection_info module – Get private endpoint connection info
+azure_rm_privateendpointdnszonegroup module – Create, update, or manage private endpoint DNS zone groups.
+azure_rm_privateendpointdnszonegroup_info module – Get private endpoint DNS zone group info.
+azure_rm_privatelinkservice module – Managed private link service resource
+azure_rm_privatelinkservice_info module – Get private endpoint connection info
+azure_rm_proximityplacementgroup module – Create, delete and update proximity placement group
+azure_rm_proximityplacementgroup_info module – Get proximity placement group facts
+azure_rm_publicipaddress module – Manage Azure Public IP Addresses
+azure_rm_publicipaddress_info module – Get public IP facts
+azure_rm_recoveryservicesvault module – Create and Delete Azure Recovery Services vault
+azure_rm_recoveryservicesvault_info module – Get Azure Recovery Services vault Details
+azure_rm_rediscache module – Manage Azure Cache for Redis instance
+azure_rm_rediscache_info module – Get Azure Cache for Redis instance facts
+azure_rm_rediscachefirewallrule module – Manage Azure Cache for Redis Firewall rules
+azure_rm_registrationassignment module – Manage Azure RegistrationAssignment instance
+azure_rm_registrationassignment_info module – Get RegistrationAssignment info
+azure_rm_registrationdefinition module – Manage Azure RegistrationDefinition instance
+azure_rm_registrationdefinition_info module – Get RegistrationDefinition info
+azure_rm_resource module – Create any Azure resource
+azure_rm_resource_info module – Generic facts of Azure resources
+azure_rm_resourcegroup module – Manage Azure resource groups
+azure_rm_resourcegroup_info module – Get resource group facts
+azure_rm_roleassignment module – Manage Azure Role Assignment
+azure_rm_roleassignment_info module – Gets Azure Role Assignment facts
+azure_rm_roledefinition module – Manage Azure Role Definition
+azure_rm_roledefinition_info module – Get Azure Role Definition facts
+azure_rm_route module – Manage Azure route resource
+azure_rm_route_info module – Get Route info
+azure_rm_routetable module – Manage Azure route table resource
+azure_rm_routetable_info module – Get route table facts
+azure_rm_securitygroup module – Manage Azure network security groups
+azure_rm_securitygroup_info module – Get security group facts
+azure_rm_servicebus module – Manage Azure Service Bus
+azure_rm_servicebus_info module – Get servicebus facts
+azure_rm_servicebusqueue module – Manage Azure Service Bus queue
+azure_rm_servicebussaspolicy module – Manage Azure Service Bus SAS policy
+azure_rm_servicebustopic module – Manage Azure Service Bus
+azure_rm_servicebustopicsubscription module – Manage Azure Service Bus subscription
+azure_rm_snapshot module – Manage Azure Snapshot instance
+azure_rm_sqldatabase module – Manage SQL Database instance
+azure_rm_sqldatabase_info module – Get Azure SQL Database facts
+azure_rm_sqlelasticpool module – Manage SQL Elastic Pool instance
+azure_rm_sqlelasticpool_info module – Get Azure SQL Elastic Pool facts
+azure_rm_sqlfirewallrule module – Manage Firewall Rule instance
+azure_rm_sqlfirewallrule_info module – Get Azure SQL Firewall Rule facts
+azure_rm_sqlmanagedinstance module – Manage SQL managed instances
+azure_rm_sqlmanagedinstance_info module – Get Azure SQL managed instance facts
+azure_rm_sqlserver module – Manage SQL Server instance
+azure_rm_sqlserver_info module – Get SQL Server facts
+azure_rm_storageaccount module – Manage Azure storage accounts
+azure_rm_storageaccount_info module – Get storage account facts
+azure_rm_storageblob module – Manage blob containers and blob objects
+azure_rm_storageshare module – Manage Azure storage file share
+azure_rm_storageshare_info module – Get Azure storage file share info
+azure_rm_subnet module – Manage Azure subnets
+azure_rm_subnet_info module – Get Azure Subnet facts
+azure_rm_subscription_info module – Get Azure Subscription facts
+azure_rm_trafficmanager module – Manage a Traffic Manager profile.
+azure_rm_trafficmanagerendpoint module – Manage Azure Traffic Manager endpoint
+azure_rm_trafficmanagerendpoint_info module – Get Azure Traffic Manager endpoint facts
+azure_rm_trafficmanagerprofile module – Manage Azure Traffic Manager profile
+azure_rm_trafficmanagerprofile_info module – Get Azure Traffic Manager profile facts
+azure_rm_virtualhub module – Manage Azure VirtualHub instance
+azure_rm_virtualhub_info module – Get VirtualHub info
+azure_rm_virtualhubconnection module – Manage Azure VirtualHub instance
+azure_rm_virtualhubconnection_info module – Get VirtualHub info
+azure_rm_virtualmachine module – Manage Azure virtual machines
+azure_rm_virtualmachine_info module – Get virtual machine facts
+azure_rm_virtualmachineextension module – Managed Azure Virtual Machine extension
+azure_rm_virtualmachineextension_info module – Get Azure Virtual Machine Extension facts
+azure_rm_virtualmachineimage_info module – Get virtual machine image facts
+azure_rm_virtualmachinescaleset module – Manage Azure virtual machine scale sets
+azure_rm_virtualmachinescaleset_info module – Get Virtual Machine Scale Set facts
+azure_rm_virtualmachinescalesetextension module – Manage Azure Virtual Machine Scale Set (VMSS) extensions
+azure_rm_virtualmachinescalesetextension_info module – Get Azure Virtual Machine Scale Set Extension facts
+azure_rm_virtualmachinescalesetinstance module – Get Azure Virtual Machine Scale Set Instance facts
+azure_rm_virtualmachinescalesetinstance_info module – Get Azure Virtual Machine Scale Set Instance facts
+azure_rm_virtualmachinesize_info module – Get facts for virtual machine sizes
+azure_rm_virtualnetwork module – Manage Azure virtual networks
+azure_rm_virtualnetwork_info module – Get virtual network facts
+azure_rm_virtualnetworkgateway module – Manage Azure virtual network gateways
+azure_rm_virtualnetworkpeering module – Manage Azure Virtual Network Peering
+azure_rm_virtualnetworkpeering_info module – Get facts of Azure Virtual Network Peering
+azure_rm_virtualwan module – Manage Azure VirtualWan instance
+azure_rm_virtualwan_info module – Get VirtualWan info
+azure_rm_vmbackuppolicy module – Create or Delete Azure VM Backup Policy
+azure_rm_vmbackuppolicy_info module – Fetch Backup Policy Details
+azure_rm_vmssnetworkinterface_info module – Get information about network interface in virtul machine scale
+azure_rm_vpnsite module – Manage Azure VpnSite instance
+azure_rm_vpnsite_info module – Get VpnSite info
+azure_rm_vpnsitelink_info module – Get VpnSiteLink info
+azure_rm_webapp module – Manage Web App instances
+azure_rm_webapp_info module – Get Azure web app facts
+azure_rm_webappaccessrestriction module – Manage web app network access restrictions
+azure_rm_webappaccessrestriction_info module – Retrieve web app network access restriction facts
+azure_rm_webappslot module – Manage Azure Web App slot
+azure_rm_webappvnetconnection module – Manage web app virtual network connection
+azure_rm_webappvnetconnection_info module – Get Azure web app virtual network connection facts
+azure_rm inventory – Azure Resource Manager inventory plugin
+azure_keyvault_secret lookup – Read secret from Azure Key Vault

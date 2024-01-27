@@ -1,0 +1,42 @@
+junos_acl_interfaces module – ACL interfaces resource module
+junos_acls module – ACLs resource module
+junos_banner module – Manage multiline banners on Juniper JUNOS devices
+junos_bgp_address_family module – Manage BGP Address Family attributes of interfaces on Junos devices.
+junos_bgp_global module – Manages BGP Global configuration on devices running Juniper JUNOS.
+junos_command module – Run arbitrary commands on an Juniper JUNOS device
+junos_config module – Manage configuration on devices running Juniper JUNOS
+junos_facts module – Collect facts from remote devices running Juniper Junos
+junos_hostname module – Manage Hostname server configuration on Junos devices.
+junos_interfaces module – Junos Interfaces resource module
+junos_l2_interfaces module – L2 interfaces resource module
+junos_l3_interfaces module – L3 interfaces resource module
+junos_lacp module – Global Link Aggregation Control Protocol (LACP) Junos resource module
+junos_lacp_interfaces module – LACP interfaces resource module
+junos_lag_interfaces module – Link Aggregation Juniper JUNOS resource module
+junos_lldp_global module – LLDP resource module
+junos_lldp_interfaces module – LLDP interfaces resource module
+junos_logging module – Manage logging on network devices
+junos_logging_global module – Manage logging configuration on Junos devices.
+junos_netconf module – Configures the Junos Netconf system service
+junos_ntp_global module – Manage NTP configuration on Junos devices.
+junos_ospf_interfaces module – OSPF Interfaces Resource Module.
+junos_ospfv2 module – OSPFv2 resource module
+junos_ospfv3 module – OSPFv3 resource module
+junos_package module – Installs packages on remote devices running Junos
+junos_ping module – Tests reachability using ping from devices running Juniper JUNOS
+junos_prefix_lists module – Manage prefix-lists attributes of interfaces on Junos devices.
+junos_routing_instances module – Manage routing instances on Junos devices.
+junos_routing_options module – Manage routing-options configuration on Junos devices.
+junos_rpc module – Runs an arbitrary RPC over NetConf on an Juniper JUNOS device
+junos_scp module – Transfer files from or to remote devices running Junos
+junos_security_policies module – Create and manage security policies on Juniper JUNOS devices
+junos_security_policies_global module – Manage global security policy settings on Juniper JUNOS devices
+junos_security_zones module – Manage security zones on Juniper JUNOS devices
+junos_snmp_server module – Manage SNMP server configuration on Junos devices.
+junos_static_routes module – Static routes resource module
+junos_system module – Manage the system attributes on Juniper JUNOS devices
+junos_user module – Manage local user accounts on Juniper JUNOS devices
+junos_vlans module – VLANs resource module
+junos_vrf module – Manage the VRF definitions on Juniper JUNOS devices
+junos cliconf – Use junos cliconf to run command on Juniper Junos OS platform
+junos netconf – Use junos netconf plugin to run netconf commands on Juniper JUNOS platform

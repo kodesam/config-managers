@@ -1,0 +1,34 @@
+zabbix_action module – Create/Delete/Update Zabbix actions
+zabbix_api_info module – Retrieve Zabbix API info
+zabbix_authentication module – Update Zabbix authentication
+zabbix_autoregister module – Update Zabbix autoregistration
+zabbix_discovery_rule module – Create/delete/update Zabbix discovery rules
+zabbix_globalmacro module – Create/update/delete Zabbix Global macros
+zabbix_group module – Create/delete Zabbix host groups
+zabbix_group_events_info module – Get all triggers about a Zabbix group
+zabbix_group_info module – Gather information about Zabbix hostgroup
+zabbix_host module – Create/update/delete Zabbix hosts
+zabbix_host_events_info module – Get all triggers about a Zabbix host
+zabbix_host_info module – Gather information about Zabbix host
+zabbix_hostmacro module – Create/update/delete Zabbix host macros
+zabbix_housekeeping module – Update Zabbix housekeeping
+zabbix_maintenance module – Create Zabbix maintenance windows
+zabbix_map module – Create/update/delete Zabbix maps
+zabbix_mediatype module – Create/Update/Delete Zabbix media types
+zabbix_proxy module – Create/delete/get/update Zabbix proxies
+zabbix_proxy_info module – Gather information about Zabbix proxy
+zabbix_regexp module – Create/update/delete Zabbix regular expression
+zabbix_script module – Create/update/delete Zabbix scripts
+zabbix_service module – Create/update/delete Zabbix service
+zabbix_settings module – Update Zabbix global settings.
+zabbix_template module – Create/update/delete Zabbix template
+zabbix_template_info module – Gather information about Zabbix template
+zabbix_token module – Create/Update/Generate/Delete Zabbix token.
+zabbix_user module – Create/update/delete Zabbix users
+zabbix_user_directory module – Create/update/delete Zabbix user directories
+zabbix_user_info module – Gather information about Zabbix user
+zabbix_user_role module – Adds or removes zabbix roles
+zabbix_usergroup module – Create/delete/update Zabbix user groups
+zabbix_valuemap module – Create/update/delete Zabbix value maps
+zabbix httpapi – HttpApi Plugin for Zabbix
+zabbix_inventory inventory – Zabbix Inventory Plugin
