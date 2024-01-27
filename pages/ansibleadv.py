@@ -127,6 +127,7 @@ def generate_ansible_script(module, tasks):
     ansible_script = response['choices'][0]['message']['content']
     ansible_script = ansible_script.replace('```yaml', '')
     ansible_script = ansible_script.replace('```', '')
+    ansible_script = f"```yaml\n{response_text}\n```"
 
     return ansible_script
 
@@ -158,7 +159,7 @@ if st.button('Generate Ansible Script'):
         else:
             response_text = generate_ansible_script(module, tasks)
             if response_text:
-                st.text_area("Response:", value=response_text.yaml, height=400)
+                st.text_area("Response:", value=response_text, height=400)
     else:
         st.markdown('Please enter module and tasks')
 
