@@ -46,7 +46,7 @@ aws_modules_path = "pages/tf_module/aws-provider.txt"
 #aws_modules__path = "pages/Module/aws_module.txt"
 #win_ans_modules_path = "pages/Module/window_ansible_module.txt"
 #docker_modules_path = "pages/Module/docker_module.txt"
-#gcp_modules_path = "pages/Module/gcp_module.txt"
+gcp_modules_path = "pages/tf_module/gcp_provider.txt"
 #graphana_modules_path = "pages/Module/graphana_module.txt"
 #junyper_modules_path = "pages/Module/junyper_module.txt"
 #k8s_modules_path = "pages/Module/k8s_core_module.txt"
@@ -63,7 +63,7 @@ aws_modules = read_modules(aws_modules_path)
 #aws__modules = read_modules(aws_modules__path)
 #ansible_window_modules = read_modules(win_ans_modules_path)
 #docker_modules        = read_modules(docker_modules_path)      
-#gcp_modules           = read_modules(gcp_modules_path)       
+gcp_modules           = read_modules(gcp_modules_path)       
 #graphana_modules      = read_modules(graphana_modules_path)    
 #junyper_modules       = read_modules(junyper_modules_path)    
 #k8s_modules      = read_modules(k8s_modules_path)         
@@ -74,47 +74,42 @@ aws_modules = read_modules(aws_modules_path)
 #vmware_rest_module    = read_modules(vmware_rest_module_path)
 #zabbix_module         = read_modules(zabbix_module_path)
 
-module_type = st.selectbox("Select Module Type", ["AWS Provide"]) #, "Azure", "AWS", "window:ansible", "Docker", "GCP", "Graphana", "Junyper", "Kubernetes_Core", "Microsoft-AD", "OpenStack", "Openvswitch", "VMware", "VMware-Rest", "Zabbix"])
+module_type = st.selectbox("Select Module Type", ["AWS Provide", "GCP Provider"]) ## "AWS", "window:ansible", "Docker", "GCP", "Graphana", "Junyper", "Kubernetes_Core", "Microsoft-AD", "OpenStack", "Openvswitch", "VMware", "VMware-Rest", "Zabbix"])
 
 if module_type == "AWS Provider":
     modules = aws_modules
-elif module_type == "Azure":
-    modules = azure_modules
+elif module_type == "GCP Provider":
+    modules = gcp_modules
 #elif module_type == "AWS":
     #modules = aws__modules
-elif module_type == "window:ansible":
-    modules = ansible_window_modules
-elif module_type == "Docker":
-    modules =  docker_modules   
-elif module_type == "GCP":
-    modules = gcp_modules
-elif module_type == "Graphana":
-    modules = graphana_modules
-elif module_type == "Junyper":
-    modules = junyper_modules
-elif module_type == "Kubernetes_Core":
-    modules = k8s_modules
-elif module_type == "Microsoft-AD":
-    modules = microsoft_ad_modules
-elif module_type == "OpenStack":
-    modules =  openstack_modules  
-elif module_type == "Openvswitch":
-    modules =  openvswitch_module
-elif module_type == "VMware":
-    modules =  vmware_module
-elif module_type == "VMware-Rest":
-    modules =  vmware_rest_module
-elif module_type == "Zabbix":
-    modules =  zabbix_module 
+#elif module_type == "window:ansible":
+#    modules = ansible_window_modules
+#elif module_type == "Docker":
+#    modules =  docker_modules   
+#elif module_type == "GCP":
+#    modules = gcp_modules
+#elif module_type == "Graphana":
+#    modules = graphana_modules
+#elif module_type == "Junyper":
+#    modules = junyper_modules
+#elif module_type == "Kubernetes_Core":
+#    modules = k8s_modules
+#elif module_type == "Microsoft-AD":
+#    modules = microsoft_ad_modules
+#elif module_type == "OpenStack":
+#    modules =  openstack_modules  
+#elif module_type == "Openvswitch":
+#    modules =  openvswitch_module
+#elif module_type == "VMware":
+#    modules =  vmware_module
+#elif module_type == "VMware-Rest":
+#    modules =  vmware_rest_module
+#elif module_type == "Zabbix":
+#    modules =  zabbix_module 
 
 module = st.selectbox("Select Module", modules)
 
 #######
-
-
-
-
-
 
 def generate_ansible_script(module, tasks):
     # Mask IP addresses
