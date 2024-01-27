@@ -65,9 +65,9 @@ with st.sidebar:
     #instruction_1 = st.selectbox("Select Module", module)
     
     def read_modules(file_path):
-    with open(file_path) as f:
-        modules = [line.strip() for line in f]
-    return modules
+        with open(file_path) as f:
+            modules = [line.strip() for line in f]
+        return modules
     
     aws_modules_path = "pages/tf_module/aws-provider.txt"
     gcp_modules_path = "pages/tf_module/gcp-provider.txt"
