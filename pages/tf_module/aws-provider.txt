@@ -1,1 +1,4 @@
-AWS VPC Terraform module
+Terraform module to create AWS VPC resource
+Terraform module to create AWS S3 resources
+Terraform module which creates EC2-VPC security groups on AWS
+Terraform module to create AWS Elastic Kubernetes (EKS) resources
