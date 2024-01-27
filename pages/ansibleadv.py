@@ -125,8 +125,8 @@ def generate_ansible_script(module, tasks):
     )
 
     ansible_script = response['choices'][0]['message']['content']
-    ansible_script = ansible_script.replace('```yaml', '')
-    ansible_script = ansible_script.replace('```', '')
+   # ansible_script = ansible_script.replace('```yaml', '')
+   # ansible_script = ansible_script.replace('```', '')
 
     return ansible_script
 
