@@ -13,7 +13,7 @@ title_style = (
 )
 
 title_style_1 = (
-    "color: Black;"
+    "color: #001C7B;"
     "font-weight: normal;"
 )
 # Display the title with the defined style
