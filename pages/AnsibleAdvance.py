@@ -7,7 +7,7 @@ import random
 import re
 
 title_style = (
-    "color: blue;"
+    "color: #001C7B;"
     "font-weight: bold;"
 )
 # Display the title with the defined style
