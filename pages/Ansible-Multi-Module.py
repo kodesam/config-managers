@@ -8,7 +8,7 @@ import re
 
 
 title_style = (
-    "color: blue;"
+    "color: #001C7B;"
     "font-weight: bold;"
 )
 
