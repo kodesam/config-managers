@@ -1,3 +1,4 @@
+all
 autoscaling_group module – Create or delete AWS AutoScaling Groups (ASGs)
 autoscaling_group_info module – Gather information about EC2 Auto Scaling Groups (ASGs) in AWS
 aws_az_info module – Gather information about availability zones in AWS
