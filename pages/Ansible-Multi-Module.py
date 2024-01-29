@@ -74,7 +74,7 @@ vmware_module         = read_modules(vmware_module_path)
 vmware_rest_module    = read_modules(vmware_rest_module_path)
 zabbix_module         = read_modules(zabbix_module_path)
 
-module_type = st.selectbox("Select Module Type", ["Ansible", "Azure", "AWS", "window:ansible", "Docker", "GCP", "Graphana", "Junyper", "Kubernetes_Core", "Microsoft-AD", "OpenStack", "Openvswitch", "VMware", "VMware-Rest", "Zabbix"])
+module_type = st.selectbox("Select Module Type", ["Ansible", "Azure", "AWS", "window:ansible", "Docker", "GCP", "Grafana", "Junyper", "Kubernetes_Core", "Microsoft-AD", "OpenStack", "Openvswitch", "VMware", "VMware-Rest", "Zabbix"])
 
 if module_type == "Ansible":
     modules = ansible_modules
@@ -88,7 +88,7 @@ elif module_type == "Docker":
     modules =  docker_modules   
 elif module_type == "GCP":
     modules = gcp_modules
-elif module_type == "Graphana":
+elif module_type == "Grafana":
     modules = graphana_modules
 elif module_type == "Junyper":
     modules = junyper_modules
