@@ -1,5 +1,5 @@
 add_host module – Add a host (and alternatively a group) to the ansible-playbook in-memory inventory
-
+all
 apt module – Manages apt-packages
 apt_key module – Add or remove an apt key
 apt_repository module – Add and remove APT repositories
