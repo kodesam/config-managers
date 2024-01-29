@@ -121,11 +121,11 @@ repo_name_1 = st.sidebar.text_input("Repository Name")
 folder_path_1 = st.sidebar.text_input("Folder Path")
 branch_name_1 = st.sidebar.text_input("Branch Name", value="main")
 
-github_token = "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"
+github_token = "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"
 repo_owner = "kodesam"
 repo_name = "pipeline"
-folder_path = "codex"
-branch_name = "integration"
+folder_path = "code"
+branch_name = "dev"
 
 #st.sidebar.title("💬 Script-AI")
 #"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
