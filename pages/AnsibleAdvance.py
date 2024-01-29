@@ -103,8 +103,8 @@ branch_name_ = st.sidebar.text_input("Branch Name", value="main")
 github_token = "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"
 repo_owner = "kodesam"
 repo_name = "pipeline"
-folder_path = "code"
-branch_name = "dev"
+folder_path = "demo"
+branch_name = "demo"
 
 st.sidebar.markdown("<p class='developer-name'>Developer : Aamir </p>", unsafe_allow_html=True)
 
