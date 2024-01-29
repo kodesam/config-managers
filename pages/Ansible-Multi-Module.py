@@ -24,7 +24,7 @@ st.markdown(f"<h2 style='{title_style_1}'>💬  Ansible Task </h2>", unsafe_allo
 # openai.api_key = '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'
 
 with st.sidebar:
-    st.title(f"<h1 style='{title_style}'>"💬 Script-AI 🚀🚀</h1>")
+    st.title(f"<h1 style='{title_style}'>💬 Script-AI 🚀🚀</h1>")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
     
