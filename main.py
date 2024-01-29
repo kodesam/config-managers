@@ -34,7 +34,7 @@ def filter_sensitive_content(prompt):
 available_models = ['gpt-4','gpt-4-1106-preview', 'gpt-3.5-turbo-16k-0613', 'gpt-3.5-turbo-16k-1106', 'gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0']
 
 title_style = (
-    "color: #08F1AD;"
+    "color: #6582E8;"
     "font-weight: bold;"
 )
 
