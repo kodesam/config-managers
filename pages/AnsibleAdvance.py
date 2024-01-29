@@ -65,7 +65,7 @@ response_text = ''
 if st.button('Generate Ansible Script'):
     if module and tasks:
         # List of sensitive keywords
-        sensitive_keywords = ['sensitive', 'Nokia', 'vodafoneziggo', 'oddido','kpn','confidential', 'copyright']
+        sensitive_keywords = ['sensitive', 'Nokia', 'vodafoneziggo', 'oddido','kpn','confidential', 'copyright', 'cognizant']
 
         # Function to check for sensitive keywords in the task input
         def check_sensitive_content(tasks):
