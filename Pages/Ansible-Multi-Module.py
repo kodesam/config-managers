@@ -41,21 +41,21 @@ def read_modules(file_path):
     return modules
 
 
-ansible_modules_path = "pages/Module/ansible_module.txt"
-azure_modules_path = "pages/Module/azure_module.txt"
-aws_modules_path = "pages/Module/aws_module.txt"
-win_ans_modules_path = "pages/Module/window_ansible_module.txt"
-docker_modules_path = "pages/Module/docker_module.txt"
-gcp_modules_path = "pages/Module/gcp_module.txt"
-graphana_modules_path = "pages/Module/graphana_module.txt"
-junyper_modules_path = "pages/Module/junyper_module.txt"
-k8s_modules_path = "pages/Module/k8s_core_module.txt"
-microsoft_ad_modules_path = "pages/Module/microsoft_ad_module.txt"
-openstack_modules_path = "pages/Module/openstack_module.txt"
-openvswitch_module_path = "pages/Module/openvswitch_module.txt"
-vmware_module_path = "pages/Module/vmware_module.txt"
-vmware_rest_module_path = "pages/Module/vmware_rest_module.txt"
-zabbix_module_path = "pages/Module/zabbix_module.txt"
+ansible_modules_path = "Pages/Module/ansible_module.txt"
+azure_modules_path = "Pages/Module/azure_module.txt"
+aws_modules_path = "Pages/Module/aws_module.txt"
+win_ans_modules_path = "Pages/Module/window_ansible_module.txt"
+docker_modules_path = "Pages/Module/docker_module.txt"
+gcp_modules_path = "Pages/Module/gcp_module.txt"
+graphana_modules_path = "Pages/Module/graphana_module.txt"
+junyper_modules_path = "Pages/Module/junyper_module.txt"
+k8s_modules_path = "Pages/Module/k8s_core_module.txt"
+microsoft_ad_modules_path = "Pages/Module/microsoft_ad_module.txt"
+openstack_modules_path = "Pages/Module/openstack_module.txt"
+openvswitch_module_path = "Pages/Module/openvswitch_module.txt"
+vmware_module_path = "Pages/Module/vmware_module.txt"
+vmware_rest_module_path = "Pages/Module/vmware_rest_module.txt"
+zabbix_module_path = "Pages/Module/zabbix_module.txt"
 
 
 ansible_modules = read_modules(ansible_modules_path)
