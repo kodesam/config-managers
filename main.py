@@ -16,28 +16,29 @@ def login():
 def main():
     st.title("My App")
 
+    if st.sidebar.button("Logout"):
+        st.experimental_rerun()
+
     if login():
-        st.success("Login successful!")
-        st.write("Welcome to the app.")
+        st.sidebar.success("Login successful!")
+        st.sidebar.write("Welcome to the app.")
 
         # Provide access to the 'pages' folder
-        folder_path = 'dev'
+        folder_path = 'pages'
         files = os.listdir(folder_path)
 
-        # Display the available files in the 'pages' folder
-        st.write("Available files in 'pages' folder:")
-        for index, file in enumerate(files):
-            st.write(f"{index + 1}. {file}")
+        # Sidebar navigation
+        selected_file = st.sidebar.selectbox("Select a file to execute", files)
 
-        selected_file = st.selectbox("Select a file to execute", files)
-        if selected_file:
-            file_path = os.path.join(folder_path, selected_file)
+        if st.sidebar.button("Execute"):
+            if selected_file:
+                file_path = os.path.join(folder_path, selected_file)
 
-            # Execute the chosen Python file
-            try:
-                exec(open(file_path).read())
-            except Exception as e:
-                st.error(f"Error executing {selected_file}: {e}")
+                # Execute the chosen Python file
+                try:
+                    exec(open(file_path).read())
+                except Exception as e:
+                    st.error(f"Error executing {selected_file}: {e}")
 
     else:
         st.error("Login failed. Please check your credentials.")
