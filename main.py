@@ -11,13 +11,13 @@ def hash_pass(password):
     return sha256(password.encode('utf-8')).hexdigest()
 
 def main():
-    stored_password = 'yourhashedpassword' # replace with any hashed password
+    stored_password = '123456' # replace with any hashed password
     menu = ["Login","HomePage"] 
     choice = st.sidebar.selectbox("Menu",menu)
 
     if choice == "Login":
         st.subheader("Login Section")
-        username = st.sidebar.text_input("User_Name")
+        username = st.sidebar.text_input("admin")
         password = st.sidebar.text_input("Password",type='password')
         hashed_password = hash_pass(password)
         
