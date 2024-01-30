@@ -3,8 +3,8 @@ import os
 
 def login():
     # Get username and password from the user
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
+    username = st.sidebar.text_input("Username")
+    password = st.sidebar.text_input("Password", type="password")
 
     # Hard-coded username and password for demonstration purposes
     if username == "admin" and password == "password":
@@ -12,11 +12,12 @@ def login():
     else:
         return False
 
-@st.cache(allow_output_mutation=True)
-def get_files_in_folder():
-    folder_path = 'pages'
-    files = os.listdir(folder_path)
-    return files
+def execute_python_file(file_path):
+    try:
+        # Execute the Python file
+        exec(open(file_path).read())
+    except Exception as e:
+        st.error(f"Error executing {file_path}: {e}")
 
 # Main Streamlit app
 def main():
@@ -24,24 +25,16 @@ def main():
         st.sidebar.success("Login successful!")
         st.sidebar.write("Welcome to the app.")
 
-        files = get_files_in_folder()
+        folder_path = "pages"
+        files = os.listdir(folder_path)
 
-        # Provide access to the 'pages' folder
-        st.write("Available files in 'pages' folder:")
-        for index, file in enumerate(files):
-            st.write(f"{index + 1}. {file}")
+        st.sidebar.write("Available files in 'pages' folder:")
+        selected_file = st.sidebar.selectbox("Select a file", files)
 
-        selected_file = st.selectbox("Select a file to execute", files)
+        if selected_file:
+            file_path = os.path.join(folder_path, selected_file)
+            execute_python_file(file_path)
 
-        if st.button("Execute"):
-            if selected_file:
-                file_path = os.path.join('pages', selected_file)
-
-                # Execute the chosen Python file
-                try:
-                    exec(open(file_path).read())
-                except Exception as e:
-                    st.error(f"Error executing {selected_file}: {e}")
     else:
         st.title("Login")
         if st.button("Submit"):
