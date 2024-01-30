@@ -21,7 +21,14 @@ def execute_python_file(file_path):
 
 # Main Streamlit app
 def main():
-    if login():
+    if "logged_in" not in st.session_state:
+        st.session_state.logged_in = False
+
+    if not st.session_state.logged_in:
+        if login():
+            st.session_state.logged_in = True
+
+    if st.session_state.logged_in:
         st.sidebar.success("Login successful!")
         st.sidebar.write("Welcome to the app.")
 
@@ -31,10 +38,11 @@ def main():
         
         # Add Logout option
         if st.sidebar.button("Logout"):
+            st.session_state.logged_in = False
             st.experimental_rerun()
         
         st.sidebar.write("Available files in 'pages' folder:")
-        selected_file_name = st.sidebar.selectbox("Select a file", file_names, index=3)
+        selected_file_name = st.sidebar.selectbox("Select a file", file_names, index=0)
 
         if selected_file_name:
             index = file_names.index(selected_file_name)
