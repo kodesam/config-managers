@@ -27,16 +27,18 @@ def main():
 
         folder_path = "Pages"
         files = os.listdir(folder_path)
+        file_names = [os.path.splitext(file)[0] for file in files]
         
         # Add Logout option
         if st.sidebar.button("Logout"):
             st.experimental_rerun()
         
         st.sidebar.write("Available files in 'pages' folder:")
-        selected_file = st.sidebar.selectbox("Select a file", files)
+        selected_file_name = st.sidebar.selectbox("Select a file", file_names)
 
-        if selected_file:
-            file_path = os.path.join(folder_path, selected_file)
+        if selected_file_name:
+            index = file_names.index(selected_file_name)
+            file_path = os.path.join(folder_path, files[index])
             execute_python_file(file_path)
 
     else:
