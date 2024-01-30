@@ -30,7 +30,7 @@ else:
     st.warning("Please add your OpenAI API key to continue.")
 
 # Read Ansible modules from file
-with open("Pages/aws_module.txt") as f:
+with open("lib/Module/aws_module.txt") as f:
     ansible_modules = [line.strip() for line in f]
 
 
