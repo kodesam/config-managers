@@ -56,9 +56,9 @@ with st.sidebar:
             modules = [line.strip() for line in f]
         return modules
     
-    aws_modules_path = "pages/tf_module/aws-provider.txt"
-    gcp_modules_path = "pages/tf_module/gcp-provider.txt"
-    azure_modules_path = "pages/tf_module/azure-provider.txt"
+    aws_modules_path = "Pages/tf_module/aws-provider.txt"
+    gcp_modules_path = "Pages/tf_module/gcp-provider.txt"
+    azure_modules_path = "Pages/tf_module/azure-provider.txt"
     
     
 
