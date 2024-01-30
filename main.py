@@ -21,7 +21,7 @@ def main():
         st.write("Welcome to the app.")
 
         # Provide access to the 'pages' folder
-        folder_path = 'dev2'
+        folder_path = 'dev'
         files = os.listdir(folder_path)
 
         # Display the available files in the 'pages' folder
