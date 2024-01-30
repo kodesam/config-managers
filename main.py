@@ -1,5 +1,7 @@
 import streamlit as st
 import os
+import datetime
+import socket
 
 def login():
     # Get username and password from the user
@@ -19,6 +21,15 @@ def execute_python_file(file_path):
     except Exception as e:
         st.error(f"Error executing {file_path}: {e}")
 
+def log_session(event):
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    ip_address = socket.gethostbyname(socket.gethostname())
+    log_message = f"Event: {event}\nTimestamp: {timestamp}\nIP Address: {ip_address}\n"
+
+    with open("session_log.txt", "a") as file:
+        file.write(log_message)
+        file.write("\n")
+
 # Main Streamlit app
 def main():
     if "logged_in" not in st.session_state:
@@ -27,6 +38,7 @@ def main():
     if not st.session_state.logged_in:
         if login():
             st.session_state.logged_in = True
+            log_session("login")
 
     if st.session_state.logged_in:
         st.sidebar.success("Login successful!")
@@ -38,6 +50,7 @@ def main():
         
         # Add Logout option
         if st.sidebar.button("Logout"):
+            log_session("logout")
             st.session_state.logged_in = False
             st.experimental_rerun()
         
@@ -51,7 +64,7 @@ def main():
 
     else:
         st.title("Login")
-        if st.sidebar.button("Submit"):
+        if st.button("Submit"):
             st.error("Login failed. Please check your credentials.")
 
 # Run the app
