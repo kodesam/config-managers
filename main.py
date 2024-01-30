@@ -51,7 +51,7 @@ def main():
 
     else:
         st.title("Login")
-        if st.button("Submit"):
+        if st.sidebar.button("Submit"):
             st.error("Login failed. Please check your credentials.")
 
 # Run the app
