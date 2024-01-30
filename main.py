@@ -27,7 +27,12 @@ def main():
 
         folder_path = "pages"
         files = os.listdir(folder_path)
-
+        
+        # Add Logout option
+        if st.sidebar.button("Logout"):
+            st.caching.clear_cache()
+            st.experimental_rerun()
+        
         st.sidebar.write("Available files in 'pages' folder:")
         selected_file = st.sidebar.selectbox("Select a file", files)
 
