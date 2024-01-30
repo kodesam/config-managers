@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import datetime
 import socket
+from github import Github
 
 def login():
     # Get username and password from the user
@@ -26,9 +27,18 @@ def log_session(event):
     ip_address = socket.gethostbyname(socket.gethostname())
     log_message = f"Event: {event}\nTimestamp: {timestamp}\nIP Address: {ip_address}\n"
 
-    with open("session_log.txt", "a") as file:
-        file.write(log_message)
-        file.write("\n")
+    # Authentication using a GitHub personal access token
+    access_token = "<your_github_access_token>"
+    g = Github(access_token)
+
+    # Get the GitHub repository
+    repo = g.get_repo("kodesam/pipeline")
+
+    # Create or update the session log file in the log folder
+    content_path = "log/session_log.txt"
+    content = repo.get_contents(content_path)
+
+    repo.update_file(content_path, f"Update {event} log", log_message, content.sha)
 
 # Main Streamlit app
 def main():
@@ -44,7 +54,7 @@ def main():
         st.sidebar.success("Login successful!")
         st.sidebar.write("Welcome to the app.")
 
-        folder_path = "Pages"
+        folder_path = "pages"
         files = os.listdir(folder_path)
         file_names = [os.path.splitext(file)[0] for file in files]
         
@@ -55,7 +65,7 @@ def main():
             st.experimental_rerun()
         
         st.sidebar.write("Available files in 'pages' folder:")
-        selected_file_name = st.sidebar.selectbox("Select a file", file_names, index=3)
+        selected_file_name = st.sidebar.selectbox("Select a file", file_names, index=0)
 
         if selected_file_name:
             index = file_names.index(selected_file_name)
