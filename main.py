@@ -47,6 +47,8 @@ def main():
         if login():
             st.session_state.logged_in = True
 
+            st.button("Logout")  # Display the logout button instead of the login form
+
 # Run the app
 if __name__ == "__main__":
     main()
