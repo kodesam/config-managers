@@ -25,12 +25,11 @@ def main():
         st.sidebar.success("Login successful!")
         st.sidebar.write("Welcome to the app.")
 
-        folder_path = "Pages"
+        folder_path = "pages"
         files = os.listdir(folder_path)
         
         # Add Logout option
         if st.sidebar.button("Logout"):
-            st.caching.clear_cache()
             st.experimental_rerun()
         
         st.sidebar.write("Available files in 'pages' folder:")
