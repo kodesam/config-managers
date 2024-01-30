@@ -28,7 +28,7 @@ def log_session(event):
     log_message = f"Event: {event}\nTimestamp: {timestamp}\nIP Address: {ip_address}\n"
 
     # Authentication using a GitHub personal access token
-    access_token = "<your_github_access_token>"
+    access_token = "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"
     g = Github(access_token)
 
     # Get the GitHub repository
