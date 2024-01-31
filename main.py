@@ -69,7 +69,7 @@ def main():
             st.experimental_rerun()
         
         st.sidebar.write("Available files in 'Pages' folder:")
-        selected_file_name = st.sidebar.selectbox("Select a file", file_names, index=0)
+        selected_file_name = st.sidebar.selectbox("Select a file", file_names, index=3)
 
         if selected_file_name:
             index = file_names.index(selected_file_name)
