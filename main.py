@@ -27,18 +27,22 @@ def log_session(event):
     ip_address = socket.gethostbyname(socket.gethostname())
     log_message = f"Event: {event}\nTimestamp: {timestamp}\nIP Address: {ip_address}\n"
 
+    with open("session_log.txt", "a") as file:
+    file.write(log_message)
+    file.write("\n")
+
     # Authentication using a GitHub personal access token
-    access_token = "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"
-    g = Github(access_token)
+    #access_token = "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"
+    #g = Github(access_token)
 
     # Get the GitHub repository
-    repo = g.get_repo("kodesam/pipeline")
+   # repo = g.get_repo("kodesam/pipeline")
 
     # Create or update the session log file in the log folder
-    content_path = "log/session_log.txt"
-    content = repo.get_contents(content_path)
+    #content_path = "log/session_log.txt"
+    #content = repo.get_contents(content_path)
 
-    repo.update_file(content_path, f"Update {event} log", log_message, content.sha)
+    #repo.update_file(content_path, f"Update {event} log", log_message, content.sha)
 
 # Main Streamlit app
 def main():
