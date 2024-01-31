@@ -28,8 +28,8 @@ def log_session(event):
     log_message = f"Event: {event}\nTimestamp: {timestamp}\nIP Address: {ip_address}\n"
 
     with open("session_log.txt", "a") as file:
-    file.write(log_message)
-    file.write("\n")
+        file.write(log_message)
+        file.write("\n")
 
     # Authentication using a GitHub personal access token
     #access_token = "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"
