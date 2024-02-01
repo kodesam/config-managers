@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import datetime
 import socket
-from github import Github
+from PIL import Image
 
 def login():
     # Get username and password from the user
@@ -31,18 +31,9 @@ def log_session(event):
         file.write(log_message)
         file.write("\n")
 
-    # Authentication using a GitHub personal access token
-    #access_token = "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"
-    #g = Github(access_token)
-
-    # Get the GitHub repository
-   # repo = g.get_repo("kodesam/pipeline")
-
-    # Create or update the session log file in the log folder
-    #content_path = "log/session_log.txt"
-    #content = repo.get_contents(content_path)
-
-    #repo.update_file(content_path, f"Update {event} log", log_message, content.sha)
+def set_background():
+    image = Image.open("ai_background.jpg")
+    st.image(image, use_column_width=True)
 
 # Main Streamlit app
 def main():
@@ -55,6 +46,7 @@ def main():
             log_session("login")
 
     if st.session_state.logged_in:
+        set_background()
         st.sidebar.success("Login successful!")
         st.sidebar.write("Welcome to the app.")
 
