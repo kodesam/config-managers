@@ -6,6 +6,7 @@ from PIL import Image
 
 def login():
     # Get username and password from the user
+    st.sidebar.title("Login Here <>")
     username = st.sidebar.text_input("Username")
     password = st.sidebar.text_input("Password", type="password")
 
@@ -68,7 +69,7 @@ def main():
             execute_python_file(file_path)
 
     else:
-        st.sidebar.title("Login")
+        #st.sidebar.title("Login")
         st.markdown(""" <h1 style='color: #002147; font-family: Arial, sans-serif;'>Script AI</h1> """, unsafe_allow_html=True)
         set_background()
         if st.button("Submit"):
