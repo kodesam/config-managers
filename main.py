@@ -14,6 +14,7 @@ st.markdown(f"<h1 style='{title_style}'>Script-AI </h1>", unsafe_allow_html=True
 
 def login():
     # Get username and password from the user
+    st.sidebar.title("Login Here")
     username = st.sidebar.text_input("Username")
     password = st.sidebar.text_input("Password", type="password")
 
@@ -57,7 +58,7 @@ def main():
 
     if st.session_state.logged_in:
         st.sidebar.success("Login successful!")
-        st.sidebar.write("Welcome to the app.")
+        st.sidebar.write("Welcome to the Script AI.")
 
         folder_path = "Pages"
         files = os.listdir(folder_path)
@@ -79,7 +80,7 @@ def main():
 
     else:
         set_background()
-        st.sidebar.title("Login Here")
+        #st.sidebar.title("Login Here")
         if st.sidebar.button("Submit"):
             st.error("Login failed. Please check your credentials.")
 
