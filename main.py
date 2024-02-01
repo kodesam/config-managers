@@ -3,6 +3,7 @@ import os
 import datetime
 import socket
 from PIL import Image
+import time
 
 def login():
     # Get username and password from the user
@@ -35,6 +36,17 @@ def set_background():
     image = Image.open("ai-2.jpg")
     st.image(image, use_column_width=True)
 
+def login_animation():
+    c1, c2 = st.beta_columns(2)
+    counter = 0
+    while True:
+        counter += 1
+        c1.write(str(counter % 2))
+        c2.write(str((counter + 1) % 2))
+        time.sleep(0.5)
+        c1.beta_container.empty()
+        c2.beta_container.empty()
+
 # Main Streamlit app
 def main():
     set_background()
@@ -54,13 +66,13 @@ def main():
         folder_path = "Pages"
         files = os.listdir(folder_path)
         file_names = [os.path.splitext(file)[0] for file in files]
-        
+
         # Add Logout option
         if st.sidebar.button("Logout"):
             log_session("logout")
             st.session_state.logged_in = False
             st.experimental_rerun()
-        
+
         # st.sidebar.write("Available files in 'Pages' folder:")
         selected_file_name = st.sidebar.selectbox("Select a Module", file_names, index=3)
 
@@ -73,6 +85,9 @@ def main():
         st.title("Login")
         if st.button("Submit"):
             st.error("Login failed. Please check your credentials.")
+
+            # Run the login animation
+            login_animation()
 
 # Run the app
 if __name__ == "__main__":
