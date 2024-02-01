@@ -4,6 +4,8 @@ import datetime
 import socket
 from PIL import Image
 
+st.title("SCRIPT AI")
+
 def login():
     # Get username and password from the user
     username = st.sidebar.text_input("Username")
@@ -71,7 +73,7 @@ def main():
 
     else:
         set_background()
-        st.sidebar.title("Login")
+        st.sidebar.title("Login Here")
         if st.sidebar.button("Submit"):
             st.error("Login failed. Please check your credentials.")
 
