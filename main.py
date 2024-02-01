@@ -37,6 +37,8 @@ def set_background():
 
 # Main Streamlit app
 def main():
+    set_background()
+
     if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
 
@@ -46,7 +48,6 @@ def main():
             log_session("login")
 
     if st.session_state.logged_in:
-        set_background()
         st.sidebar.success("Login successful!")
         st.sidebar.write("Welcome to the app.")
 
