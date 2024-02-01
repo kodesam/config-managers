@@ -4,17 +4,8 @@ import datetime
 import socket
 from PIL import Image
 
-title_style = (
-    "color: #001C7B;"
-    "font-weight: bold;"
-)
-
-# Display the title with the defined style
-st.markdown(f"<h1 style='{title_style}'>Script-AI </h1>", unsafe_allow_html=True)
-
 def login():
     # Get username and password from the user
-    st.sidebar.title("Login Here")
     username = st.sidebar.text_input("Username")
     password = st.sidebar.text_input("Password", type="password")
 
@@ -42,9 +33,7 @@ def log_session(event):
 
 def set_background():
     image = Image.open("ai-2.jpg")
-   # image1 = Image.open("ai-2.jpg")
     st.image(image, use_column_width=True)
-   # st.image(image1, use_column_width=True)
 
 # Main Streamlit app
 def main():
@@ -58,7 +47,7 @@ def main():
 
     if st.session_state.logged_in:
         st.sidebar.success("Login successful!")
-        st.sidebar.write("Welcome to the Script AI.")
+        st.sidebar.write("Welcome to the app.")
 
         folder_path = "Pages"
         files = os.listdir(folder_path)
@@ -79,9 +68,9 @@ def main():
             execute_python_file(file_path)
 
     else:
+        st.title("Login")
         set_background()
-        #st.sidebar.title("Login Here")
-        if st.sidebar.button("Submit"):
+        if st.button("Submit"):
             st.error("Login failed. Please check your credentials.")
 
 # Run the app
