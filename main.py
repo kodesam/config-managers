@@ -68,7 +68,8 @@ def main():
             execute_python_file(file_path)
 
     else:
-        st.title("Login")
+        st.sidebar.title("Login")
+        st.title("Script AI")
         set_background()
         if st.button("Submit"):
             st.error("Login failed. Please check your credentials.")
