@@ -72,7 +72,7 @@ def main():
         #st.sidebar.title("Login")
         st.markdown(""" <h1 style='color: #002147; font-family: Arial, sans-serif;'>Script AI</h1> """, unsafe_allow_html=True)
         set_background()
-        if st.button("Submit"):
+        if st.sidebar.button("Submit"):
             st.error("Login failed. Please check your credentials.")
 
 # Run the app
