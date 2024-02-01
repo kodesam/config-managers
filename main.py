@@ -71,8 +71,8 @@ def main():
 
     else:
         set_background()
-        st.title("Login")
-        if st.button("Submit"):
+        st.sidebar.title("Login")
+        if st.sidebar.button("Submit"):
             st.error("Login failed. Please check your credentials.")
 
 # Run the app
