@@ -34,7 +34,7 @@ def log_session(event):
 def set_background():
     image = Image.open("ai-2.jpg")
    # image1 = Image.open("ai-2.jpg")
-    st.image(image, use_column_width=False)
+    st.image(image, use_column_width=True)
    # st.image(image1, use_column_width=True)
 
 # Main Streamlit app
