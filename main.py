@@ -10,7 +10,7 @@ title_style = (
 )
 
 # Display the title with the defined style
-st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀 Script-AI 🚀🚀 </h1>", unsafe_allow_html=True)
+st.markdown(f"<h1 style='{title_style}'>Script-AI </h1>", unsafe_allow_html=True)
 
 def login():
     # Get username and password from the user
