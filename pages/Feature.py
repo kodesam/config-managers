@@ -170,5 +170,3 @@ except GithubException as e:
     # Handle the GitHub exception
     st.error("File already exists in GitHub Repository folder.")
 
-if __name__ == "__main__":
-    main()
