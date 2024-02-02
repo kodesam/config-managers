@@ -75,6 +75,4 @@ def main():
         if st.sidebar.button("Submit"):
             st.error("Login failed. Please check your credentials.")
 
-# Run the app
-if __name__ == "__main__":
-    main()
+
