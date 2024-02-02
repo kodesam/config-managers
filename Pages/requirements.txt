@@ -1,0 +1,7 @@
+streamlit>=1.28
+openai==0.28
+PyGithub==1.55
+paramiko
+regex
+pandas
+pyyaml
