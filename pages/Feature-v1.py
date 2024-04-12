@@ -21,7 +21,7 @@ def filter_sensitive_content(prompt):
         return masked_prompt  # Return the masked prompt if it contains sensitive content
     
     # Check if additional instruction contains any of the sensitive keywords
-    sensitive_keywords = ["confidential", "cognizant", "token", "nokia"]
+    sensitive_keywords = ["confidential", "password", "token", "copyright"]
     additional_instruction_lower = prompt.lower()  # Convert additional instruction to lowercase
     
     for keyword in sensitive_keywords:
@@ -115,17 +115,12 @@ if prompt := st.chat_input():
 random_number = random.randint(1, 1000)
 
 # Prompt the user for GitHub credentials
-github_token_1 = st.sidebar.text_input("GitHub Personal Access Token", type="password")
-repo_owner_1 = st.sidebar.text_input("Repository Owner")
-repo_name_1 = st.sidebar.text_input("Repository Name")
-folder_path_1 = st.sidebar.text_input("Folder Path")
-branch_name_1 = st.sidebar.text_input("Branch Name", value="main")
+github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
+repo_owner = st.sidebar.text_input("Repository Owner")
+repo_name = st.sidebar.text_input("Repository Name")
+folder_path = st.sidebar.text_input("Folder Path")
+branch_name = st.sidebar.text_input("Branch Name", value="main")
 
-github_token = "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"
-repo_owner = "kodesam"
-repo_name = "pipeline"
-folder_path = "demo"
-branch_name = "demo"
 
 #st.sidebar.title("💬 Script-AI")
 #"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
