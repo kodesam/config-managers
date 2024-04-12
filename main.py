@@ -20,7 +20,7 @@ def filter_sensitive_content(prompt):
         return masked_prompt  # Return the masked prompt if it contains sensitive content
     
     # Check if additional instruction contains any of the sensitive keywords
-    sensitive_keywords = ["token", "nokia", "confidential"]
+    sensitive_keywords = ["token", "password", "confidential"]
     additional_instruction_lower = prompt.lower()  # Convert additional instruction to lowercase
     
     for keyword in sensitive_keywords:
