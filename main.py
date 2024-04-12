@@ -46,7 +46,7 @@ st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀 Script-AI 🚀🚀 </h1>",
 with st.sidebar:
     st.title("💬 Script-AI 🚀🚀")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
-    "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
+    
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
     models = st.multiselect("Select Models", available_models, default=available_models)
     module = [
