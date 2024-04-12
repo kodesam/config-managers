@@ -15,12 +15,12 @@ st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀 Script-AI 🚀🚀 </h1>",
 st.caption("🚀 🚀 🚀 Script-AI Powered by OpenAI LLM")
 
 # Place your actual OpenAI API key here
-# openai.api_key = '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'
+
 
 with st.sidebar:
     st.title("💬 Script-AI 🚀🚀")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
-    "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
+   # "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
     
     openai_api_key = st.text_input("OpenAI API Key", type="password")
 
@@ -65,7 +65,7 @@ response_text = ''
 if st.button('Generate Ansible Script'):
     if module and tasks:
         # List of sensitive keywords
-        sensitive_keywords = ['sensitive', 'Nokia', 'vodafoneziggo', 'oddido','kpn','confidential', 'copyright', 'cognizant']
+        sensitive_keywords = ['sensitive', 'password', 'token', 'oddido', 'confidential', 'copyright']
 
         # Function to check for sensitive keywords in the task input
         def check_sensitive_content(tasks):
@@ -92,19 +92,14 @@ if st.button('Generate Ansible Script'):
 random_number = random.randint(1, 1000)
 
 # Prompt the user for GitHub credentials
-github_token_ = st.sidebar.text_input("GitHub Personal Access Token", type="password")
-repo_owner_ = st.sidebar.text_input("Repository Owner")
-repo_name_ = st.sidebar.text_input("Repository Name")
-folder_path_ = st.sidebar.text_input("Folder Path")
-branch_name_ = st.sidebar.text_input("Branch Name", value="main")
+github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
+repo_owner = st.sidebar.text_input("Repository Owner")
+repo_name = st.sidebar.text_input("Repository Name")
+folder_path = st.sidebar.text_input("Folder Path")
+branch_name = st.sidebar.text_input("Branch Name", value="main")
 
 
-# Assuming you have a GitHub personal access token
-github_token = "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"
-repo_owner = "kodesam"
-repo_name = "pipeline"
-folder_path = "demo"
-branch_name = "demo"
+
 
 st.sidebar.markdown("<p class='developer-name'>Developer : Aamir </p>", unsafe_allow_html=True)
 
