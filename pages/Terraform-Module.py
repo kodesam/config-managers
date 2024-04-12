@@ -20,7 +20,7 @@ def filter_sensitive_content(prompt):
         return masked_prompt  # Return the masked prompt if it contains sensitive content
     
     # Check if additional instruction contains any of the sensitive keywords
-    sensitive_keywords = ["cognizant", "confidential", "token", "nokia"]
+    sensitive_keywords = ["password", "confidential", "token", "copyright"]
     additional_instruction_lower = prompt.lower()  # Convert additional instruction to lowercase
     
     for keyword in sensitive_keywords:
@@ -46,7 +46,7 @@ st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀 Script-AI 🚀🚀 </h1>",
 with st.sidebar:
     st.title("💬 Script-AI 🚀🚀")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
-    "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
+   # "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
 
 
@@ -129,22 +129,17 @@ if prompt := st.chat_input():
 random_number = random.randint(1, 1000)
 
 # Prompt the user for GitHub credentials
-github_token_1 = st.sidebar.text_input("GitHub Personal Access Token", type="password")
-repo_owner_1 = st.sidebar.text_input("Repository Owner")
-repo_name_1 = st.sidebar.text_input("Repository Name")
-folder_path_1 = st.sidebar.text_input("Folder Path")
-branch_name_1 = st.sidebar.text_input("Branch Name", value="main")
+github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
+repo_owner = st.sidebar.text_input("Repository Owner")
+repo_name = st.sidebar.text_input("Repository Name")
+folder_path = st.sidebar.text_input("Folder Path")
+branch_name = st.sidebar.text_input("Branch Name", value="main")
 
-github_token = "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"
-repo_owner = "kodesam"
-repo_name = "pipeline"
-folder_path = "demo"
-branch_name = "demo"
 
 #st.sidebar.title("💬 Script-AI")
 #"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
  
-st.sidebar.markdown("<p class='developer-name'>Developer</p>", unsafe_allow_html=True)
+st.sidebar.markdown("<p class='developer-name'>Developer: Syed Aamir</p>", unsafe_allow_html=True)
 
 # Update the base_filename and filename
 base_filename = "code"
