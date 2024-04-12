@@ -125,7 +125,7 @@ branch_name = st.sidebar.text_input("Branch Name", value="main")
 #st.sidebar.title("💬 Script-AI")
 #"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
  
-st.sidebar.markdown("<p class='developer-name'>Developer</p>", unsafe_allow_html=True)
+st.sidebar.markdown("<p class='developer-name'>Developer : Syed Aamir</p>", unsafe_allow_html=True)
 
 # Update the base_filename and filename
 base_filename = "code"
