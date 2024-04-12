@@ -20,7 +20,7 @@ def filter_sensitive_content(prompt):
         return masked_prompt  # Return the masked prompt if it contains sensitive content
     
     # Check if additional instruction contains any of the sensitive keywords
-    sensitive_keywords = ["token", "nokia", "VodafoneZiggo", "Cognizant", "oddido"]
+    sensitive_keywords = ["token", "nokia", "confidential"]
     additional_instruction_lower = prompt.lower()  # Convert additional instruction to lowercase
     
     for keyword in sensitive_keywords:
@@ -124,7 +124,7 @@ branch_name = st.sidebar.text_input("Branch Name", value="main")
 #st.sidebar.title("💬 Script-AI")
 #"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
  
-st.sidebar.markdown("<p class='developer-name'>Syed Aamir</p>", unsafe_allow_html=True)
+st.sidebar.markdown("<p class='developer-name'>Dev :> Syed Aamir</p>", unsafe_allow_html=True)
 
 # Update the base_filename and filename
 base_filename = "code"
