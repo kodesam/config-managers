@@ -21,7 +21,7 @@ st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀 Script-AI 🚀🚀 </h1>",
 st.caption("🚀 🚀 🚀 Script-AI Powered by OpenAI LLM")
 st.markdown(f"<h2 style='{title_style_1}'>💬  Ansible Task </h2>", unsafe_allow_html=True)
 # Place your actual OpenAI API key here
-# openai.api_key = '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'
+
 
 with st.sidebar:
     st.title("💬 Script-AI 🚀🚀")
@@ -149,7 +149,7 @@ response_text = ''
 if st.button('Generate Ansible Script'):
     if module and tasks:
         # List of sensitive keywords
-        sensitive_keywords = ['sensitive', 'Nokia', 'vodafoneziggo', 'oddido','kpn','confidential', 'copyright', 'cognizant']
+        sensitive_keywords = ['sensitive', 'password', 'confidential', 'copyright']
 
         # Function to check for sensitive keywords in the task input
         def check_sensitive_content(tasks):
