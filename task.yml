@@ -1,7 +1,0 @@
-The given Ansible playbook is designed to migrate a virtual machine (VM) from AWS to Azure. Here's a breakdown of each task:
-
-1. Stop source VM: This task stops the VM in AWS. The shell module is used to execute the necessary commands to stop the VM. The output of the command is registered in the `stop_result` variable.
-
-2. Migrate VM: This task performs the migration of the VM from AWS to Azure. The shell module is used to execute the necessary commands for the migration. The output of the command is registered in the `migrate_result` variable.
-
-3. Start destination VM: This task starts the VM in Azure. The shell module is used to execute the necessary commands to start the VM.
