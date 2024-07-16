@@ -1,3 +1,0 @@
-streamlit
-github3.py
-openai
