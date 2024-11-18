@@ -60,6 +60,7 @@ with st.sidebar:
         "juypter notebook",
         "Windows PowerShell",
         "terraform script",
+        "error correction",
     ]
     
     instruction_1 = st.selectbox("Select Module", module)
