@@ -1,7 +1,5 @@
-
 import streamlit as st
 from github import Github, GithubException
-import streamlit as st
 import openai
 import random
 import re
@@ -9,46 +7,36 @@ import re
 filtered_prompt = None
 
 def filter_sensitive_content(prompt):
-    # Perform the necessary filtering operations or checks here
-    # You can use regex, NLP techniques, or other methods to identify and mask sensitive content
-    
-    # Example: Check if prompt contains IP address and mask it
-    ip_address_pattern = r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b"  # Regex pattern for IP address
+    # Existing filtering logic remains the same
+    ip_address_pattern = r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b"
     masked_prompt = re.sub(ip_address_pattern, 'IP ADDRESS="XXX.XXX.XXX.XXX"', prompt)
     
     if masked_prompt != prompt:
-        return masked_prompt  # Return the masked prompt if it contains sensitive content
+        return masked_prompt
     
-    # Check if additional instruction contains any of the sensitive keywords
     sensitive_keywords = ["token", "password", "confidential"]
-    additional_instruction_lower = prompt.lower()  # Convert additional instruction to lowercase
+    additional_instruction_lower = prompt.lower()
     
     for keyword in sensitive_keywords:
-        keyword_lower = keyword.lower()  # Convert keyword to lowercase
+        keyword_lower = keyword.lower()
         if keyword_lower in additional_instruction_lower:
-            return None  # Return None if the additional instruction contains sensitive content
+            return None
     
-    return prompt  # Return the filtered prompt if it doesn't contain sensitive content
+    return prompt
 
-# Get available models
-available_models = ['gpt-4','gpt-4-1106-preview', 'gpt-3.5-turbo-16k-0613', 'gpt-3.5-turbo-16k-1106', 'gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0']
+available_models = ['gpt-4','gpt-4-1106-preview', 'gpt-3.5-turbo-16k-0613', 
+                   'gpt-3.5-turbo-16k-1106', 'gpt-3.5-turbo', 'gpt-3.5', 'gpt-3.0']
 
-title_style = (
-    "color: #001C7B;"
-    "font-weight: bold;"
-)
-
-# Display the title with the defined style
-st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀 Script-AI 🚀🚀 </h1>", unsafe_allow_html=True)
-
-
+title_style = "color: #001C7B; font-weight: bold;"
+st.markdown(f"<h1 style='{title_style}'>💬 🚀🚀 Config-Manager 🚀🚀 </h1>", unsafe_allow_html=True)
 
 with st.sidebar:
-    st.title("💬 Script-AI 🚀🚀")
+    st.title("💬 Config-Manager 🚀🚀")
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
-    models = st.multiselect("Select Models", available_models, default=available_models)
+    selected_model = st.selectbox("Select Model", available_models, index=2)
+    
     module = [
         "ansible Playbook jinja2 template",
         "ansible Playbook yaml file",  
@@ -64,14 +52,13 @@ with st.sidebar:
     ]
     
     instruction_1 = st.selectbox("Select Module", module)
-    #temperature = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.5, step=0.1)
-    #max_tokens = st.number_input("Max Tokens", min_value=1, max_value=2048, value=50)
-    #top_p = st.slider("Top-p", min_value=0.1, max_value=1.0, value=0.9, step=0.1)
-   
-    #instruction_2 = st.text_area("Additional Instruction", key="additional_instruction", height=200)
-    #st.title("💬 Script-AI")
+    github_token = st.text_input("GitHub Personal Access Token", type="password")
+    repo_owner = st.text_input("Repository Owner")
+    repo_name = st.text_input("Repository Name")
+    folder_path = st.text_input("Folder Path")
+    branch_name = st.text_input("Branch Name", value="main")
 
-st.caption("🚀 🚀 🚀 Script-AI powered by OpenAI LLM")
+st.caption("🚀 🚀 🚀 Config-Manager powered by OpenAI LLM")
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can assist you on Script Generation ?"}]
@@ -79,90 +66,67 @@ if "messages" not in st.session_state:
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
+def handle_error_correction(prompt):
+    return (
+        "Analyze the following code for errors. Identify any syntax, logical, or security issues. "
+        "Provide:\n1. A bullet-point list of found issues\n2. The corrected code\n3. A brief explanation of the fixes\n\n"
+        f"Code to analyze:\n{prompt}"
+    )
+
 if prompt := st.chat_input():
     if not openai_api_key:
         st.info("Please add your OpenAI API key to continue.")
         st.stop()
 
-    # Filter sensitive content in the prompt
     filtered_prompt = filter_sensitive_content(prompt)
-
+    
     if not filtered_prompt:
         st.warning("The prompt contains sensitive content. Please remove any sensitive information and try again.")
         st.stop()
+
+    # Handle module-specific prompts
+    if instruction_1 == "error correction":
+        filtered_prompt = handle_error_correction(filtered_prompt)
+    else:
+        filtered_prompt = f"{instruction_1}: {filtered_prompt}"
+
     client = openai.ChatCompletion(api_key=openai_api_key)
-    # client = OpenAI(api_key=openai_api_key)
     st.session_state.messages.append({"role": "user", "content": filtered_prompt})
     st.chat_message("user").write(filtered_prompt)
 
-    # Include the instruction in the conversation
-    st.session_state.messages.append({"role": "assistant", "content": instruction_1})
-    #st.session_state.messages.append({"role": "assistant", "content": instruction_2})
-    openai.api_key = openai_api_key
-    # Include the instruction in the API call
-    response = client.create(
-    model="gpt-3.5-turbo",
-    messages=st.session_state.messages,
-    # temperature=temperature,
-    # top_p=top_p
-    )
+    try:
+        response = client.create(
+            model=selected_model,
+            messages=st.session_state.messages,
+            temperature=0.2 if instruction_1 == "error correction" else 0.7,
+        )
+        msg = response.choices[0].message.content
+    except openai.error.OpenAIError as e:
+        msg = f"Error: {str(e)}"
+        st.error(msg)
 
-    msg = response.choices[0].message.content
     st.session_state.messages.append({"role": "assistant", "content": msg})
     st.chat_message("assistant").write(msg)
 
-# Generate a random number
+# GitHub integration remains the same
 random_number = random.randint(1, 1000)
-
-# Prompt the user for GitHub credentials
-github_token = st.sidebar.text_input("GitHub Personal Access Token", type="password")
-repo_owner = st.sidebar.text_input("Repository Owner")
-repo_name = st.sidebar.text_input("Repository Name")
-folder_path = st.sidebar.text_input("Folder Path")
-branch_name = st.sidebar.text_input("Branch Name", value="main")
-
-
-#st.sidebar.title("💬 Script-AI")
-#"[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
- 
-st.sidebar.markdown("<p class='developer-name'>Dev :> Syed Aamir</p>", unsafe_allow_html=True)
-
-# Update the base_filename and filename
 base_filename = "code"
-filename = f"{base_filename}_{random_number}.yaml"
+file_ext = ".py" if "python" in instruction_1.lower() else ".yaml"
+filename = f"{base_filename}_{random_number}{file_ext}"
 
 try:
-    # Your existing code here
+    if github_token and repo_owner and repo_name:
+        g = Github(github_token)
+        repo = g.get_repo(f"{repo_owner}/{repo_name}")
+        file_path = f"{folder_path}/{filename}" if folder_path else filename
 
-    # Create a connection to the GitHub repository
-    g = Github(github_token)
-    repo = g.get_repo(f"{repo_owner}/{repo_name}")
-
-    # Check if the file already exists in the folder
-    file_path = f"{repo_owner}/{repo_name}/{folder_path}/{filename}"
-      #file_path = f"{folder_path}/{filename}"
-    file_exists = True
-
-    try:
-        repo.get_contents(file_path, ref=branch_name)
-    except GithubException as e:
-        if e.status == 404:
-            file_exists = False
-        else:
-            raise
-
-    if not file_exists:
-        # Create or update the file in the repository
-        content = msg
-        commit_message = f"Create {filtered_prompt}"
-        repo.create_file(file_path, commit_message, content, branch=branch_name)
-        print(f"File '{filename}' created successfully in the GitHub repository.")
-    else:
-        print(f"File '{filename}' already exists in the GitHub repository. Skipping creation.")
-except AssertionError as e:
-    # Handle the AssertionError
-    st.error("An error occurred while creating the file. Please try again later.")
-except GithubException as e:
-    # Handle the GitHub exception
-    st.error("File already exists in GitHub Repository folder.")
-
+        try:
+            repo.get_contents(file_path, ref=branch_name)
+            st.warning(f"File '{filename}' already exists in the repository.")
+        except GithubException:
+            content = msg
+            commit_message = f"Add {instruction_1} correction" if instruction_1 == "error correction" else f"Add {instruction_1}"
+            repo.create_file(file_path, commit_message, content, branch=branch_name)
+            st.success(f"File '{filename}' created successfully in GitHub repository!")
+except Exception as e:
+    st.error(f"GitHub Error: {str(e)}")
