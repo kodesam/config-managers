@@ -5,3 +5,9 @@ paramiko
 regex
 pandas
 pyyaml
+
+
+
+
+transformers>=4.0.0
+torch>=2.0.0
