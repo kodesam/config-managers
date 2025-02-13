@@ -71,7 +71,7 @@ class ConfigUI:
         if "current_config" not in st.session_state:
             st.session_state.current_config = ""
             
-       def render_sidebar(self):
+    def render_sidebar(self):
         with st.sidebar:
             st.title("⚙️ AI Config Manager")
             openai_api_key = st.text_input("OpenAI API Key", type="password")
