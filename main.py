@@ -5,7 +5,6 @@ import random
 import re
 import json
 from datetime import datetime
-from transformers import pipeline
 
 
 
