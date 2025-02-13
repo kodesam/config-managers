@@ -5,6 +5,7 @@ import random
 import re
 import json
 from datetime import datetime
+from transformers import pipeline
 
 # Local AI example using Hugging Face
 from transformers import pipeline
