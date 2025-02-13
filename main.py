@@ -94,7 +94,7 @@ class ConfigUI:
                 ["CIS AWS", "PCI-DSS", "HIPAA", "GDPR"]
             )
             
-            advanced_options = st.expander("Advanced Settings"):
+            advanced_options = st.expander("Advanced Settings")
                 model_choice = advanced_options.selectbox(
                     "AI Model",
                     ["gpt-4", "gpt-3.5-turbo"],
