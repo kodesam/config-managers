@@ -71,7 +71,7 @@ class ConfigUI:
         if "current_config" not in st.session_state:
             st.session_state.current_config = ""
             
-    def render_sidebar(self):
+       def render_sidebar(self):
         with st.sidebar:
             st.title("⚙️ AI Config Manager")
             openai_api_key = st.text_input("OpenAI API Key", type="password")
@@ -94,13 +94,14 @@ class ConfigUI:
                 ["CIS AWS", "PCI-DSS", "HIPAA", "GDPR"]
             )
             
-            advanced_options = st.expander("Advanced Settings"):
-                model_choice = advanced_options.selectbox(
+            # Corrected expander section
+            with st.expander("Advanced Settings"):
+                model_choice = st.selectbox(
                     "AI Model",
                     ["gpt-4", "gpt-3.5-turbo"],
                     index=0
                 )
-                temp = advanced_options.slider("Creativity", 0.0, 1.0, 0.3)
+                temp = st.slider("Creativity", 0.0, 1.0, 0.3)
                 
             return {
                 "api_key": openai_api_key,
