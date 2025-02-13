@@ -6,6 +6,12 @@ import re
 import json
 from datetime import datetime
 
+# Local AI example using Hugging Face
+from transformers import pipeline
+
+generator = pipeline('text-generation', model='gpt2')
+print(generator("Generate config for:", max_length=100))
+
 class ConfigManager:
     def __init__(self, api_key):
         self.ai_client = openai.ChatCompletion(api_key=api_key)
