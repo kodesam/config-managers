@@ -7,11 +7,7 @@ import json
 from datetime import datetime
 from transformers import pipeline
 
-# Local AI example using Hugging Face
-from transformers import pipeline
 
-generator = pipeline('text-generation', model='gpt2')
-print(generator("Generate config for:", max_length=100))
 
 class ConfigManager:
     def __init__(self, api_key):
@@ -85,7 +81,11 @@ class ConfigUI:
             
             modules = {
                 "Infrastructure": ["terraform", "cloudformation"],
-                "Orchestration": ["ansible", "kubernetes"],
+                "Orchestration": ["ansible","ansible jinja variable" "kubernetes", "Opneshift"],
+                "Scripting": ["shell","powerShell"],
+                "Code generation": ["python", "python notebook"],
+                "container image": ["Docker file", "Podman file"],
+                "Convertion": ["csv - json","json - csv", "json - yaml","yaml - json"],
                 "Security": ["iam_policy", "security_group"],
                 "Error Correction": ["validate_config"]
             }
