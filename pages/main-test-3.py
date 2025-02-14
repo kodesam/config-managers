@@ -3,6 +3,7 @@ import random
 import re
 import time
 from openai import AzureOpenAI, APIError, APIConnectionError, RateLimitError
+from openai._exceptions import APIError, APIConnectionError, RateLimitError
 
 # Configure sensitive patterns and replacements
 SENSITIVE_PATTERNS = {
