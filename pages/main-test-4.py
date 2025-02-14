@@ -94,13 +94,14 @@ class ConfigUI:
                 ["CIS AWS", "PCI-DSS", "HIPAA", "GDPR"]
             )
             
-            advanced_options = st.expander("Advanced Settings"):
-                model_choice = advanced_options.selectbox(
+            # Corrected expander section
+            with st.expander("Advanced Settings"):
+                model_choice = st.selectbox(
                     "AI Model",
                     ["gpt-4", "gpt-3.5-turbo"],
                     index=0
                 )
-                temp = advanced_options.slider("Creativity", 0.0, 1.0, 0.3)
+                temp = st.slider("Creativity", 0.0, 1.0, 0.3)
                 
             return {
                 "api_key": openai_api_key,
